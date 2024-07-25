@@ -1,0 +1,27 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+.welcome-message {
+    font-size: 2rem;
+    color: #333;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.welcome-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
