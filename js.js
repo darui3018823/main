@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.querySelector('.welcome-message');
+    const welcomeSubtitle = document.getElementById('welcome-subtitle');
+    
     setTimeout(() => {
-        welcomeMessage.classList.add('show');
-    }, 100); //100ms
-});
+        welcomeMessage.classList.add('show')
+    },100); //遅延
 
-document.addEventListener('DOMContentLoaded', () => {
-    const welcomeHeading = document.getElementById('welcome-subtitle');
     setTimeout(() => {
-        welcomeHeading.classList.add('show');
-    }, 125); // 125ms
+        welcomeSubtitle.classList.add('show')
+    }, 125);
 });
