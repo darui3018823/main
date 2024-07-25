@@ -1,12 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.querySelector('.welcome-message');
-    const welcomeSubtitle = document.getElementById('welcome-subtitle');
+    const welcomeSubtitle = document.querySelector('.welcome-subtitle');
     
-    setTimeout(() => {
-        welcomeMessage.classList.add('show')
-    },100); //遅延
+    if (welcomeMessage) {
+        setTimeout(() => {
+            welcomeMessage.classList.add('show');
+        }, 100);
+    } else {
+        console.error('Element with class "welcome-message" not found.');
+    }
 
-    setTimeout(() => {
-        welcomeSubtitle.classList.add('show')
-    }, 125);
+    if (welcomeSubtitle) {
+        setTimeout(() => {
+            welcomeSubtitle.classList.add('show');
+        }, 700);
+    } else {
+        console.error('Element with class "welcome-subtitle" not found.');
+    }
 });
