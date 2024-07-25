@@ -15,11 +15,20 @@ body, html {
 
 .welcome-message {
     font-size: 2rem;
+    color: #333;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+#welcome-subtitle {
+    font-size: 2rem;
     color: #000;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
+
 
 .welcome-message.show {
     opacity: 1;
