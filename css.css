@@ -21,6 +21,7 @@ body, html {
     top: 0;
     left: 0;
     z-index: 1000;
+    box-sizing: border-box; /* ボックスサイズにパディングを含める */
 }
 
 .navbar .home-link {
@@ -44,6 +45,8 @@ body, html {
     border-radius: 5px;
     padding: 10px;
     z-index: 1001;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* メニューに影を付けて浮かせる */
+    box-sizing: border-box; /* ボックスサイズにパディングを含める */
 }
 
 .menu ul {
