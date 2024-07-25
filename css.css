@@ -9,8 +9,67 @@ body, html {
     background-color: #259674;
 }
 
+.navbar {
+    width: 100%;
+    background-color: darkcyan;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .home-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.navbar .hamburger-menu {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.menu {
+    display: none; /* 初期状態では非表示 */
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    color: #FFF;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.menu-item.contact-item {
+    background-color: #444; /* Contactは他のメニュー項目よりも少し黒を入れる */
+}
+
+.menu-item:hover {
+    background-color: #555;
+}
+
 .container {
     text-align: center;
+    margin-top: 60px; /* Adjust margin to avoid overlap with navbar */
 }
 
 .welcome-message {
