@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (welcomeSubtitle) {
         setTimeout(() => {
             welcomeSubtitle.classList.add('show');
-        }, 110);
+        }, 680);
     } else {
         console.error('Element with class "welcome-subtitle" not found.');
     }
