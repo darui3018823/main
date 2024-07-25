@@ -11,7 +11,7 @@ body, html {
 
 .navbar {
     width: 100%;
-    height: 50px; /* bar height */
+    height: 50px; /* 固定の高さを指定 */
     background-color: darkcyan;
     display: flex;
     justify-content: space-between;
@@ -70,7 +70,8 @@ body, html {
 
 .container {
     text-align: center;
-    margin-top: 60px; /* Adjust margin to avoid overlap with navbar */
+    margin-top: 60px; /* ナビゲーションバーと重ならないように調整 */
+    padding: 20px; /* 内部の余白を調整 */
 }
 
 .welcome-message {
