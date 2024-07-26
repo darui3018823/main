@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.querySelector('.welcome-message');
     const welcomeSubtitle = document.querySelector('.welcome-subtitle');
-    
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const menu = document.getElementById('menu');
+    const loadingScreen = document.getElementById('loading-screen');
+
     if (welcomeMessage) {
         setTimeout(() => {
             welcomeMessage.classList.add('show');
@@ -13,13 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (welcomeSubtitle) {
         setTimeout(() => {
             welcomeSubtitle.classList.add('show');
-        }, 680);
+        }, 780);
     } else {
         console.error('Element with class "welcome-subtitle" not found.');
     }
-
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const menu = document.getElementById('menu');
 
     hamburgerMenu.addEventListener('click', () => {
         if (menu.style.display === 'block') {
@@ -27,5 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             menu.style.display = 'block';
         }
+    });
+
+    // ページロード時にローディング画面を表示
+    window.addEventListener('load', () => {
+        loadingScreen.style.display = 'none';
     });
 });

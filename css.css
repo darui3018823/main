@@ -24,10 +24,11 @@ body, html {
     box-sizing: border-box; /* ボックスサイズにパディングを含める */
 }
 
-.navbar .home-link {
+.navbar .home-link, .navbar .about-link {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
+    margin-right: 20px; /* HomeとAboutの間にスペースを作る */
 }
 
 .navbar .hamburger-menu {
@@ -56,7 +57,7 @@ body, html {
 }
 
 .menu-item {
-    color: #FFF;
+    color: #444; /* Contactと同じ色に設定 */
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -64,11 +65,11 @@ body, html {
 }
 
 .menu-item.contact-item {
-    background-color: #444;
+    background-color: #444; /* Contactは他のメニュー項目よりも少し黒を入れる */
 }
 
 .menu-item:hover {
-    background-color: #444;
+    background-color: #555;
 }
 
 .container {
@@ -102,4 +103,22 @@ body, html {
 .welcome-subtitle.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.loading-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002;
+}
+
+.loading-screen img {
+    width: 100px; /* 適宜サイズを調整 */
 }
