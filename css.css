@@ -64,11 +64,11 @@ body, html {
 }
 
 .menu-item.contact-item {
-    background-color: #444; /* Contactは他のメニュー項目よりも少し黒を入れる */
+    background-color: #444;
 }
 
 .menu-item:hover {
-    background-color: #555;
+    background-color: #444;
 }
 
 .container {
