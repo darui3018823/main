@@ -1,91 +1,27 @@
-/* サービスアイコンのセクション */
-.services {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* アイコン間の間隔 */
-    margin-top: 20px;
-}
-
-.service {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* アイコンと説明文の間隔 */
-    width: 100%;
-    justify-content: center;
-}
-
-.service .icon {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease;
-}
-
-.service .icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.service p {
-    margin: 0;
-    font-size: 1rem;
-    color: #333;
-}
-
-.service:hover .icon {
-    transform: translateY(-10px); /* アイコンが浮くアニメーション */
-}
-
-h2 {
-    text-align: center;
-    margin-top: 20px;
-}
-
-a {
-    display: block;
-    text-align: center;
-    font-size: 1.2rem;
-    color: #0000cd; /* リンクの色 */
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-/* 他の既存のスタイル */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    background-color: #259674;
-}
-
-.container {
-    text-align: center;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background-color: #259674; /* Linksページの背景色 */
+    color: white; /* 白文字 */
 }
 
 .navbar {
-    background-color: darkcyan;
-    color: #fff;
-    padding: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    height: 50px;
+    background-color: darkcyan;
+    color: white;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .navbar a {
-    color: #fff;
+    color: white;
     text-decoration: none;
-    margin: 0 7px;
 }
 
 .hamburger-menu {
@@ -94,34 +30,33 @@ body, html {
 
 .menu {
     display: none;
-    background-color: #333;
     position: absolute;
     top: 50px;
     right: 0;
+    background-color: #000; /* メニューの背景色 */
+    color: #FFF; /* 文字色 */
     width: 200px;
-    border-radius: 5px;
-    overflow: hidden;
 }
 
 .menu ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
 }
 
 .menu ul li {
-    border-bottom: 1px solid #444;
+    padding: 10px;
+    border-bottom: 1px solid #c0c0c0; /* 区切り線の色 */
 }
 
 .menu ul li a {
-    color: #fff;
+    color: #FFF; /* 文字色 */
     text-decoration: none;
-    padding: 10px 15px;
-    display: block;
 }
 
-.contact-item {
-    background-color: rgba(0, 0, 0, 0.2);
+.container {
+    text-align: center;
+    padding: 20px;
 }
 
 .loading-screen {
@@ -132,10 +67,27 @@ body, html {
     width: 100%;
     height: 100%;
     background-color: aquamarine;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .loading-screen img {
     width: 100px;
+    height: 100px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.service img {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.service:hover img {
+    transform: translateY(-5px);
 }

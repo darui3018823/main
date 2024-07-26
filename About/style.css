@@ -3,7 +3,7 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #0000cd; /* 新しい背景色 */
+    background-color: #0000cd; /* Aboutページの背景色 */
     color: white; /* 白文字 */
 }
 
@@ -19,7 +19,7 @@ body, html {
     box-sizing: border-box;
 }
 
-.home-link, .about-link {
+.navbar a {
     color: white;
     text-decoration: none;
 }
@@ -33,8 +33,8 @@ body, html {
     position: absolute;
     top: 50px;
     right: 0;
-    background-color: #333;
-    color: white;
+    background-color: #000; /* メニューの背景色 */
+    color: #FFF; /* 文字色 */
     width: 200px;
 }
 
@@ -46,15 +46,48 @@ body, html {
 
 .menu ul li {
     padding: 10px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #c0c0c0; /* 区切り線の色 */
 }
 
 .menu ul li a {
-    color: white;
+    color: #FFF; /* 文字色 */
     text-decoration: none;
 }
 
 .container {
     text-align: center;
     padding: 20px;
+}
+
+.loading-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-screen img {
+    width: 100px;
+    height: 100px;
+}
+
+.service {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.service img {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+.service:hover img {
+    transform: translateY(-5px);
 }
