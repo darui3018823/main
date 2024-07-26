@@ -55,14 +55,17 @@ body, html {
     top: 0;
     left: 0;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0 20px; /* 横に余白を追加 */
     box-sizing: border-box;
     z-index: 1000;
 }
 
-.hamburger-menu {
-    font-size: 24px;
-    cursor: pointer;
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px; /* リンク間の余白を追加 */
+    font-size: 1.2rem;
+    line-height: 50px; /* ナビゲーションバーの高さに合わせて中央揃え */
 }
 
 .menu {
