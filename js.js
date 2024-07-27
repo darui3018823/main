@@ -2,7 +2,6 @@
     const welcomeSubtitle = document.querySelector('.welcome-subtitle');
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const menu = document.getElementById('menu');
-    const loadingScreen = document.getElementById('loading-screen');
 
     if (welcomeMessage) {
         setTimeout(() => {
