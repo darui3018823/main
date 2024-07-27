@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.querySelector('.welcome-message');
     const welcomeSubtitle = document.querySelector('.welcome-subtitle');
     const hamburgerMenu = document.getElementById('hamburger-menu');
@@ -27,10 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             menu.style.display = 'block';
         }
-    });
-
-    // ページロード時にローディング画面を表示
-    window.addEventListener('load', () => {
-        loadingScreen.style.display = 'none';
-    });
-});
+    })
