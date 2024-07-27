@@ -17,12 +17,22 @@ body, html {
     color: white;
     padding: 0 20px;
     box-sizing: border-box;
+    margin-right: 30px;
+    text-align: left;
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
 }
+
+/* 位置固定 */
+.navbar{
+position: fixed;
+top: 0;
+left: 0;
+}
+
 
 .hamburger-menu {
     cursor: pointer;
