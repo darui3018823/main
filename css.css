@@ -85,11 +85,11 @@ left: 0;
 
 .welcome-message {
     color: #000;
+    margin-top: -10px;
 }
 
 .welcome-subtitle {
     color: #222;
-    margin-top: -10px;
 }
 
 .welcome-message.show, .welcome-subtitle.show {
