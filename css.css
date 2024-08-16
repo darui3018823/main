@@ -97,6 +97,12 @@ left: 0;
     transform: translate(-50%, -50%) translateY(0); /* 中央に揃えつつスケール */
 }
 
+.service {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
 .service img {
     margin-right: 10px;
     transition: transform 0.3s ease;
