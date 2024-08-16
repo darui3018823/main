@@ -65,32 +65,36 @@ left: 0;
 }
 
 .container {
-    text-align: center;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Flexboxを有効にする */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    height: calc(100vh - 50px); /* ビューポートの高さからナビゲーションバーの高さを引いたサイズ */
+    text-align: center; /* テキストの中央揃え */
+    position: relative; /* 子要素を位置指定できるようにする */
+}
+
+.welcome-message, .welcome-subtitle {
+    position: absolute; /* 絶対位置指定 */
+    top: 50%; /* ビューポートの50%の位置 */
+    left: 50%; /* ビューポートの50%の位置 */
+    transform: translate(-50%, -50%); /* 中央に揃えるための変換 */
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .welcome-message {
-    font-size: 2rem;
     color: #000;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .welcome-subtitle {
-    font-size: 2rem;
     color: #222;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .welcome-message.show,
 .welcome-subtitle.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, -50%) scale(1); /* 中央に揃えつつスケール */
 }
 
 .service {
