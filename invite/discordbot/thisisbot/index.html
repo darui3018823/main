@@ -10,22 +10,17 @@
     <div class="container">
         <h1>Bot 招待ページ</h1>
         <p>
-            Botを招待するには、<a href="https://drive.google.com/file/d/1SO5O6sEyU2k53H_8W9mvPDJMKdIZCvK1/view" target="_blank">利用規約</a>と
-            <a href="https://drive.google.com/file/d/1c6oosnUhk66WX4ciZJ6hkd9crsdvneJb/view" target="_blank">プライバシーポリシー</a>に同意してください。
+            利用規約とプライバシーポリシーに同意するには、以下のボタンからそれぞれのページを確認してください。
         </p>
-        <label>
+        <button id="termsButton">利用規約を確認</button>
+        <button id="privacyButton">プライバシーポリシーを確認</button>
+        <label id="agreementLabel">
             <input type="checkbox" id="agreeCheckbox">
             利用規約とプライバシーポリシーに同意する
         </label>
         <div class="permissions">
-            <label>
-                <input type="radio" name="permissions" value="minimal" disabled>
-                最低限の権限
-            </label>
-            <label>
-                <input type="radio" name="permissions" value="admin" disabled>
-                管理者権限
-            </label>
+            <button class="permission-btn" id="minimalButton" disabled>最低限の権限</button>
+            <button class="permission-btn" id="adminButton" disabled>Admin権限</button>
         </div>
         <button id="inviteButton" class="disabled" disabled>招待する</button>
         
@@ -37,6 +32,7 @@
             </label>
             <button id="confirmButton" class="disabled" disabled>同意して続行</button>
         </div>
+        <div id="infoMessage">URLを開いて利用規約（またはプライバシーポリシー）を確認の上、同意してください。</div>
     </div>
 
     <script src="script.js"></script>
