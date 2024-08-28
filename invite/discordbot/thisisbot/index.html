@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Bot 招待ページ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bot 招待ページ</h1>
+        <p>
+            Botを招待するには、<a href="https://drive.google.com/file/d/1SO5O6sEyU2k53H_8W9mvPDJMKdIZCvK1/view" target="_blank">利用規約</a>と
+            <a href="https://drive.google.com/file/d/1c6oosnUhk66WX4ciZJ6hkd9crsdvneJb/view" target="_blank">プライバシーポリシー</a>に同意してください。
+        </p>
+        <label>
+            <input type="checkbox" id="agreeCheckbox">
+            利用規約とプライバシーポリシーに同意する
+        </label>
+        <div class="permissions">
+            <label>
+                <input type="radio" name="permissions" value="minimal" disabled>
+                最低限の権限
+            </label>
+            <label>
+                <input type="radio" name="permissions" value="admin" disabled>
+                管理者権限
+            </label>
+        </div>
+        <button id="inviteButton" class="disabled" disabled>招待する</button>
+        
+        <div id="warning">
+            <p>注意: 最低限の権限のみでの利用も可能ですが、今後追加されるコマンド等が利用できない可能性があります。</p>
+            <label>
+                <input type="checkbox" id="confirmCheckbox">
+                今後追加予定のコマンドが動作しないことがあることを確認しました。
+            </label>
+            <button id="confirmButton" class="disabled" disabled>同意して続行</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
