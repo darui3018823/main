@@ -14,10 +14,16 @@
         </p>
         <button id="termsButton">利用規約を確認</button>
         <button id="privacyButton">プライバシーポリシーを確認</button>
-        <label id="agreementLabel">
-            <input type="checkbox" id="agreeCheckbox">
-            利用規約とプライバシーポリシーに同意する
-        </label>
+        <div id="agreements">
+            <label id="termsLabel">
+                <input type="checkbox" id="termsCheckbox">
+                利用規約に同意する
+            </label>
+            <label id="privacyLabel">
+                <input type="checkbox" id="privacyCheckbox">
+                プライバシーポリシーに同意する
+            </label>
+        </div>
         <div class="permissions">
             <button class="permission-btn" id="minimalButton" disabled>最低限の権限</button>
             <button class="permission-btn" id="adminButton" disabled>Admin権限</button>
