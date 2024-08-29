@@ -3,48 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Bot 招待ページ</title>
+    <title>Bot 招待ページ</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 id="heading">Bot 招待ページ</h1>
-        <p id="intro">
-            Botを招待して利用するには<a href="https://drive.google.com/file/d/1SO5O6sEyU2k53H_8W9mvPDJMKdIZCvK1/view" target="_blank">利用規約</a>及び<a href="https://drive.google.com/file/d/1c6oosnUhk66WX4ciZJ6hkd9crsdvneJb/view" target="_blank">プライバシーポリシー</a>に同意する必要があります。
-        </p>
-        <div id="agreements">
-            <label id="termsLabel">
-                <input type="checkbox" id="termsCheckbox">
-                利用規約に同意する
-            </label>
-            <label id="privacyLabel">
-                <input type="checkbox" id="privacyCheckbox">
-                プライバシーポリシーに同意する
-            </label>
-        </div>
-        <div class="permissions">
-            <button class="permission-btn" id="minimalButton">最低限の権限</button>
-            <button class="permission-btn" id="adminButton">Admin権限</button>
-        </div>
-        <button id="inviteButton" class="disabled" disabled>招待する</button>
-        
-        <div class="popup_wrap" id="popupWrap">
-            <input id="trigger" type="checkbox">
-            <div class="popup_overlay">
-                <label for="trigger" class="popup_trigger"></label>
-                <div class="popup_content">
-                    <label for="trigger" class="close_btn">×</label>
-                    <p>最低限の権限のみでの利用も可能ですが、今後追加されるコマンド等が利用できない可能性があります。</p>
-                    <label>
-                        <input type="checkbox" id="confirmCheckbox">
-                        今後追加予定のコマンドが動作しないことがあることを確認しました。
-                    </label>
-                    <button id="confirmButton" class="disabled" disabled>同意して続行</button>
-                </div>
+    <h1 class="fade-in">Bot 招待ページ</h1>
+    <p>Botを招待して利用するには利用規約及びプライバシーポリシーに同意する必要があります。</p>
+    <button id="minimalButton">必要最低限の権限</button>
+    <button id="adminButton">Admin権限</button>
+    <button id="inviteButton" class="disabled" disabled>招待リンクに進む</button>
+
+    <div id="popupWrap" class="popup_wrap">
+        <input id="trigger" type="checkbox">
+        <div class="popup_overlay">
+            <label for="trigger" class="popup_trigger"></label>
+            <div class="popup_content">
+                <label for="trigger" class="close_btn">×</label>
+                <p>今後追加予定のコマンドが動作しないことがあることを確認しました。</p>
+                <button id="continueButton">続行する</button>
             </div>
         </div>
-
-        <div id="infoMessage">URLを開いて利用規約（またはプライバシーポリシー）を確認の上、同意してください。</div>
     </div>
 
     <script src="script.js"></script>
