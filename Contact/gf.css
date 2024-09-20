@@ -1,0 +1,85 @@
+/* Global footer styling */
+.globalfooter {
+    background-color: #808080; /* 背景色 */
+    color: white;
+    display: flex; /* 左右に要素を配置 */
+    justify-content: space-between;
+    padding: 20px 25px; /* 左右の余白25px */
+    position: fixed; /* ページの最下部に固定 */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; /* パディングを含む */
+    font-size: 14px;
+}
+
+/* 左側のフッター内容 */
+.globalfooter-left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* GitHubリンクのスタイル */
+.github-link {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.github-link img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.github-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* 右側のフッター内容 */
+.globalfooter-right {
+    text-align: left;
+}
+
+.globalfooter-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.globalfooter-right ul li {
+    margin-bottom: 5px;
+}
+
+/* リンクのスタイル */
+.globalfooter-right ul li a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.globalfooter-right ul li a:after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #FFFFFF;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* ホバー時のアニメーション */
+.globalfooter-right ul li a:hover:after {
+    transform: scaleX(1);
+}
+
+/* 下線のアニメーション */
+.globalfooter-right ul li a:hover {
+    color: #FFFFFF;
+}
+
