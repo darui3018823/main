@@ -1,85 +1,63 @@
-/* Global footer styling */
 .globalfooter {
+    display: flex; /* フレックスボックスを使用 */
+    justify-content: space-between; /* 左右に配置 */
+    align-items: center; /* 縦方向に中央揃え */
     background-color: #808080; /* 背景色 */
-    color: white;
-    display: flex; /* 左右に要素を配置 */
-    justify-content: space-between;
-    padding: 20px 25px; /* 左右の余白25px */
-    position: fixed; /* ページの最下部に固定 */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box; /* パディングを含む */
-    font-size: 14px;
+    padding: 25px; /* 内側の余白 */
+    position: fixed; /* 固定表示 */
+    bottom: 0; /* ページの下に配置 */
+    left: 0; /* 左端に配置 */
+    right: 0; /* 右端まで広げる */
+    color: white; /* 文字色 */
+    z-index: 1000; /* 上に表示 */
 }
 
-/* 左側のフッター内容 */
 .globalfooter-left {
-    display: flex;
-    flex-direction: column;
-}
-
-/* GitHubリンクのスタイル */
-.github-link {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.github-link img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    margin-left: 25px; /* 左からのマージン */
 }
 
 .github-link a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線なし */
+    position: relative; /* 下線アニメーション用 */
 }
 
-/* 右側のフッター内容 */
+.github-link a::after {
+    content: ""; /* 下線用 */
+    display: block;
+    width: 100%; /* 幅を100%に */
+    height: 2px; /* 下線の高さ */
+    background: #FFFFFF; /* 下線の色 */
+    position: absolute; /* 絶対位置 */
+    left: 0;
+    bottom: -5px; /* 文字の下に表示 */
+    transform: scaleX(0); /* 初期状態で非表示 */
+    transition: transform 0.3s ease; /* アニメーション */
+}
+
+.github-link a:hover::after {
+    transform: scaleX(1); /* ホバー時に表示 */
+}
+
 .globalfooter-right {
-    text-align: left;
+    margin-right: 25px; /* 右からのマージン */
 }
 
 .globalfooter-right ul {
-    list-style: none;
+    list-style: none; /* リストのスタイルをなし */
     padding: 0;
     margin: 0;
 }
 
 .globalfooter-right ul li {
-    margin-bottom: 5px;
+    margin: 5px 0; /* 各アイテムの上下マージン */
 }
 
-/* リンクのスタイル */
-.globalfooter-right ul li a {
-    color: white;
-    text-decoration: none;
-    position: relative;
+.globalfooter-right a {
+    color: white; /* 文字色 */
+    text-decoration: none; /* 下線なし */
 }
 
-.globalfooter-right ul li a:after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #FFFFFF;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
+.globalfooter-right a:hover {
+    text-decoration: underline; /* ホバー時に下線 */
 }
-
-/* ホバー時のアニメーション */
-.globalfooter-right ul li a:hover:after {
-    transform: scaleX(1);
-}
-
-/* 下線のアニメーション */
-.globalfooter-right ul li a:hover {
-    color: #FFFFFF;
-}
-
