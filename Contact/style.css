@@ -67,4 +67,5 @@ body, html {
     height: calc(100vh - 50px); /* ビューポートの高さからナビゲーションバーの高さを引いたサイズ */
     text-align: center; /* テキストの中央揃え */
     position: relative; /* 子要素を位置指定できるようにする */
+    margin-top: 50px; /* ナビバーの下に50pxのマージンを追加 */
 }
