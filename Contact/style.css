@@ -42,6 +42,7 @@ body, html {
     width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* メニューの影 */
     z-index: 1000; /* コンテンツの上に表示するためのz-index */
+    margin-top: 50px; /* ナビバーの下に50pxのマージンを追加 */
 }
 
 .menu ul {
@@ -67,5 +68,4 @@ body, html {
     height: calc(100vh - 50px); /* ビューポートの高さからナビゲーションバーの高さを引いたサイズ */
     text-align: center; /* テキストの中央揃え */
     position: relative; /* 子要素を位置指定できるようにする */
-    margin-top: 50px; /* ナビバーの下に50pxのマージンを追加 */
 }
