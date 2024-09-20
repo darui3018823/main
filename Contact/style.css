@@ -17,31 +17,11 @@ body, html {
     color: white;
     padding: 0 20px;
     box-sizing: border-box;
-    margin-right: 30px;
-    text-align: left;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    background-color: darkcyan;
-    color: white;
-    padding: 0 20px;
-    box-sizing: border-box;
     position: fixed; /* 位置固定 */
     top: 0;
     left: 0;
     z-index: 1000; /* コンテンツの上に表示するためのz-index */
 }
-
 
 .navbar a {
     color: white;
@@ -78,4 +58,13 @@ body, html {
 .menu ul li a {
     color: #FFF; /* 文字色 */
     text-decoration: none;
+}
+
+.container {
+    display: flex; /* Flexboxを有効にする */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    height: calc(100vh - 50px); /* ビューポートの高さからナビゲーションバーの高さを引いたサイズ */
+    text-align: center; /* テキストの中央揃え */
+    position: relative; /* 子要素を位置指定できるようにする */
 }
