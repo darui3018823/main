@@ -59,53 +59,17 @@ body, html {
     padding: 20px;
 }
 
-/* アイコンのフェードイン */
-.icon-box {
-    margin-top: 20px;
-    text-align: center;
+.service {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
 }
 
-.fade-in-icon {
-    width: 100px; /* アイコンのサイズ */
-    opacity: 0;
-    transform: translateY(50px); /* 初期位置を下に */
-    animation: fadeInUp 1.5s forwards;
+.service img {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
 }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0); /* 元の位置に移動 */
-    }
-}
-
-/* コンソール風のテキスト */
-.console-box {
-    background-color: rgba(0, 0, 0, 0.8); /* 黒背景 */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #00ff00; /* 緑文字 */
-    font-family: 'Courier New', Courier, monospace; /* 等幅フォント */
-    text-align: left;
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-.console-text {
-    margin: 0;
-    white-space: pre-wrap;
-}
-
-/* 点滅するカーソル */
-.cursor {
-    display: inline-block;
-    animation: blink 1s steps(2, start) infinite;
-}
-
-@keyframes blink {
-    to {
-        visibility: hidden;
-    }
+.service:hover img {
+    transform: translateY(-5px);
 }
