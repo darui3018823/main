@@ -1,0 +1,120 @@
+/* 基本スタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    padding-top: 60px;
+}
+
+/* ヘッダー */
+header {
+    color: #000;
+    height: 40px; /* ヘッダーの高さを40pxに設定 */
+    display: flex;
+    align-items: center;
+    padding-left: 20px; /* 左寄せの余白 */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Lato", serif; /* Google Fonts */
+    font-weight: 400;
+    font-style: normal;
+
+    /* ヘッダーの見やすさ調整 */
+    padding: 1rem 2rem;
+    border-left: 6px double #000;
+    background: #fff;
+}
+
+header h1 {
+    font-size: 1.2em; /* 文字サイズを調整 */
+    margin: 0;
+}
+
+
+/* アイコンとステータス */
+#status-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 60px 0 20px 0; /* ヘッダー分の余白を確保 */
+    gap: 20px;
+}
+
+.icon-and-status {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.status-icon {
+    width: 100px; /* アイコンサイズを大きく */
+    height: 100px;
+    border-radius: 50%;
+}
+
+#status-message-container {
+    display: flex;
+    flex-direction: column; /* テキストを縦に並べる */
+    font-size: 1.2em;
+}
+
+#status-title {
+    font-weight: bold; /* "This is bot Status:" の強調 */
+    font-size: 40px;
+}
+
+#status-message {
+    font-size: 30px; /* ステータスメッセージのサイズ */
+    margin: 0;
+}
+
+
+/* アコーディオンメニュー */
+.accordion {
+    max-width: 1000px; /* 横幅を大きく */
+    margin: 0 auto;
+    padding-top: 25px;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.accordion p {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-family: "Zen Kaku Gothic New", serif; /* Google Fonts */
+    font-style: normal;
+    padding-left: 10px; /* 文頭を右に */
+}
+
+/* tos */
+.tos-section {
+    font-size: 30px;
+}
+
+.tos-subsection {
+    font-size: 25px;
+    margin-top: 3px;
+}
+
+.tos-text {
+    font-size: 18px;
+}
+
+/* フッター */
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    color: #666; /* 灰色 */
+    font-size: 0.8em;
+    text-align: right;
+    background-color: transparent;
+}
+

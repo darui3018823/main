@@ -77,3 +77,14 @@ iframe {
     border-radius: 8px; /* 角を丸くする */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影をつける */
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    color: #666; /* 灰色 */
+    font-size: 0.85em;
+    text-align: right;
+    background-color: transparent;
+}
