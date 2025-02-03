@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>メール送信</title>
-    <script>
-        window.onload = function() {
-            window.location.href = "mailto:contact@daruks.com";
-        };
-    </script>
-</head>
-<body>
-    <p>メールクライアントを開いています...</p>
-    <p>もし自動で開かない場合は、<a href="mailto:contact@daruks.com">こちらをクリック</a>してください。</p>
-</body>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Redirecting...</title>
+        <script>
+            window.onload = function() {
+                window.location.href = "mailto:contact@daruks.com";
+            };
+        </script>
+
+        <!-- ページの埋め込み -->
+        <meta property="og:site_name" content="daruks.com">
+        <meta property="og:title" content="Others - daruks Home Page">
+        <meta property="og:description" content="Mail Client Redirect Page.">
+        <meta property="og:url" content="https://daruks.com/redirect/mailto">
+        <meta property="og:type" content="website">
+    </head>
+    <body>
+        <p>メールクライアントを開いています...</p>
+        <p>もし自動で開かない場合は、<a href="mailto:contact@daruks.com">こちらをクリック</a>してください。</p>
+    </body>
 </html>
