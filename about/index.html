@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About Me | daruks.com</title>
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Lato Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+        <!-- AOS: Animate On Scroll -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+        <!-- meta data-->
+        <meta property="og:site_name" content="daruks.com">
+        <meta property="og:title" content="About - daruks Home Page">
+        <meta property="og:description" content="About page of daruks Home Page">
+        <meta property="og:url" content="https://daruks.com/about">
+        <meta property="og:type" content="website">
+
+        <style>
+            body {
+                font-family: 'Lato', sans-serif;
+            }
+        </style>
+    </head>
+
+    <body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white">
+        <!-- Navbar -->
+        <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
+            <nav class="hidden md:flex space-x-6 text-sm">
+            <a href="/about/" class="hover:text-cyan-300 transition">About</a>
+            <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
+            <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
+            </nav>
+        </div>
+        </header>
+
+        <!-- Main Section -->
+        <main class="pt-40 px-4 max-w-4xl mx-auto space-y-16">
+            <section data-aos="fade-up">
+                <h1 class="text-5xl font-bold mb-4">About Me</h1>
+                <p class="text-slate-300 text-lg">Welcome to the My About page!<br />ここは私の自己紹介のようなページになります。</p>
+            </section>
+
+            <!-- 自己紹介 -->
+            <section data-aos="fade-up" data-aos-delay="200">
+                <h2 class="text-3xl font-semibold mb-3">自己紹介</h2>
+                <p class="text-slate-300 text-lg mb-2">darui3018823といいます。darui3018832やdaruks、だる等のいろいろな呼び方がありますが、<br />だるとよんでくれるとうれしいです。<br /></p>
+                <p class="text-slate-300 text-lg">普段は、PythonやGolangを使って、Discord BotやWebアプリの開発をしています。<br />私事が忙しくできないこともありますが....</p>
+            </section>
+
+            <!-- 技術スタック -->
+            <section data-aos="fade-up" data-aos-delay="400">
+                <h2 class="text-3xl font-semibold mb-3">使える/使う言語</h2>
+                <ul class="flex flex-wrap gap-3">
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Python</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Golang</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">C#</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">HTML5 / Css3 / Js</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">(Tailwind)CSS</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Swift (Vapor)</li>
+                </ul>
+            </section>
+            
+            <!-- 使うツール類 -->
+            <section data-aos="fade-up" data-aos-delay="500">
+                <h2 class="text-3xl font-semibold mb-3">使うツール類</h2>
+                <ul class="flex flex-wrap gap-3">
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Visual Studio Code</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">GitHub</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Git</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">PowerShell Core</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">.NET 9</li>
+                </ul>
+            </section>
+
+            <!-- 嫌いな言語-->
+            <section data-aos="fade-up" data-aos-delay="600">
+                <h2 class="text-3xl font-semibold mb-3">嫌いな言語</h2>
+                <ul class="flex flex-wrap gap-3">
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">C, Cpp, Cs</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">JavaScript全て</li>
+                </ul>
+            </section>
+
+            <!-- ただの自分語り-->
+            <section data-aos="fade-up" data-aos-delay="800">
+                <h2 class="text-3xl font-semibold mb-3">詳しく自己紹介</h2>
+                <p class="text-slate-300 text-lg mb-2">先ほどの通り、名前はdarui3018823といいます。<br />すべてをしたいときにやり、飽きたらやめます。</p>
+                <p class="text-slate-300 text-lg mb-2">PythonとGolangがメイン言語となっています。<br/>かなりとはなりませんが少しくらいなら両者ともに簡単なのは作れます。</p>
+                <p class="text-slate-300 text-lg mb-8"><a href="https://arcaea.lowiro.com/">Arcaea</a>が好きです。皆さんもやりましょう。</p>
+                <p class="text-slate-300 text-lg">こことは関係がありませんが、お問い合わせは<a href="https://daruks.com/contact/">Contact</a>よりお願いいたします。</p>
+            </section>
+        </main>
+
+        <footer class="text-center py-6 text-xs text-slate-500 mt-20">
+            &copy; 2024 - 2025 darui3018823 — All rights reserved.
+        </footer>
+
+        <!-- AOS init -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>
