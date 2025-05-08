@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="css.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>daruks HomePage</title>
+        <link rel="icon" href="/images/favicon.ico">
 
-    <!-- ページの埋め込み -->
-    <meta property="og:site_name" content="daruks.com">
-    <meta property="og:title" content="Home - daruks Home Page">
-    <meta property="og:description" content="Welcome to Home Page of darui3018823!">
-    <meta property="og:url" content="https://daruks.com/">
-    <meta property="og:type" content="website">
+        <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>daruks HomePage</title>
-</head>
-<body>
-    <div class="navbar">
-        <a href="index.html" class="home-link">Home</a>
-        <div class="hamburger-menu" id="hamburger-menu">☰</div>
-    </div>
-    <div class="menu" id="menu">
-        <ul>
-            <li><a class="menu-item">Menu</a></li>
-            <li><a href="https://daruks.com/About" class="menu-item">About</a></li>
-            <li><a href="https://daruks.com/Contact" class="menu-item contact-item">Contact</a></li>
-            <li><a href="https://daruks.com/Links" class="menu-item">Links</a></li>
-        </ul>
-    </div>
-    <div class="container">
-        <h1 class="welcome-message">Welcome to daruks.com!</h1>
-        <h3 class="welcome-subtitle">Make now this page:)</h3>
-    </div>
-    <script src="js.js"></script>
-</body>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    </head>
+    
+    <body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen font-sans">
+        <!-- Navbar -->
+        <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
+            <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
+            <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
+                <a href="/about/" class="hover:text-cyan-300 transition">About</a>
+                <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
+                <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
+            </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex items-center justify-center text-center pt-40 px-4">
+            <div>
+                <h1 id="mainTitle" class="text-4xl md:text-6xl font-bold opacity-0 translate-y-8 transition duration-1000">Welcome to daruks.com</h1>
+                <p id="subTitle" class="mt-4 text-lg md:text-2xl text-slate-300 opacity-0 translate-y-8 transition duration-1000 delay-300">Make now this page :)</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 text-xs text-slate-500 mt-20">
+            &copy; 2025 daruks.com — All rights reserved.
+        </footer>
+
+        <!-- Load Script -->
+        <script src="script.js"></script>
+    </body>
 </html>
-
