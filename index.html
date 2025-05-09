@@ -29,6 +29,22 @@
             </nav>
             </div>
         </header>
+        
+        <!-- モバイルメニュー用モーダル -->
+        <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+            <div class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
+                <h2 class="text-lg font-semibold mb-4">メニュー</h2>
+                <ul class="space-y-3">
+                    <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
+                    <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
+                    <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
+                </ul>
+                <div class="mt-4 text-right">
+                    <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Main Content -->
         <main class="flex flex-col items-center text-center pt-40 px-4 max-w-6xl mx-auto">

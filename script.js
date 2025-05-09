@@ -1,21 +1,25 @@
 window.addEventListener('DOMContentLoaded', () => {
     const title = document.getElementById('mainTitle');
     const subtitle = document.getElementById('subTitle');
-    const menu = document.getElementById('navMenu');
     const hamburger = document.getElementById('hamburger');
-  
+    const menuModal = document.getElementById('menuModal');
+    const closeMenu = document.getElementById('closeMenuModal');
+
     // アニメーション表示処理
     setTimeout(() => {
-      title?.classList.remove('opacity-0', 'translate-y-8');
+        title?.classList.remove('opacity-0', 'translate-y-8');
     }, 100);
-  
+
     setTimeout(() => {
-      subtitle?.classList.remove('opacity-0', 'translate-y-8');
+        subtitle?.classList.remove('opacity-0', 'translate-y-8');
     }, 700);
-  
-    // モバイルメニュー切り替え
+
+    // モバイルメニュー：モーダル表示切り替え
     hamburger?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+        menuModal?.classList.remove('hidden');
     });
-  });
-  
+
+    closeMenu?.addEventListener('click', () => {
+        menuModal?.classList.add('hidden');
+    });
+});

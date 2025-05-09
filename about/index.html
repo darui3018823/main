@@ -29,15 +29,31 @@
     <body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white">
         <!-- Navbar -->
         <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
-            <nav class="hidden md:flex space-x-6 text-sm">
-            <a href="/about/" class="hover:text-cyan-300 transition">About</a>
-            <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
-            <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
-            </nav>
-        </div>
+            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+                <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
+                <nav class="hidden md:flex space-x-6 text-sm">
+                    <a href="/about/" class="hover:text-cyan-300 transition">About</a>
+                    <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
+                    <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
+                </nav>
+            </div>
         </header>
+
+        <!-- モバイル用メニューモーダル -->
+        <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+            <div class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
+                <h2 class="text-lg font-semibold mb-4">メニュー</h2>
+                <ul class="space-y-3">
+                    <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
+                    <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
+                    <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
+                </ul>
+                <div class="mt-4 text-right">
+                    <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Main Section -->
         <main class="pt-40 px-4 max-w-4xl mx-auto space-y-16">
@@ -103,8 +119,7 @@
 
         <!-- AOS init -->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
+        <script>AOS.init();</script>
+        <script src="script.js"></script>
     </body>
 </html>
