@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>This is Bot Invite | daruks.com</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://unpkg.com/sweetalert2@11"></script>
+
+        <!-- meta data-->
+        <meta property="og:site_name" content="daruks.com">
+        <meta property="og:title" content="This is Bot Invite - daruks Home Page">
+        <meta property="og:description" content="あなたのサーバーにThis is botを追加しましょう。多彩な機能。透明性。This is bot Servicesの一部です。">
+        <meta property="og:url" content="https://daruks.com/invite/thisisbot/">
+        <meta property="og:image" content="https://daruks.com/images/this-is-bot_icon.png">
+        <meta property="og:type" content="website">
+
+        <style>
+            body {
+            font-family: 'Lato', sans-serif;
+            }
+        </style>
+    </head>
+
+    <body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen px-4">
+
+        <div id="stepContainer" class="flex flex-col items-center justify-center min-h-screen max-w-xl w-full space-y-8 mx-auto">
+            <!-- Step Indicator -->
+            <div id="stepIndicator" class="hidden text-center text-slate-400 text-sm mb-6">Step 1 of 4</div>
+
+            <!-- Step 0: Intro -->
+            <div id="step0" class="flex flex-col items-center justify-center min-h-screen" data-aos="fade-up" data-aos-duration="800">
+                <div class="flex flex-col md:flex-row items-center justify-center md:space-x-4 mb-8">
+                    <img src="https://daruks.com/images/this-is-bot_icon.png" alt="This is bot Icon" class="w-12 h-12 rounded-md mb-4 md:mb-0">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-2xl font-bold text-white">This is botをあなたのサーバーに追加</h2>
+                        <p class="text-slate-300 text-base mt-2">このページであなたのサーバーにThis is botを追加できます。<br>フローに沿ってお進みください。</p>
+                        <button onclick="nextStep(1)" class="mt-6 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition transform hover:scale-105">続行する</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 1: ToS -->
+            <div id="step1" class="hidden" data-aos="fade-up" data-aos-duration="800">
+                <h1 class="text-3xl font-bold mb-4">利用規約に同意しますか？</h1>
+                <a href="https://bot.daruks.com/legal/terms-of-service/" target="_blank" class="text-cyan-300 underline">利用規約を読む</a>
+                <div class="mt-6 flex space-x-4">
+                    <button onclick="nextStep(2)" class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-500 hover:from-cyan-500 hover:to-blue-400 rounded transition transform hover:scale-105">同意して進む</button>
+                    <button onclick="reloadWithFlag()" class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded transition transform hover:scale-105">戻る</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Privacy Policy -->
+            <div id="step2" class="hidden" data-aos="fade-up" data-aos-duration="800">
+                <h1 class="text-3xl font-bold mb-4">プライバシーポリシーに同意しますか？</h1>
+                <a href="https://bot.daruks.com/legal/privacy-policy/" target="_blank" class="text-cyan-300 underline">プライバシーポリシーを読む</a>
+                <div class="mt-6 flex space-x-4">
+                    <button onclick="nextStep(3)" class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-500 hover:from-cyan-500 hover:to-blue-400 rounded transition transform hover:scale-105">同意して進む</button>
+                    <button onclick="reloadWithFlag()" class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded transition transform hover:scale-105">戻る</button>
+                </div>
+            </div>
+
+            <!-- Step 3: リンクの種類選択 -->
+            <div id="step3" class="hidden" data-aos="fade-up" data-aos-duration="800">
+                <h1 class="text-3xl font-bold mb-4">リンクの種類を選択してください</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Admin Card -->
+                    <div class="bg-gray-800/60 p-6 rounded-xl shadow-lg border border-white/10">
+                        <h2 class="text-xl font-semibold text-cyan-300 mb-4">管理者権限を付与して追加する</h2>
+                        <ul class="list-disc list-inside text-slate-300 space-y-2 text-left">
+                            <li>全ての機能が確実に利用可能です。</li>
+                            <li>新機能も利用可能です。</li>
+                            <li>管理者権限を持っていないと追加できない可能性があります。</li>
+                            <li>Discordに追加後、権限は自由に管理が可能です。</li>
+                        </ul>
+                        <button onclick="setInviteLink('admin')" class="w-full mt-6 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition transform hover:scale-105">このリンクを選択</button>
+                    </div>
+
+                    <!-- Minimal Card -->
+                    <div class="bg-gray-800/60 p-6 rounded-xl shadow-lg border border-white/10">
+                        <h2 class="text-xl font-semibold text-cyan-300 mb-4">最低限の権限を付与して追加する</h2>
+                        <ul class="list-disc list-inside text-slate-300 space-y-2 text-left">
+                            <li>必要最低限の権限を付与します。</li>
+                            <li>新機能を含む機能が利用できない可能性があります。</li>
+                            <li>サーバーの管理者権限が不要な場合があります。</li>
+                            <li>Discordに追加後、権限は自由に管理が可能です。</li>
+                        </ul>
+                        <button onclick="confirmMinimal()" class="w-full mt-6 px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded transition transform hover:scale-105">このリンクを選択</button>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <button onclick="reloadWithFlag()" class="px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded transition transform hover:scale-105">戻る</button>
+                </div>
+            </div>
+
+            <!-- Step 4: リンク表示 -->
+            <div id="step4" class="hidden" data-aos="fade-up" data-aos-duration="800">
+                <h1 class="text-3xl font-bold mb-4">招待リンク</h1>
+                <p id="inviteLink" class="text-slate-300 break-words mb-6"></p>
+                <div class="space-y-4">
+                    <button id="copyLinkBtn" onclick="copyLink()" class="w-full px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-500 hover:from-cyan-500 hover:to-blue-400 rounded transition">リンクをコピー</button>
+                    <button onclick="redirectLink()" class="w-full px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 rounded transition">今すぐ招待する</button>
+                    <button onclick="reloadWithFlag()" class="w-full mt-4 px-4 py-2 bg-gray-600 hover:bg-gray-500 rounded transition">戻る</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Load external script -->
+        <script src="script.js"></script>
+
+        <script>
+            AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-in-out'
+            });
+        </script>
+
+    </body>
+</html>
