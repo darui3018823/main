@@ -1,9 +1,14 @@
-const hamburgerMenu = document.getElementById('hamburger-menu');
-const menu = document.getElementById('menu');
-hamburgerMenu.addEventListener('click', () => {
-    if (menu.style.display === 'block') {
-        menu.style.display = 'none';
-    } else {
-        menu.style.display = 'block';
-    }
+window.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const menuModal = document.getElementById('menuModal');
+    const closeMenu = document.getElementById('closeMenuModal');
+
+    // モバイルメニュー：モーダル表示切り替え
+    hamburger?.addEventListener('click', () => {
+        menuModal?.classList.remove('hidden');
+    });
+
+    closeMenu?.addEventListener('click', () => {
+        menuModal?.classList.add('hidden');
+    });
 });
