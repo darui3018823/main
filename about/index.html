@@ -7,6 +7,8 @@
 
         <!-- Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="stylesheet" href="/styles.css">
         <!-- Lato Font -->
         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
         <!-- AOS: Animate On Scroll -->
@@ -27,27 +29,25 @@
     </head>
 
     <body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white">
-        <!-- Navbar -->
         <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
             <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
                 <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
                 <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
                 <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
-                    <a href="https://daruks.com/about/" class="hover:text-cyan-300 transition">About</a>
-                    <a href="https://daruks.com/contact/" class="hover:text-cyan-300 transition">Contact</a>
-                    <a href="https://daruks.com/links/" class="hover:text-cyan-300 transition">Links</a>
+                    <a href="/about/" class="hover:text-cyan-300 transition">About</a>
+                    <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
+                    <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
                 </nav>
             </div>
         </header>
-        
-        <!-- モバイルメニュー用モーダル -->
+
         <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
             <div class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
                 <h2 class="text-lg font-semibold mb-4">メニュー</h2>
                 <ul class="space-y-3">
-                    <li><a href="https://daruks.com/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
-                    <li><a href="https://daruks.com/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
-                    <li><a href="https://daruks.com/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
+                    <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
+                    <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
+                    <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
                 </ul>
                 <div class="mt-4 text-right">
                     <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
@@ -57,34 +57,29 @@
 
 
         <!-- Main Section -->
-        <main class="pt-40 px-4 max-w-4xl mx-auto space-y-16">
+        <main class="pt-40 px-4 max-w-4xl mx-auto space-y-12">
             <section data-aos="fade-up">
                 <h1 class="text-5xl font-bold mb-4">About Me</h1>
                 <p class="text-slate-300 text-lg">Welcome to the My About page!<br />ここは私の自己紹介のようなページになります。</p>
             </section>
 
-            <!-- 自己紹介 -->
             <section data-aos="fade-up" data-aos-delay="200">
                 <h2 class="text-3xl font-semibold mb-3">自己紹介</h2>
                 <p class="text-slate-300 text-lg mb-2">darui3018823といいます。darui3018832やdaruks、だる等のいろいろな呼び方がありますが、<br />だるとよんでくれるとうれしいです。<br /></p>
                 <p class="text-slate-300 text-lg mb-2">なーんちゃってぷろぐらまー（笑）をしています</p>
-                <p class="text-slate-300 text-lg">普段は、PythonやGolangを使って、Discord BotやWebアプリの開発をしています。<br />私事が忙しくできないこともありますが....</p>
             </section>
 
-            <!-- 技術スタック -->
             <section data-aos="fade-up" data-aos-delay="300">
                 <h2 class="text-3xl font-semibold mb-3">使える/使う言語</h2>
                 <ul class="flex flex-wrap gap-3">
-                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Python</li>
                     <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Golang</li>
-                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">C#</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Python</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Rust Lang</li>
                     <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">HTML5 / Css3 / Js</li>
-                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">(Tailwind)CSS</li>
-                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Swift (Vapor)</li>
+                    <li class="bg-cyan-800/50 px-4 py-2 rounded-lg hover:scale-105 transition">Next.js</li>
                 </ul>
             </section>
             
-            <!-- 使うツール類 -->
             <section data-aos="fade-up" data-aos-delay="400">
                 <h2 class="text-3xl font-semibold mb-3">使うツール類</h2>
                 <ul class="flex flex-wrap gap-3">
@@ -96,7 +91,6 @@
                 </ul>
             </section>
 
-            <!-- 嫌いな言語-->
             <section data-aos="fade-up" data-aos-delay="450">
                 <h2 class="text-3xl font-semibold mb-3">嫌いな言語</h2>
                 <ul class="flex flex-wrap gap-3">
@@ -105,13 +99,15 @@
                 </ul>
             </section>
 
-            <!-- ただの自分語り-->
-            <section data-aos="fade-up" data-aos-delay="500">
+            <section data-aos="fade-up" data-aos-delay="300">
                 <h2 class="text-3xl font-semibold mb-3">詳しく自己紹介</h2>
                 <p class="text-slate-300 text-lg mb-2">先ほどの通り、名前はdarui3018823といいます。<br />すべてをしたいときにやり、飽きたらやめます。</p>
-                <p class="text-slate-300 text-lg mb-2">PythonとGolangがメイン言語となっています。<br/>かなりとはなりませんが少しくらいなら両者ともに簡単なのは作れます。</p>
-                <p class="text-slate-300 text-lg mb-8"><a href="https://arcaea.lowiro.com/">Arcaea</a>が好きです。皆さんもやりましょう。</p>
-                <p class="text-slate-300 text-lg">こことは関係がありませんが、お問い合わせは<a href="https://daruks.com/contact/">Contact</a>よりお願いいたします。</p>
+            <section data-aos="fade-up" data-aos-delay="350">
+                <p class="text-slate-300 text-lg">Golangをメインに使っています。Rustもしなければですね。</p>
+                <p class="text-slate-300 text-lg mb-2"><a href="https://arcaea.lowiro.com/">Arcaea</a>が好きです。皆さんもやりましょう。</p>
+            </section>
+            <section data-aos="fade-up" data-aos-delay="400">
+                <p class="text-slate-300 text-lg mt-8">こことは関係がありませんが、お問い合わせは<a href="https://daruks.com/contact/">Contact</a>よりお願いいたします。</p>
             </section>
         </main>
 
