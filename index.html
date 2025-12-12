@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home | daruks.com</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="/styles.css">
 
-        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | daruks.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
 
-        <!-- meta -->
-        <meta property="og:site_name" content="daruks.com">
-        <meta property="og:title" content="Home - daruks Home Page">
-        <meta property="og:description" content="Welcome to Home Page of darui3018823!">
-        <meta property="og:url" content="https://daruks.com/">
-        <meta property="og:type" content="website">
-    </head>
-    
-    <body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen font-sans">
-        <!-- Navbar -->
-        <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
-            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <!-- meta -->
+    <meta property="og:site_name" content="daruks.com">
+    <meta property="og:title" content="Home - daruks Home Page">
+    <meta property="og:description" content="Welcome to Home Page of darui3018823!">
+    <meta property="og:url" content="https://daruks.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' https://cdn.tailwindcss.com;">
+</head>
+
+<body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen font-sans">
+    <!-- Navbar -->
+    <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
             <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
             <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
@@ -28,93 +32,106 @@
                 <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
                 <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
             </nav>
-            </div>
-        </header>
-        
-        <!-- Mobile menu modal -->
-        <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
-            <div class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
-                <h2 class="text-lg font-semibold mb-4">メニュー</h2>
-                <ul class="space-y-3">
-                    <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
-                    <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
-                    <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
-                </ul>
-                <div class="mt-4 text-right">
-                    <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
-                </div>
+        </div>
+    </header>
+
+    <!-- Mobile menu modal -->
+    <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+        <div
+            class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
+            <h2 class="text-lg font-semibold mb-4">メニュー</h2>
+            <ul class="space-y-3">
+                <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
+                <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a>
+                </li>
+                <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
+            </ul>
+            <div class="mt-4 text-right">
+                <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
             </div>
         </div>
+    </div>
 
-        <!-- Main Content -->
-        <main class="flex flex-col items-center text-center pt-40 px-4 max-w-6xl mx-auto">
-            <!-- titles -->
-            <div>
-                <h1 id="mainTitle" class="text-4xl md:text-6xl font-bold opacity-0 translate-y-8 transition duration-1000">Welcome to daruks.com</h1>
-                <p id="subTitle" class="mt-4 text-lg md:text-2xl text-slate-300 opacity-0 translate-y-8 transition duration-1000 delay-300">Make now this page :)</p>
-            </div>
+    <!-- Main Content -->
+    <main class="flex flex-col items-center text-center pt-40 px-4 max-w-6xl mx-auto">
+        <!-- titles -->
+        <div>
+            <h1 id="mainTitle" class="text-4xl md:text-6xl font-bold opacity-0 translate-y-8 transition duration-1000">
+                Welcome to daruks.com</h1>
+            <p id="subTitle"
+                class="mt-4 text-lg md:text-2xl text-slate-300 opacity-0 translate-y-8 transition duration-1000 delay-300">
+                Make now this page :)</p>
+        </div>
 
-            <!-- Projects Section -->
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 mt-48">
-                <!-- This is Bot Card -->
-                <a href="https://bot.daruks.com/" class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
-                    <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
-                        <img src="images/this-is-bot_icon.png" alt="This is Bot" class="max-h-24 object-contain rounded-md">
-                    </div>
-                    <div class="w-2/3 p-4">
-                        <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">This is Bot</h2>
-                        <p class="text-sm text-slate-300 mt-1">もっと身近に些細な便利を。</p>
-                        <p class="text-sm text-slate-300">多岐にわたるユーティリティコマンド。</p>
-                        <p class="text-sm text-slate-300">現在も開発中であり随時更新中です。</p>
-                    </div>
-                </a>
+        <!-- Projects Section -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20 mt-48">
+            <!-- This is Bot Card -->
+            <a href="https://bot.daruks.com/"
+                class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
+                <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
+                    <img src="images/this-is-bot_icon.png" alt="This is Bot" class="max-h-24 object-contain rounded-md">
+                </div>
+                <div class="w-2/3 p-4">
+                    <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">This is Bot</h2>
+                    <p class="text-sm text-slate-300 mt-1">もっと身近に些細な便利を。</p>
+                    <p class="text-sm text-slate-300">多岐にわたるユーティリティコマンド。</p>
+                    <p class="text-sm text-slate-300">現在も開発中であり随時更新中です。</p>
+                </div>
+            </a>
 
-                <!-- Ahoshinet Groups card-->
-                <a href="https://corp.daruks.com/" class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
-                    <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
-                        <img src="https://corp.daruks.com/favcon_white.ico" alt="Ahoshinet Groups" class="max-h-20 object-contain rounded-md">
-                    </div>
-                    <div class="w-2/3 p-4">
-                        <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">Ahoshinet Groups</h2>
-                        <p class="text-sm text-slate-300 mt-1"><br>Ahoshinet Groups Official Website</p>
-                    </div>
-                </a>
+            <!-- Ahoshinet Groups card-->
+            <a href="https://corp.daruks.com/"
+                class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
+                <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
+                    <img src="https://corp.daruks.com/favcon_white.ico" alt="Ahoshinet Groups"
+                        class="max-h-20 object-contain rounded-md">
+                </div>
+                <div class="w-2/3 p-4">
+                    <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">Ahoshinet Groups</h2>
+                    <p class="text-sm text-slate-300 mt-1"><br>Ahoshinet Groups Official Website</p>
+                </div>
+            </a>
 
-                <!-- tabdock card -->
-                <a href="https://github.com/darui3018823/tabdock" class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
-                    <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
-                        <img src="images/tabdock.png" alt="tabdock" class="max-h-24 object-contain rounded-md">
-                    </div>
-                    <div class="w-2/3 p-4">
-                        <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">Tabdock</h2>
-                        <p class="text-sm text-slate-300 mt-1">タブレットを有効活用しましょう。</p>
-                        <p class="text-sm text-slate-300">便利なグリッド式のページ。</p>
-                        <p class="text-sm text-slate-300">リポジトリをクローンしてご利用ください。</p>
-                    </div>
-                </a>
+            <!-- tabdock card -->
+            <a href="https://github.com/darui3018823/tabdock"
+                class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
+                <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
+                    <img src="https://cdn.daruks.com/tabdock/logo/tabdock_betalogo.png" alt="tabdock"
+                        class="max-h-24 object-contain rounded-md">
+                </div>
+                <div class="w-2/3 p-4">
+                    <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">Tabdock</h2>
+                    <p class="text-sm text-slate-300 mt-1">タブレットを有効活用しましょう。</p>
+                    <p class="text-sm text-slate-300">便利なグリッド式のページ。</p>
+                    <p class="text-sm text-slate-300">リポジトリをクローンしてご利用ください。</p>
+                </div>
+            </a>
 
-                <!-- quickly-browse card -->
-                <a href="https://github.com/darui3018823/quickly-browse" class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
-                    <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
-                        <img src="images/quickly-browse.png" alt="Quickly-Browse" class="max-h-24 object-contain rounded-md">
-                    </div>
-                    <div class="w-2/3 p-4">
-                        <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">Quickly Browse</h2>
-                        <p class="text-sm text-slate-300 mt-1">ちょっとした手間を減らしましょう。</p>
-                        <p class="text-sm text-slate-300">軽量、高速、マルチプラットフォーム。</p>
-                        <p class="text-sm text-slate-300">バイナリをダウンロードしてご利用ください。</p>
-                    </div>
-                </a>
-                
-            </section>
-        </main>
+            <!-- quickly-browse card -->
+            <a href="https://github.com/darui3018823/quickly-browse"
+                class="flex min-w-[320px] md:min-w-[400px] bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl overflow-hidden shadow-lg group">
+                <div class="w-1/3 min-w-[100px] bg-gray-900 p-4 flex items-center justify-center">
+                    <img src="images/quickly-browse.png" alt="Quickly-Browse"
+                        class="max-h-24 object-contain rounded-md">
+                </div>
+                <div class="w-2/3 p-4">
+                    <h2 class="text-xl font-semibold group-hover:text-cyan-300 transition">Quickly Browse</h2>
+                    <p class="text-sm text-slate-300 mt-1">ちょっとした手間を減らしましょう。</p>
+                    <p class="text-sm text-slate-300">軽量、高速、マルチプラットフォーム。</p>
+                    <p class="text-sm text-slate-300">バイナリをダウンロードしてご利用ください。</p>
+                </div>
+            </a>
 
-        <!-- Footer -->
-        <footer class="text-center py-6 text-xs text-slate-500 mt-20">
-            &copy; 2024 - 2025 darui3018823 — All rights reserved.
-        </footer>
+        </section>
+    </main>
 
-        <!-- Load Script -->
-        <script src="script.js"></script>
-    </body>
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-500 mt-20">
+        &copy; 2024 - 2025 darui3018823 — All rights reserved.
+    </footer>
+
+    <!-- Load Script -->
+    <script src="script.js"></script>
+</body>
+
 </html>
