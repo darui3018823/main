@@ -577,6 +577,9 @@
   .pt-40 {
     padding-top: calc(var(--spacing) * 40);
   }
+  .pt-52 {
+    padding-top: calc(var(--spacing) * 52);
+  }
   .text-center {
     text-align: center;
   }
