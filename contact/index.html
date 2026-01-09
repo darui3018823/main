@@ -21,6 +21,54 @@
         body {
             font-family: 'Lato', sans-serif;
         }
+
+        .category-btn {
+            background: linear-gradient(150deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.92) 100%);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 25px 60px rgba(2, 6, 23, 0.75);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .category-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 15% 20%, var(--accent-start, rgba(56, 189, 248, 0.3)), transparent 55%);
+            opacity: 0.45;
+            filter: blur(18px);
+            z-index: 0;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-start, rgba(56, 189, 248, 0.45));
+            box-shadow: 0 35px 70px rgba(2, 6, 23, 0.85), 0 0 35px var(--accent-start, rgba(56, 189, 248, 0.35));
+        }
+
+        .category-btn .accent-ring {
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, var(--accent-start, #38bdf8), var(--accent-end, #8b5cf6));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .category-btn .accent-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            background-color: rgba(226, 232, 240, 0.08);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(241, 245, 249, 0.7);
+        }
     </style>
 </head>
 
@@ -54,37 +102,146 @@
         </div>
     </div>
 
-    <main class="pt-40 px-4 max-w-4xl mx-auto space-y-16 text-center">
-        <section>
-            <h1 class="text-5xl font-bold mb-6">Contact Us</h1>
+    <main class="pt-40 px-4 max-w-6xl mx-auto pb-20">
+        <!-- Categories Section -->
+        <section id="categoriesSection" class="text-center mb-16">
+            <h1 class="text-5xl font-bold mb-4">Contact Us</h1>
             <p class="text-slate-300 text-lg mb-12">
-                本サイト等に関するご質問、ご意見、不具合のご報告などがございましたら、<br />
-                以下のフォームからお気軽にお問い合わせください。<br />
-                内容を確認次第、できる限り迅速にご対応いたします。
+                目的別カテゴリから選択
+            </p>
+            <p class="text-slate-400 text-sm mb-16">
+                カテゴリを選ぶと、担当領域に応じたフォームと最新情報が表示されます。
             </p>
 
-            <div class="flex justify-center">
-                <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdeER3yEmZ0TQUHuBGJkd2l7fISKLXcZ1Z2KRtMJD3nfYEO9w/viewform?embedded=true"
-                    width="100%" height="600" class="rounded-xl shadow-lg max-w-2xl w-full" frameborder="0"
-                    marginheight="0" marginwidth="0">
-                    読み込んでいます…
-                </iframe>
+            <!-- 3x2 Category Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Category 1 -->
+                <button data-category="thisbot" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#38bdf8; --accent-end:#8b5cf6;">
+                    <div class="flex items-start gap-4 relative z-10">
+                        <div class="accent-ring shrink-0">🤖</div>
+                        <div>
+                            <span class="accent-chip">This is bot</span>
+                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">機能・使用方法</h3>
+                            <p class="text-sm text-slate-300">不具合報告・ご相談</p>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Category 2 -->
+                <button data-category="siteissue" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#34d399; --accent-end:#22d3ee;">
+                    <div class="flex items-start gap-4 relative z-10">
+                        <div class="accent-ring shrink-0">🐛</div>
+                        <div>
+                            <span class="accent-chip">Site issue</span>
+                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">サイトの問題</h3>
+                            <p class="text-sm text-slate-300">表示崩れ・リンク切れ等</p>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Category 3 -->
+                <button data-category="sitefunc" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#fbbf24; --accent-end:#f472b6;">
+                    <div class="flex items-start gap-4 relative z-10">
+                        <div class="accent-ring shrink-0">✨</div>
+                        <div>
+                            <span class="accent-chip">Feature idea</span>
+                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">サイト機能提案</h3>
+                            <p class="text-sm text-slate-300">改善アイデアやご要望</p>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Category 4 -->
+                <button data-category="otherbot" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#fb7185; --accent-end:#f97316;">
+                    <div class="flex items-start gap-4 relative z-10">
+                        <div class="accent-ring shrink-0">🤖</div>
+                        <div>
+                            <span class="accent-chip">Other bots</span>
+                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">その他Bot関連</h3>
+                            <p class="text-sm text-slate-300">This is bot以外の相談</p>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Category 5 -->
+                <button data-category="personal" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#60a5fa; --accent-end:#a5b4fc;">
+                    <div class="flex items-start gap-4 relative z-10">
+                        <div class="accent-ring shrink-0">👤</div>
+                        <div>
+                            <span class="accent-chip">Personal</span>
+                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">個人へのお問い合わせ</h3>
+                            <p class="text-sm text-slate-300">権利関係や個人的なご質問</p>
+                        </div>
+                    </div>
+                </button>
+
+                <!-- Category 6 -->
+                <button data-category="ahoshinet" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#c084fc; --accent-end:#f472b6;">
+                    <div class="flex items-start gap-4 relative z-10">
+                        <div class="accent-ring shrink-0">🏢</div>
+                        <div>
+                            <span class="accent-chip">Ahoshinet</span>
+                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">Ahoshinet Groups</h3>
+                            <p class="text-sm text-slate-300">グループのサイトで受付</p>
+                        </div>
+                    </div>
+                </button>
             </div>
         </section>
 
-        <section>
-            <h2 class="text-3xl font-semibold mb-4">お急ぎの場合やフォームが表示されない場合</h2>
-            <p class="text-slate-300 text-lg">
-                Discord またはメールで直接ご連絡いただくことも可能です。<br />
-                <span class="text-cyan-300">Discord: darui3018823</span>
-            </p>
+        <!-- Form Section (Hidden by default) -->
+        <section id="formSection" class="hidden max-w-2xl mx-auto">
+            <button id="backBtn" class="mb-6 px-4 py-2 text-cyan-300 hover:text-cyan-200 flex items-center gap-2 transition">
+                <span>←</span> カテゴリに戻る
+            </button>
+
+            <div class="bg-gray-800/50 rounded-xl p-8 border border-gray-700/50">
+                <h2 id="formTitle" class="text-3xl font-bold mb-2 text-cyan-300">フォーム</h2>
+                <p id="formDesc" class="text-slate-300 mb-8"></p>
+
+                <form id="contactForm" class="space-y-4">
+                    <input type="hidden" id="categoryInput" name="category" />
+
+                    <div>
+                        <input type="text" name="name" placeholder="お名前（またはニックネーム）" required
+                            class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                    </div>
+
+                    <div>
+                        <input type="email" name="email" placeholder="メールアドレス" required
+                            class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                    </div>
+
+                    <div>
+                        <textarea name="message" placeholder="お問い合わせ内容" rows="6" required
+                            class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold rounded-lg transition transform hover:scale-105">
+                        送信
+                    </button>
+                </form>
+
+                <p class="text-slate-400 text-sm mt-6 text-center">
+                    ※ 送信後、数分以内にご登録いただいたメールアドレスに確認メールが届きます。
+                </p>
+            </div>
+
+            <!-- Direct Contact Info for Ahoshinet -->
+            <div id="ahosinetMessage" class="hidden mt-8 p-6 bg-purple-900/30 border border-purple-500/50 rounded-xl text-center">
+                <h3 class="text-lg font-semibold text-purple-300 mb-2">Ahoshinet Groupsに関するお問い合わせ</h3>
+                <p class="text-slate-300">お問い合わせはグループのサイトで直接受け付けています。</p>
+                <a href="https://corp.daruks.com/" target="_blank" class="inline-block mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg transition">
+                    グループサイトへ →
+                </a>
+            </div>
         </section>
     </main>
 
     <footer class="text-center py-6 text-xs text-slate-500 mt-20">
         &copy; 2024 - 2025 darui3018823 — All rights reserved.
     </footer>
+    <script src="./script.js"></script>
 </body>
 
 </html>
