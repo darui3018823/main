@@ -199,7 +199,7 @@
                 <h2 id="formTitle" class="text-3xl font-bold mb-2 text-cyan-300">フォーム</h2>
                 <p id="formDesc" class="text-slate-300 mb-8"></p>
 
-                <form id="contactForm" class="space-y-4">
+                <form id="contactForm" class="space-y-5">
                     <input type="hidden" id="categoryInput" name="category" />
 
                     <div>
@@ -208,12 +208,61 @@
                     </div>
 
                     <div>
-                        <input type="email" name="email" placeholder="メールアドレス" required
+                        <input type="text" name="title" placeholder="件名・タイトル" required
                             class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
                     </div>
 
                     <div>
-                        <textarea name="message" placeholder="お問い合わせ内容" rows="6" required
+                        <label class="block text-sm text-slate-300 mb-3">詳細カテゴリ</label>
+                        <select id="subcategorySelect" name="subcategory" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition">
+                            <option value="">選択してください</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-slate-300 mb-3">緊急度</label>
+                        <select name="priority" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition">
+                            <option value="">選択してください</option>
+                            <option value="low">低 - 時間をかけて対応</option>
+                            <option value="medium">中 - 通常の対応</option>
+                            <option value="high">高 - なるべく早く対応してほしい</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm text-slate-300 mb-3">返信希望の方法</label>
+                        <select id="replyMethodSelect" name="reply_method" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition mb-4">
+                            <option value="">選択してください</option>
+                            <option value="email">Email</option>
+                            <option value="discord">Discord</option>
+                            <option value="other_sns">その他SNS</option>
+                            <option value="no_reply">返信不希望</option>
+                        </select>
+
+                        <!-- Email Input & Message -->
+                        <div id="email_container" class="hidden">
+                            <p class="text-xs text-slate-400 mb-2">daruks.comからのメールを受け取れるようにお願いします</p>
+                            <input type="text" id="reply_email" name="reply_contact_email" placeholder="example@example.com" disabled
+                                class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                        </div>
+
+                        <!-- Discord Input & Message -->
+                        <div id="discord_container" class="hidden">
+                            <p class="text-xs text-slate-400 mb-2">@darui3018823から DM にて返信します</p>
+                            <input type="text" id="reply_discord" name="reply_contact_discord" placeholder="UserName" disabled
+                                class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                        </div>
+
+                        <!-- その他SNS Textarea & Message -->
+                        <div id="sns_container" class="hidden">
+                            <p class="text-xs text-slate-400 mb-2">ものによっては送信できない場合があります</p>
+                            <textarea id="reply_sns" name="reply_contact_sns" placeholder="Twitter, @kantei" disabled rows="2"
+                                class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <div>
+                        <textarea name="message" placeholder="お問い合わせ内容" rows="5" required
                             class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition resize-none"></textarea>
                     </div>
 
