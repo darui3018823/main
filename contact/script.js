@@ -25,27 +25,27 @@ window.addEventListener('DOMContentLoaded', () => {
         thisbot: {
             title: 'This is bot Services へのお問い合わせ',
             description: '機能・使用方法・不具合報告などがございましたら、お気軽にお問い合わせください。',
-            formspreeId: 'f/YOUR_FORMSPREE_ID' // ← Formspree IDを設定してください
+            formspreeId: 'f/xdaanaya'
         },
         siteissue: {
             title: 'サイトの問題に関するお問い合わせ',
             description: 'このサイトの不具合やエラーを報告してください。',
-            formspreeId: 'f/YOUR_FORMSPREE_ID'
+            formspreeId: 'f/xdaanaya'
         },
         sitefunc: {
             title: 'サイトの機能に関するお問い合わせ',
             description: '機能追加のご提案やご要望をお聞かせください。',
-            formspreeId: 'f/YOUR_FORMSPREE_ID'
+            formspreeId: 'f/xdaanaya'
         },
         otherbot: {
             title: 'This is bot Services以外のDiscord Botについて',
             description: 'その他のDiscord Botに関するお問い合わせ、ご要望をお受けしています。',
-            formspreeId: 'f/YOUR_FORMSPREE_ID'
+            formspreeId: 'f/xdaanaya'
         },
         personal: {
             title: 'darui3018823個人へのお問い合わせ',
             description: '個人的なご質問やご連絡はこちらからお願いします。',
-            formspreeId: 'f/YOUR_FORMSPREE_ID'
+            formspreeId: 'f/xdaanaya'
         },
         ahoshinet: {
             title: 'Ahoshinet Groupsに関するお問い合わせ',
