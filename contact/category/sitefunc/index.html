@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>サイト機能提案 お問い合わせ | daruks.com</title>
+
+    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+
+    <meta property="og:site_name" content="daruks.com">
+    <meta property="og:title" content="サイト機能提案 お問い合わせ - Contact | daruks.com">
+    <meta property="og:description" content="Category contact page of daruks Home Page">
+    <meta property="og:url" content="https://daruks.com/contact/category/sitefunc/">
+    <meta property="og:type" content="website">
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen">
+    <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
+            <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
+            <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
+                <a href="/about/" class="hover:text-cyan-300 transition">About</a>
+                <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
+                <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+        <div class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
+            <h2 class="text-lg font-semibold mb-4">メニュー</h2>
+            <ul class="space-y-3">
+                <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
+                <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
+                <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
+            </ul>
+            <div class="mt-4 text-right">
+                <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-40 px-4 max-w-3xl mx-auto pb-20">
+        <div class="mb-8">
+            <a href="/contact/" class="inline-flex items-center gap-2 text-cyan-300 hover:text-cyan-200 hover:underline transition">← カテゴリ一覧へ戻る</a>
+        </div>
+
+        <section class="bg-gray-800/50 rounded-xl p-8 border border-gray-700/50" id="formCard">
+            <h1 id="pageTitle" class="text-3xl font-bold mb-2"></h1>
+            <p id="pageDescription" class="text-slate-300 mb-8"></p>
+
+            <form id="contactForm" class="space-y-5">
+                <input type="hidden" id="categoryInput" name="category" />
+
+                <div>
+                    <input type="text" name="name" placeholder="お名前（またはニックネーム）" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                </div>
+
+                <div>
+                    <input type="text" name="title" placeholder="件名・タイトル" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-300 mb-3">詳細カテゴリ</label>
+                    <select id="subcategorySelect" name="subcategory" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition">
+                        <option value="">選択してください</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-300 mb-3">緊急度</label>
+                    <select name="priority" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition">
+                        <option value="">選択してください</option>
+                        <option value="low">低 - 時間をかけて対応</option>
+                        <option value="medium">中 - 通常の対応</option>
+                        <option value="high">高 - なるべく早く対応してほしい</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-300 mb-3">返信希望の方法</label>
+                    <select id="replyMethodSelect" name="reply_method" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition mb-4">
+                        <option value="">選択してください</option>
+                        <option value="email">Email</option>
+                        <option value="discord">Discord</option>
+                        <option value="other_sns">その他SNS</option>
+                        <option value="no_reply">返信不希望</option>
+                    </select>
+
+                    <div id="email_container" class="hidden">
+                        <p class="text-xs text-slate-400 mb-2">daruks.comからのメールを受け取れるようにお願いします</p>
+                        <input type="text" id="reply_email" name="reply_contact_email" placeholder="example@example.com" disabled class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                    </div>
+
+                    <div id="discord_container" class="hidden">
+                        <p class="text-xs text-slate-400 mb-2">@darui3018823から DM にて返信します</p>
+                        <input type="text" id="reply_discord" name="reply_contact_discord" placeholder="UserName" disabled class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
+                    </div>
+
+                    <div id="sns_container" class="hidden">
+                        <p class="text-xs text-slate-400 mb-2">ものによっては送信できない場合があります</p>
+                        <textarea id="reply_sns" name="reply_contact_sns" placeholder="Twitter, @kantei" disabled rows="2" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition resize-none"></textarea>
+                    </div>
+                </div>
+
+                <div>
+                    <textarea name="message" placeholder="お問い合わせ内容" rows="5" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold rounded-lg transition transform hover:scale-105">
+                    送信
+                </button>
+            </form>
+        </section>
+
+        <section id="directContactCard" class="hidden mt-8 p-8 bg-purple-900/30 border border-purple-500/50 rounded-xl text-center">
+            <h2 class="text-2xl font-semibold text-purple-300 mb-2" id="directContactTitle">Ahoshinet Groupsに関するお問い合わせ</h2>
+            <p class="text-slate-300">お問い合わせはグループのサイトで直接受け付けています。</p>
+            <a id="directContactLink" href="https://corp.daruks.com/" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg transition">
+                グループサイトへ →
+            </a>
+        </section>
+
+        <p class="text-slate-400 text-sm mt-6 text-center">
+            ※ 通常24〜48時間以内に返信いたします。<br />
+            ※ お問い合わせ内容によっては返信が遅れる場合や返信できない場合がございます。<br />あらかじめご了承ください。
+        </p>
+    </main>
+
+    <footer class="text-center py-6 text-xs text-slate-500 mt-20">
+        &copy; 2024 - 2025 darui3018823 — All rights reserved.
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="../page-common.js"></script>
+</body>
+
+</html>

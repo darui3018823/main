@@ -110,7 +110,7 @@
                 目的別カテゴリから選択
             </p>
             <p class="text-slate-400 text-sm">
-                カテゴリを選ぶと、担当領域に応じたフォームと最新情報が表示されます。
+                カテゴリを選ぶと、担当領域ごとの専用ページに移動します。
             </p>
             <p class="text-slate-400 text-sm mb-16">
                 <a href="/legal/privacy-policy/" class="text-cyan-400 hover:text-cyan-300 hover:underline">プライバシーポリシー</a>をご確認の上、お問い合わせください。
@@ -119,7 +119,7 @@
             <!-- 3x2 Category Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Category 1 -->
-                <button data-category="thisbot" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#38bdf8; --accent-end:#8b5cf6;">
+                <a href="/contact/category/thisbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#38bdf8; --accent-end:#8b5cf6;">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🤖</div>
                         <div>
@@ -128,10 +128,10 @@
                             <p class="text-sm text-slate-300">不具合報告・ご相談</p>
                         </div>
                     </div>
-                </button>
+                </a>
 
                 <!-- Category 2 -->
-                <button data-category="siteissue" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#34d399; --accent-end:#22d3ee;">
+                <a href="/contact/category/siteissue/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#34d399; --accent-end:#22d3ee;">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🐛</div>
                         <div>
@@ -140,10 +140,10 @@
                             <p class="text-sm text-slate-300">表示崩れ・リンク切れ等</p>
                         </div>
                     </div>
-                </button>
+                </a>
 
                 <!-- Category 3 -->
-                <button data-category="sitefunc" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#fbbf24; --accent-end:#f472b6;">
+                <a href="/contact/category/sitefunc/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fbbf24; --accent-end:#f472b6;">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">✨</div>
                         <div>
@@ -152,10 +152,10 @@
                             <p class="text-sm text-slate-300">改善アイデアやご要望</p>
                         </div>
                     </div>
-                </button>
+                </a>
 
                 <!-- Category 4 -->
-                <button data-category="otherbot" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#fb7185; --accent-end:#f97316;">
+                <a href="/contact/category/otherbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fb7185; --accent-end:#f97316;">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🤖</div>
                         <div>
@@ -164,10 +164,10 @@
                             <p class="text-sm text-slate-300">This is bot以外の相談</p>
                         </div>
                     </div>
-                </button>
+                </a>
 
                 <!-- Category 5 -->
-                <button data-category="personal" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#60a5fa; --accent-end:#a5b4fc;">
+                <a href="/contact/category/personal/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#60a5fa; --accent-end:#a5b4fc;">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">👤</div>
                         <div>
@@ -176,10 +176,10 @@
                             <p class="text-sm text-slate-300">権利関係や個人的なご質問</p>
                         </div>
                     </div>
-                </button>
+                </a>
 
                 <!-- Category 6 -->
-                <button data-category="ahoshinet" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left" style="--accent-start:#c084fc; --accent-end:#f472b6;">
+                <a href="/contact/category/ahoshinet/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#c084fc; --accent-end:#f472b6;">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🏢</div>
                         <div>
@@ -188,104 +188,6 @@
                             <p class="text-sm text-slate-300">グループのサイトで受付</p>
                         </div>
                     </div>
-                </button>
-            </div>
-        </section>
-
-        <!-- Form Section (Hidden by default) -->
-        <section id="formSection" class="hidden max-w-2xl mx-auto">
-            <button id="backBtn" class="mb-6 px-4 py-2 text-cyan-300 hover:text-cyan-200 flex items-center gap-2 transition hover:underline">
-                <span>←</span> カテゴリに戻る
-            </button>
-
-            <div class="bg-gray-800/50 rounded-xl p-8 border border-gray-700/50">
-                <h2 id="formTitle" class="text-3xl font-bold mb-2 text-cyan-300">フォーム</h2>
-                <p id="formDesc" class="text-slate-300 mb-8"></p>
-
-                <form id="contactForm" class="space-y-5">
-                    <input type="hidden" id="categoryInput" name="category" />
-
-                    <div>
-                        <input type="text" name="name" placeholder="お名前（またはニックネーム）" required
-                            class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
-                    </div>
-
-                    <div>
-                        <input type="text" name="title" placeholder="件名・タイトル" required
-                            class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
-                    </div>
-
-                    <div>
-                        <label class="block text-sm text-slate-300 mb-3">詳細カテゴリ</label>
-                        <select id="subcategorySelect" name="subcategory" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition">
-                            <option value="">選択してください</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm text-slate-300 mb-3">緊急度</label>
-                        <select name="priority" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition">
-                            <option value="">選択してください</option>
-                            <option value="low">低 - 時間をかけて対応</option>
-                            <option value="medium">中 - 通常の対応</option>
-                            <option value="high">高 - なるべく早く対応してほしい</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm text-slate-300 mb-3">返信希望の方法</label>
-                        <select id="replyMethodSelect" name="reply_method" required class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition mb-4">
-                            <option value="">選択してください</option>
-                            <option value="email">Email</option>
-                            <option value="discord">Discord</option>
-                            <option value="other_sns">その他SNS</option>
-                            <option value="no_reply">返信不希望</option>
-                        </select>
-
-                        <!-- Email Input & Message -->
-                        <div id="email_container" class="hidden">
-                            <p class="text-xs text-slate-400 mb-2">daruks.comからのメールを受け取れるようにお願いします</p>
-                            <input type="text" id="reply_email" name="reply_contact_email" placeholder="example@example.com" disabled
-                                class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
-                        </div>
-
-                        <!-- Discord Input & Message -->
-                        <div id="discord_container" class="hidden">
-                            <p class="text-xs text-slate-400 mb-2">@darui3018823から DM にて返信します</p>
-                            <input type="text" id="reply_discord" name="reply_contact_discord" placeholder="UserName" disabled
-                                class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition" />
-                        </div>
-
-                        <!-- その他SNS Textarea & Message -->
-                        <div id="sns_container" class="hidden">
-                            <p class="text-xs text-slate-400 mb-2">ものによっては送信できない場合があります</p>
-                            <textarea id="reply_sns" name="reply_contact_sns" placeholder="Twitter, @kantei" disabled rows="2"
-                                class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition resize-none"></textarea>
-                        </div>
-                    </div>
-
-                    <div>
-                        <textarea name="message" placeholder="お問い合わせ内容" rows="5" required
-                            class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600/50 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400/50 focus:bg-gray-700/70 transition resize-none"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-semibold rounded-lg transition transform hover:scale-105">
-                        送信
-                    </button>
-                </form>
-
-                <p class="text-slate-400 text-sm mt-6 text-center">
-                    ※ 通常24〜48時間以内に返信いたします。<br />
-                    ※ お問い合わせ内容によっては返信が遅れる場合や返信できない場合がございます。<br />あらかじめご了承ください。
-                </p>
-            </div>
-
-            <!-- Direct Contact Info for Ahoshinet -->
-            <div id="ahosinetMessage" class="hidden mt-8 p-6 bg-purple-900/30 border border-purple-500/50 rounded-xl text-center">
-                <h3 class="text-lg font-semibold text-purple-300 mb-2">Ahoshinet Groupsに関するお問い合わせ</h3>
-                <p class="text-slate-300">お問い合わせはグループのサイトで直接受け付けています。</p>
-                <a href="https://corp.daruks.com/" target="_blank" class="inline-block mt-4 px-6 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg transition">
-                    グループサイトへ →
                 </a>
             </div>
         </section>
