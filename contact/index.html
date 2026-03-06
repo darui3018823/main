@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+    <!-- AOS: Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- meta data-->
     <meta property="og:site_name" content="daruks.com">
@@ -105,21 +107,21 @@
     <main class="pt-40 px-4 max-w-6xl mx-auto pb-20">
         <!-- Categories Section -->
         <section id="categoriesSection" class="text-center mb-16">
-            <h1 class="text-5xl font-bold mb-4">Contact Us</h1>
-            <p class="text-slate-300 text-lg mb-12">
+            <h1 class="text-5xl font-bold mb-4" data-aos="fade-up">Contact Us</h1>
+            <p class="text-slate-300 text-lg mb-12" data-aos="fade-up" data-aos-delay="100">
                 目的別カテゴリから選択
             </p>
-            <p class="text-slate-400 text-sm">
+            <p class="text-slate-400 text-sm" data-aos="fade-up" data-aos-delay="150">
                 カテゴリを選ぶと、担当領域ごとの専用ページに移動します。
             </p>
-            <p class="text-slate-400 text-sm mb-16">
+            <p class="text-slate-400 text-sm mb-16" data-aos="fade-up" data-aos-delay="200">
                 <a href="/legal/privacy-policy/" class="text-cyan-400 hover:text-cyan-300 hover:underline">プライバシーポリシー</a>をご確認の上、お問い合わせください。
             </p>
 
             <!-- 3x2 Category Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Category 1 -->
-                <a href="/contact/category/thisbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#38bdf8; --accent-end:#8b5cf6;">
+                <a href="/contact/category/thisbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#38bdf8; --accent-end:#8b5cf6;" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🤖</div>
                         <div>
@@ -131,7 +133,7 @@
                 </a>
 
                 <!-- Category 2 -->
-                <a href="/contact/category/siteissue/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#34d399; --accent-end:#22d3ee;">
+                <a href="/contact/category/siteissue/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#34d399; --accent-end:#22d3ee;" data-aos="fade-up" data-aos-delay="150">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🐛</div>
                         <div>
@@ -143,7 +145,7 @@
                 </a>
 
                 <!-- Category 3 -->
-                <a href="/contact/category/sitefunc/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fbbf24; --accent-end:#f472b6;">
+                <a href="/contact/category/sitefunc/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fbbf24; --accent-end:#f472b6;" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">✨</div>
                         <div>
@@ -155,7 +157,7 @@
                 </a>
 
                 <!-- Category 4 -->
-                <a href="/contact/category/otherbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fb7185; --accent-end:#f97316;">
+                <a href="/contact/category/otherbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fb7185; --accent-end:#f97316;" data-aos="fade-up" data-aos-delay="250">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🤖</div>
                         <div>
@@ -167,7 +169,7 @@
                 </a>
 
                 <!-- Category 5 -->
-                <a href="/contact/category/personal/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#60a5fa; --accent-end:#a5b4fc;">
+                <a href="/contact/category/personal/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#60a5fa; --accent-end:#a5b4fc;" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">👤</div>
                         <div>
@@ -179,7 +181,7 @@
                 </a>
 
                 <!-- Category 6 -->
-                <a href="/contact/category/ahoshinet/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#c084fc; --accent-end:#f472b6;">
+                <a href="/contact/category/ahoshinet/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#c084fc; --accent-end:#f472b6;" data-aos="fade-up" data-aos-delay="350">
                     <div class="flex items-start gap-4 relative z-10">
                         <div class="accent-ring shrink-0">🏢</div>
                         <div>
@@ -196,6 +198,14 @@
     <footer class="text-center py-6 text-xs text-slate-500 mt-20">
         &copy; 2024 - 2025 darui3018823 — All rights reserved.
     </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 0,
+            once: true,
+            duration: 800
+        });
+    </script>
     <script src="./script.js"></script>
 </body>
 
