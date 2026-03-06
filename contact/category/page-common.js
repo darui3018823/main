@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
+const initContactCategoryPage = () => {
     const config = window.CONTACT_PAGE_CONFIG;
 
     if (!config || !config.category) {
@@ -90,4 +90,10 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     replyMethodSelect?.addEventListener('change', updateReplyInputs);
-});
+};
+
+if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', initContactCategoryPage, { once: true });
+} else {
+    initContactCategoryPage();
+}
