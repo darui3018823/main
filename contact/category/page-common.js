@@ -1,4 +1,9 @@
 const initContactCategoryPage = () => {
+    if (window.__contactCategoryPageInitialized) {
+        return;
+    }
+    window.__contactCategoryPageInitialized = true;
+
     const config = window.CONTACT_PAGE_CONFIG;
 
     if (!config || !config.category) {
@@ -27,6 +32,11 @@ const initContactCategoryPage = () => {
     const directContactCard = document.getElementById('directContactCard');
     const directContactLink = document.getElementById('directContactLink');
 
+    if (!pageTitle || !pageDescription || !categoryInput || !subcategorySelect || !contactForm || !formCard || !directContactCard || !directContactLink) {
+        console.error('Missing required contact page elements');
+        return;
+    }
+
     pageTitle.textContent = config.title;
     pageDescription.textContent = config.description || '';
     categoryInput.value = config.category;
@@ -45,7 +55,7 @@ const initContactCategoryPage = () => {
     });
 
     const subcategoryWrapper = subcategorySelect.parentElement;
-    if (!config.subcategories || config.subcategories.length === 0) {
+    if (subcategoryWrapper && (!config.subcategories || config.subcategories.length === 0)) {
         subcategoryWrapper.style.display = 'none';
     }
 
@@ -76,7 +86,7 @@ const initContactCategoryPage = () => {
             el.value = '';
         });
 
-        const selectedValue = replyMethodSelect.value;
+        const selectedValue = replyMethodSelect?.value || '';
         if (selectedValue === 'email') {
             emailContainer.classList.remove('hidden');
             replyEmailInput.disabled = false;
