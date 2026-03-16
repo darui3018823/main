@@ -28,9 +28,9 @@
         .project-item {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 4rem;
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 6rem;
         }
 
         /* 通常：テキスト左、ビジュアル右 */
@@ -58,14 +58,14 @@
         }
 
         .project-visual {
-            aspect-ratio: 16/10;
+            aspect-ratio: 20/9;
             background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
 
         @media (max-width: 768px) {
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <main class="pt-40 px-6 max-w-6xl mx-auto">
+    <main class="pt-40 px-4 md:px-6 lg:px-8 max-w-screen-2xl mx-auto">
         <section class="text-center mb-20">
             <h1 class="text-5xl font-bold mb-8">Projects</h1>
             <p class="text-slate-300 text-lg">各プロジェクトの詳細情報と、利用可能なリンクです。</p>
