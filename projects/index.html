@@ -124,6 +124,29 @@
             border-radius: 0.75rem;
         }
 
+        .underline-animation {
+            position: relative;
+            display: inline-block;
+        }
+
+        .underline-animation::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #06b6d4;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
         @media (max-width: 768px) {
             .project-item {
                 grid-template-columns: 1fr;
@@ -184,7 +207,8 @@
         <div class="project-item" data-aos="fade-up">
             <div class="project-content">
                 <h2 class="text-3xl font-bold text-cyan-300 mb-4">Tabdock</h2>
-                <p class="text-slate-300 mb-2">不要なタブレットを有効活用するためのプロジェクト。</p>
+                <p class="text-slate-350 mb-1"><span class="underline-animation">Put your spare tablets to good use.</span></p>
+                <p class="text-slate-300 mb-1">不要なタブレットを有効活用するためのプロジェクト。</p>
                 <p class="text-slate-300 mb-4">使い道のないタブレットをAODとして最後まで有効活用できます。</p>
                 <div class="flex gap-4">
                     <a href="https://github.com/darui3018823/tabdock/" target="_blank" 
@@ -205,8 +229,8 @@
             </div>
             <div class="project-content">
                 <h2 class="text-3xl font-bold text-cyan-300 mb-4">Ahoshinet Groups</h2>
-                <p class="text-slate-300 mb-2">Connecting the Future, Ahoshinet Groups.</p>
-                <p class="text-slate-300 mb-2">革新的なテクノロジーで、次世代のインフラを。</p>
+                <p class="text-slate-350 mb-1"><span class="underline-animation">Connecting the Future, Ahoshinet Groups.</span></p>
+                <p class="text-slate-300 mb-1">革新的なテクノロジーで、次世代のインフラを。</p>
                 <p class="text-slate-300 mb-4">革新的な次世代インターネットサービスと安全・強固な統合クラウドサービスでお客様のビジネスや生活を支えます。</p>
                 <div class="flex gap-4">
                     <a href="https://corp.daruks.com/" target="_blank" 
@@ -221,8 +245,8 @@
         <div class="project-item" data-aos="fade-up">
             <div class="project-content">
                 <h2 class="text-3xl font-bold text-cyan-300 mb-4">This is bot Web Services</h2>
-                <p class="text-slate-300 mb-2">もっと身近に些細な便利を。</p>
-                <p class="text-slate-300 mb-2">This is botを主体として成るウェブサービスのプラットフォームです。</p>
+                <p class="text-slate-350 mb-1"><span class="underline-animation">もっと身近に些細な便利を。</span></p>
+                <p class="text-slate-300 mb-1">This is botを主体として成るウェブサービスのプラットフォームです。</p>
                 <p class="text-slate-300 mb-4">シンプルで実用的な機能を提供しています。ぜひご利用ください。</p>
                 <div class="flex gap-4">
                     <a href="https://bot.daruks.com/" target="_blank" 
