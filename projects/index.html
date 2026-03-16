@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | daruks.com</title>
+
+    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- meta data-->
+    <meta property="og:site_name" content="daruks.com">
+    <meta property="og:title" content="Projects - daruks Home Page">
+    <meta property="og:description" content="My Projects and Services">
+    <meta property="og:url" content="https://daruks.com/projects">
+    <meta property="og:type" content="website">
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* Z字レイアウト用 */
+        .project-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        /* 通常：テキスト左、ビジュアル右 */
+        .project-item .project-content {
+            grid-column: 1;
+        }
+
+        .project-item .project-visual {
+            grid-column: 2;
+        }
+
+        /* 逆順：ビジュアル左、テキスト右 */
+        .project-item.reverse .project-content {
+            grid-column: 2;
+        }
+
+        .project-item.reverse .project-visual {
+            grid-column: 1;
+        }
+
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-visual {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .project-item {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-bottom: 3rem;
+            }
+
+            .project-item.reverse {
+                direction: ltr;
+            }
+
+            .project-visual {
+                aspect-ratio: auto;
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen">
+    <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
+            <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
+            <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
+                <a href="/about/" class="hover:text-cyan-300 transition">About</a>
+                <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
+                <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
+                <a href="/projects/" class="hover:text-cyan-300 transition">Projects</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+        <div
+            class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
+            <h2 class="text-lg font-semibold mb-4">メニュー</h2>
+            <ul class="space-y-3">
+                <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
+                <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a>
+                </li>
+                <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
+                <li><a href="/projects/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Projects</a></li>
+            </ul>
+            <div class="mt-4 text-right">
+                <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-40 px-6 max-w-6xl mx-auto">
+        <section class="text-center mb-20">
+            <h1 class="text-5xl font-bold mb-8">Projects</h1>
+            <p class="text-slate-300 text-lg">各プロジェクトの詳細情報と、利用可能なリンクです。</p>
+        </section>
+
+        <!-- Z字レイアウト: 各プロジェクト -->
+
+        <!-- Tabdock -->
+        <div class="project-item" data-aos="fade-up">
+            <div class="project-content">
+                <h2 class="text-3xl font-bold text-cyan-300 mb-4">Tabdock</h2>
+                <p class="text-slate-300 mb-4">不要なタブレットを有効活用するためのグリッド式ランチャーページです。複数のアプリケーションやサービスを整理して、タイル状に配置できます。</p>
+                <div class="flex gap-4">
+                    <a href="https://github.com/darui3018823/tabdock/" target="_blank" 
+                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
+                        GitHub リポジトリ
+                    </a>
+                </div>
+            </div>
+            <div class="project-visual">📱</div>
+        </div>
+
+        <!-- This is bot Web Services -->
+        <div class="project-item reverse" data-aos="fade-up">
+            <div class="project-visual">🤖</div>
+            <div class="project-content">
+                <h2 class="text-3xl font-bold text-cyan-300 mb-4">This is bot Web Services</h2>
+                <p class="text-slate-300 mb-4">Discord ボットと関連ウェブサービスのプラットフォームです。bot.daruks.com でホストされており、複数のボット機能を提供します。</p>
+                <div class="flex gap-4">
+                    <a href="https://bot.daruks.com/" target="_blank" 
+                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
+                        サービスを開く
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ahoshinet Groups -->
+        <div class="project-item" data-aos="fade-up">
+            <div class="project-content">
+                <h2 class="text-3xl font-bold text-cyan-300 mb-4">Ahoshinet Groups</h2>
+                <p class="text-slate-300 mb-4">Ahoshinet に関連するグループとプロジェクトをまとめたコーポレートウェブサイトです。各グループの情報や詳細はこちらから確認できます。</p>
+                <div class="flex gap-4">
+                    <a href="https://corp.daruks.com/" target="_blank" 
+                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
+                        ウェブサイトを開く
+                    </a>
+                </div>
+            </div>
+            <div class="project-visual">🏢</div>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-6 text-xs text-slate-500 mt-20">
+        &copy; 2024 - 2025 darui3018823 — All rights reserved.
+    </footer>
+    <script>AOS.init();</script>
+    <script src="/links/script.js"></script>
+</body>
+
+</html>

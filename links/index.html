@@ -35,6 +35,7 @@
                 <a href="/about/" class="hover:text-cyan-300 transition">About</a>
                 <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
                 <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
+                <a href="/projects/" class="hover:text-cyan-300 transition">Projects</a>
             </nav>
         </div>
     </header>
@@ -48,6 +49,7 @@
                 <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a>
                 </li>
                 <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
+                <li><a href="/projects/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Projects</a></li>
             </ul>
             <div class="mt-4 text-right">
                 <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
@@ -55,57 +57,55 @@
         </div>
     </div>
 
-    <main class="pt-40 px-6 max-w-4xl mx-auto space-y-16 text-center">
-        <section>
+    <main class="pt-40 px-6 max-w-6xl mx-auto space-y-16">
+        <section class="text-center">
             <h1 class="text-5xl font-bold mb-8">Links</h1>
             <p class="text-slate-300 text-lg mb-2">各種サービスやプロジェクトへのリンクはこちらからご利用いただけます。</p>
-            <p class="text-slate-300 text-lg mb-16">solo.to的な何かです。順次増えます。</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="https://github.com/darui3018823/" target="_blank"
-                    class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <h2 class="text-xl font-semibold text-cyan-300 mb-2">GitHub</h2>
-                    <p class="text-slate-300">darui3018823のGitHubプロフィール</p>
-                </a>
-
-                <a href="https://twitter.com/darui3018823" target="_blank"
-                    class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
-                    data-aos="fade-up" data-aos-delay="250">
-                    <h2 class="text-xl font-semibold text-cyan-300 mb-2">Twitter（新X）</h2>
-                    <p class="text-slate-300">darui3018823のTwitter</p>
-                </a>
-
-                <a href="https://solo.to/darui3018823" target="_blank"
-                    class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
-                    data-aos="fade-up" data-aos-delay="300">
-                    <h2 class="text-xl font-semibold text-cyan-300 mb-2">Solo.to/darui3018823</h2>
-                    <p class="text-slate-300">solo.toです。<br />大体のリンクはここにあります。</p>
-                </a>
-
-                <a href="https://github.com/darui3018823/tabdock/" target="_blank"
-                    class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
-                    data-aos="fade-up" data-aos-delay="350">
-                    <h2 class="text-xl font-semibold text-cyan-300 mb-2">Tabdock</h2>
-                    <p class="text-slate-300">不要なタブレットを有効活用しましょう。<br />便利なグリッド式のページ。</p>
-                </a>
-
-                <a href="https://bot.daruks.com/" target="_blank"
-                    class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
-                    data-aos="fade-up" data-aos-delay="400">
-                    <h2 class="text-xl font-semibold text-cyan-300 mb-2">This is bot Web Services</h2>
-                    <p class="text-slate-300">This is botのウェブサービスです。<br />サービスは推移先に移転しました。</p>
-                </a>
-
-                <a href="https://corp.daruks.com/" target="_blank"
-                    class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
-                    data-aos="fade-up" data-aos-delay="400">
-                    <h2 class="text-xl font-semibold text-cyan-300 mb-2">Ahoshinet Groups</h2>
-                    <p class="text-slate-300">Ahoshinet Groupsのウェブサイトです。<br />Ahoshinetについては推移先をご覧ください。</p>
-                </a>
-
-            </div>
+            <p class="text-slate-300 text-lg mb-16">順次増えます。詳細は <a href="/projects/" class="text-cyan-300 hover:text-cyan-200">Projects</a> をご覧ください。</p>
         </section>
+
+        <!-- カテゴリセクションの2列配置 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- SNS セクション -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 text-cyan-300 pb-2 border-b border-white/20">SNS</h2>
+                <div class="space-y-4">
+                    <a href="https://github.com/darui3018823/" target="_blank"
+                        class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-lg font-semibold text-cyan-300 mb-1">GitHub</h3>
+                        <p class="text-slate-300 text-sm">darui3018823のGitHubプロフィール</p>
+                    </a>
+
+                    <a href="https://twitter.com/darui3018823" target="_blank"
+                        class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
+                        data-aos="fade-up" data-aos-delay="250">
+                        <h3 class="text-lg font-semibold text-cyan-300 mb-1">Twitter（新X）</h3>
+                        <p class="text-slate-300 text-sm">darui3018823のTwitter</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Links & Hubs セクション -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 text-cyan-300 pb-2 border-b border-white/20">Links & Hubs</h2>
+                <div class="space-y-4">
+                    <a href="https://solo.to/darui3018823" target="_blank"
+                        class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-lg font-semibold text-cyan-300 mb-1">Solo.to/darui3018823</h3>
+                        <p class="text-slate-300 text-sm">All links in one place. Main link hub.</p>
+                    </a>
+
+                    <a href="/projects/" 
+                        class="block bg-gray-800/60 hover:bg-gray-700/70 transition rounded-xl p-6 shadow-lg border border-white/10"
+                        data-aos="fade-up" data-aos-delay="350">
+                        <h3 class="text-lg font-semibold text-cyan-300 mb-1">Projects</h3>
+                        <p class="text-slate-300 text-sm">My projects and services.</p>
+                    </a>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer class="text-center py-6 text-xs text-slate-500 mt-20">
