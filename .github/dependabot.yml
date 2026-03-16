@@ -1,0 +1,44 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "darui3018823"
+    assignees:
+      - "darui3018823"
+    commit-message:
+      prefix: "chore"
+      prefix-development: "chore"
+      include: "scope"
+    groups:
+      all-deps:
+        patterns:
+          - "*"
+    ignore:
+      # eslint-plugin-react does not support ESLint v10 yet
+      - dependency-name: "eslint"
+        versions: ["10.x", ">=10.0.0"]
+    
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "darui3018823"
+    assignees:
+      - "darui3018823"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
