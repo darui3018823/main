@@ -66,6 +66,62 @@
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
+            overflow: hidden;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* 1:1 アイコン表示用 */
+        .project-visual.icon-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+        }
+
+        .project-visual.icon-visual img {
+            width: auto;
+            height: calc(100% - 20px);
+            object-fit: contain;
+            padding: 10px 0;
+            box-sizing: border-box;
+            aspect-ratio: 1 / 1;
+            border-radius: 0.75rem;
+        }
+
+        /* ロゴ表示用（左右余白） */
+        .project-visual.logo-visual {
+            background: transparent;
+            border: none;
+        }
+
+        .project-visual.logo-visual img {
+            width: auto;
+            height: 100%;
+            object-fit: contain;
+            padding: 0 5px;
+            box-sizing: border-box;
+            border-radius: 0.75rem;
+        }
+
+        /* 画像表示用（背景・ボーダーなし） */
+        .project-visual.image-visual {
+            background: transparent;
+            border: none;
+        }
+
+        .project-visual.image-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 0.75rem;
         }
 
         @media (max-width: 768px) {
@@ -124,8 +180,6 @@
             <p class="text-slate-300 text-lg">各プロジェクトの詳細情報と、利用可能なリンクです。</p>
         </section>
 
-        <!-- Z字レイアウト: 各プロジェクト -->
-
         <!-- Tabdock -->
         <div class="project-item" data-aos="fade-up">
             <div class="project-content">
@@ -138,26 +192,16 @@
                     </a>
                 </div>
             </div>
-            <div class="project-visual">📱</div>
-        </div>
-
-        <!-- This is bot Web Services -->
-        <div class="project-item reverse" data-aos="fade-up">
-            <div class="project-visual">🤖</div>
-            <div class="project-content">
-                <h2 class="text-3xl font-bold text-cyan-300 mb-4">This is bot Web Services</h2>
-                <p class="text-slate-300 mb-4">Discord ボットと関連ウェブサービスのプラットフォームです。bot.daruks.com でホストされており、複数のボット機能を提供します。</p>
-                <div class="flex gap-4">
-                    <a href="https://bot.daruks.com/" target="_blank" 
-                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
-                        サービスを開く
-                    </a>
-                </div>
+            <div class="project-visual image-visual">
+                <img src="https://cdn.daruks.com/public/images/tabdock/tabdock_img2.jpg" alt="Tabdock Screenshot">
             </div>
         </div>
 
         <!-- Ahoshinet Groups -->
-        <div class="project-item" data-aos="fade-up">
+        <div class="project-item reverse" data-aos="fade-up">
+            <div class="project-visual logo-visual">
+                <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_logo.png" alt="Ahoshinet logo">
+            </div>
             <div class="project-content">
                 <h2 class="text-3xl font-bold text-cyan-300 mb-4">Ahoshinet Groups</h2>
                 <p class="text-slate-300 mb-4">Ahoshinet に関連するグループとプロジェクトをまとめたコーポレートウェブサイトです。各グループの情報や詳細はこちらから確認できます。</p>
@@ -168,7 +212,23 @@
                     </a>
                 </div>
             </div>
-            <div class="project-visual">🏢</div>
+        </div>
+
+        <!-- This is bot Web Services -->
+        <div class="project-item" data-aos="fade-up">
+            <div class="project-content">
+                <h2 class="text-3xl font-bold text-cyan-300 mb-4">This is bot Web Services</h2>
+                <p class="text-slate-300 mb-4">Discord ボットと関連ウェブサービスのプラットフォームです。bot.daruks.com でホストされており、複数のボット機能を提供します。</p>
+                <div class="flex gap-4">
+                    <a href="https://bot.daruks.com/" target="_blank" 
+                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
+                        サービスを開く
+                    </a>
+                </div>
+            </div>
+            <div class="project-visual icon-visual">
+                <img src="https://cdn.daruks.com/profile/icon/thisisbot_icon.png" alt="This is bot icon">
+            </div>
         </div>
 
     </main>
