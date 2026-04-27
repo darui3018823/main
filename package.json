@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/darui3018823/main#readme",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.2.2",
+    "@tailwindcss/cli": "^4.2.4",
     "tailwindcss": "^4.1.18"
   }
 }
