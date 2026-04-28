@@ -154,13 +154,26 @@
                 margin-bottom: 3rem;
             }
 
-            .project-item.reverse {
-                direction: ltr;
+            /* grid-column: 2 が暗黙的な2列目を作るのを防ぐ */
+            .project-item .project-content,
+            .project-item .project-visual,
+            .project-item.reverse .project-content,
+            .project-item.reverse .project-visual {
+                grid-column: 1;
+            }
+
+            /* reverse時もコンテンツ→ビジュアルの順に */
+            .project-item.reverse .project-content {
+                order: 1;
+            }
+
+            .project-item.reverse .project-visual {
+                order: 2;
             }
 
             .project-visual {
-                aspect-ratio: auto;
-                min-height: 250px;
+                aspect-ratio: 16/9;
+                min-height: unset;
             }
         }
     </style>
@@ -196,16 +209,16 @@
         </div>
     </div>
 
-    <main class="pt-40 px-4 md:px-6 lg:px-8 max-w-screen-2xl mx-auto">
-        <section class="text-center mb-20">
-            <h1 class="text-5xl font-bold mb-8">Projects</h1>
+    <main class="pt-28 md:pt-40 px-4 md:px-6 lg:px-8 max-w-screen-2xl mx-auto">
+        <section class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8">Projects</h1>
             <p class="text-slate-300 text-lg">各プロジェクトの詳細情報と、利用可能なリンクです。</p>
         </section>
 
         <!-- Tabdock -->
         <div class="project-item" data-aos="fade-up">
             <div class="project-content">
-                <h2 class="text-3xl font-bold text-cyan-300 mb-4">Tabdock</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-cyan-300 mb-4">Tabdock</h2>
                 <p class="text-slate-350 mb-1"><span class="underline-animation">Put your spare tablets to good use.</span></p>
                 <p class="text-slate-300 mb-1">不要なタブレットを有効活用するためのプロジェクト。</p>
                 <p class="text-slate-300 mb-4">使い道のないタブレットをAODとして最後まで有効活用できます。</p>
@@ -227,7 +240,7 @@
                 <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_logo.png" alt="Ahoshinet logo">
             </div>
             <div class="project-content">
-                <h2 class="text-3xl font-bold text-cyan-300 mb-4">Ahoshinet Groups</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-cyan-300 mb-4">Ahoshinet Groups</h2>
                 <p class="text-slate-350 mb-1"><span class="underline-animation">Connecting the Future, Ahoshinet Groups.</span></p>
                 <p class="text-slate-300 mb-1">革新的なテクノロジーで、次世代のインフラを。</p>
                 <p class="text-slate-300 mb-4">革新的な次世代インターネットサービスと安全・強固な統合クラウドサービスでお客様のビジネスや生活を支えます。</p>
@@ -243,7 +256,7 @@
         <!-- This is bot Web Services -->
         <div class="project-item" data-aos="fade-up">
             <div class="project-content">
-                <h2 class="text-3xl font-bold text-cyan-300 mb-4">This is bot Web Services</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-cyan-300 mb-4">This is bot Web Services</h2>
                 <p class="text-slate-350 mb-1"><span class="underline-animation">もっと身近に些細な便利を。</span></p>
                 <p class="text-slate-300 mb-1">This is botを主体として成るウェブサービスのプラットフォームです。</p>
                 <p class="text-slate-300 mb-4">シンプルで実用的な機能を提供しています。ぜひご利用ください。</p>
