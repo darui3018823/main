@@ -164,18 +164,18 @@ body.is-menu-open {
 .discord-avatar {
   width: 100%;
   height: 100%;
-  border-radius: 0.7rem;
+  border-radius: 50%;
   object-fit: cover;
   border: 1px solid rgba(255, 255, 255, 0.18);
   /* status dot の周囲を Discord 風に円形にくりぬく */
-  -webkit-mask: radial-gradient(circle at calc(100% - 0.31rem) calc(100% - 0.31rem), transparent 0.56rem, #000 calc(0.56rem + 0.5px));
-  mask: radial-gradient(circle at calc(100% - 0.31rem) calc(100% - 0.31rem), transparent 0.56rem, #000 calc(0.56rem + 0.5px));
+  -webkit-mask: radial-gradient(circle at calc(100% - 0.41rem) calc(100% - 0.41rem), transparent 0.56rem, #000 calc(0.56rem + 0.5px));
+  mask: radial-gradient(circle at calc(100% - 0.41rem) calc(100% - 0.41rem), transparent 0.56rem, #000 calc(0.56rem + 0.5px));
 }
 
 .discord-status-dot {
   position: absolute;
-  right: -0.1rem;
-  bottom: -0.1rem;
+  right: 0;
+  bottom: 0;
   width: 0.82rem;
   height: 0.82rem;
   border-radius: 999px;
