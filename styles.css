@@ -84,7 +84,7 @@ body.is-menu-open {
 .profile-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: stretch;
 }
 
@@ -119,7 +119,7 @@ body.is-menu-open {
 
 .profile-right {
   border-left: 1px solid rgba(255, 255, 255, 0.24);
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 }
 
 .profile-status-list {
