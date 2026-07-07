@@ -61,6 +61,96 @@ body.is-menu-open {
   }
 }
 
+.center-panel-content {
+  position: relative;
+  z-index: 1;
+}
+
+.home-card {
+  text-align: center;
+}
+
+.profile-card {
+  text-align: left;
+}
+
+.profile-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.profile-left {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  align-content: start;
+  text-align: center;
+}
+
+.profile-icon {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 1.5rem;
+  object-fit: cover;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.profile-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.profile-intro {
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(226, 232, 240, 0.88);
+}
+
+.profile-right {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+  padding-left: 2rem;
+}
+
+.profile-status-list {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.profile-status-list li {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.profile-status-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.profile-status-list span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255, 190, 150, 0.95);
+}
+
+.profile-status-list p {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(241, 245, 249, 0.9);
+}
+
 body.is-menu-open .liquid-glass {
   opacity: 0;
   pointer-events: none;
@@ -137,7 +227,8 @@ body.is-menu-open .liquid-glass {
 .side-panel {
   position: fixed;
   top: 0;
-  right: 0;
+  /* 1px はみ出させて inset リングの右辺ラインを画面外に隠す */
+  right: -1px;
   z-index: 60;
   width: min(22rem, calc(100vw - 2rem));
   height: 100vh;
@@ -190,5 +281,26 @@ body.is-menu-open .side-panel {
   .side-panel {
     width: min(20rem, calc(100vw - 1rem));
     padding-inline: 1.5rem;
+  }
+
+  .profile-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .profile-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .profile-right {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    padding-left: 0;
+    padding-top: 1.5rem;
+  }
+
+  .profile-icon {
+    width: 5.25rem;
+    height: 5.25rem;
   }
 }
