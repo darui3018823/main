@@ -21,7 +21,7 @@ func main() {
 	http.Handle("/", fs)
 
 	// Start the server
-	addr := "127.0.0.1:8080"
+	addr := "0.0.0.0:8080"
 	fmt.Printf("Server running at http://%s\n", addr)
 	fmt.Printf("Serving files from: %s\n", wd)
 
