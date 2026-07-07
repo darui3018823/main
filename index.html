@@ -23,6 +23,11 @@
         body {
             font-family: 'Lato', sans-serif;
             background: linear-gradient(rgba(8, 14, 20, 0.55), rgba(8, 14, 20, 0.7)), url('/images/bg-beach.jpg') center / cover no-repeat fixed;
+            overflow-x: hidden;
+        }
+
+        body.is-menu-open {
+            overflow: hidden;
         }
 
         /* Liquid Glass hero card */
@@ -37,6 +42,13 @@
             box-shadow:
                 0 12px 40px -8px rgba(0, 0, 0, 0.12),
                 inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        body.is-menu-open .liquid-glass {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
         }
 
         .liquid-glass::before {
@@ -69,40 +81,113 @@
             object-fit: contain;
             border-radius: 0.375rem;
         }
+
+        .menu-toggle {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 70;
+            width: 2.75rem;
+            height: 2.75rem;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 1.75rem;
+            line-height: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .menu-toggle:hover {
+            opacity: 0.82;
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.75);
+            outline-offset: 4px;
+        }
+
+        .menu-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 55;
+            background: rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 60;
+            width: min(22rem, calc(100vw - 2rem));
+            height: 100vh;
+            padding: 5rem 2rem 2rem;
+            background: rgba(15, 18, 25, 0.25);
+            backdrop-filter: blur(14px) saturate(115%);
+            -webkit-backdrop-filter: blur(14px) saturate(115%);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: -18px 0 45px rgba(0, 0, 0, 0.22);
+            transform: translateX(100%);
+            transition: transform 0.35s ease;
+        }
+
+        body.is-menu-open .menu-backdrop {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        body.is-menu-open .side-panel {
+            transform: translateX(0);
+        }
+
+        .side-panel nav {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .side-panel a {
+            display: block;
+            padding: 0.75rem 0;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .side-panel a:hover {
+            opacity: 0.75;
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 640px) {
+            .menu-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .side-panel {
+                width: min(20rem, calc(100vw - 1rem));
+                padding-inline: 1.5rem;
+            }
+        }
     </style>
 </head>
 
 <body class="text-white min-h-screen">
-    <!-- Navbar -->
-    <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
-            <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
-            <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
-                <a href="/about/" class="hover:text-cyan-300 transition">About</a>
-                <a href="/projects/" class="hover:text-cyan-300 transition">Projects</a>
-                <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
-                <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Mobile menu modal -->
-    <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
-        <div
-            class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
-            <h2 class="text-lg font-semibold mb-4">メニュー</h2>
-            <ul class="space-y-3">
-                <li><a href="/about/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">About</a></li>
-                <li><a href="/projects/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Projects</a></li>
-                <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
-                <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
-            </ul>
-            <div class="mt-4 text-right">
-                <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
-            </div>
-        </div>
-    </div>
+    <button id="hamburger" class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="sidePanel" aria-expanded="false">&#9776;</button>
+    <div id="menuBackdrop" class="menu-backdrop" aria-hidden="true"></div>
+    <aside id="sidePanel" class="side-panel" aria-label="Site menu">
+        <nav>
+            <a href="/about/">About</a>
+            <a href="/projects/">Projects</a>
+            <a href="/links/">Links</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+    </aside>
 
     <!-- Main Content -->
     <main class="min-h-screen flex flex-col items-center justify-center text-center px-4">

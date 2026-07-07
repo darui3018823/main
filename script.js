@@ -1,14 +1,27 @@
 window.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
-    const menuModal = document.getElementById('menuModal');
-    const closeMenu = document.getElementById('closeMenuModal');
+    const menuBackdrop = document.getElementById('menuBackdrop');
 
-    // モバイルメニュー：モーダル表示切り替え
+    const setMenuOpen = (isOpen) => {
+        document.body.classList.toggle('is-menu-open', isOpen);
+        hamburger?.setAttribute('aria-expanded', String(isOpen));
+        hamburger?.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+        if (hamburger) {
+            hamburger.innerHTML = isOpen ? '&times;' : '&#9776;';
+        }
+    };
+
     hamburger?.addEventListener('click', () => {
-        menuModal?.classList.remove('hidden');
+        setMenuOpen(!document.body.classList.contains('is-menu-open'));
     });
 
-    closeMenu?.addEventListener('click', () => {
-        menuModal?.classList.add('hidden');
+    menuBackdrop?.addEventListener('click', () => {
+        setMenuOpen(false);
+    });
+
+    window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            setMenuOpen(false);
+        }
     });
 });
