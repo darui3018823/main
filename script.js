@@ -82,6 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
         window.setTimeout(() => {
             currentCardIndex = (currentCardIndex + 1) % cards.length;
             centerPanelContent.innerHTML = cards[currentCardIndex];
+            centerPanel.classList.toggle('is-profile-card', currentCardIndex === 1);
 
             centerPanel.classList.remove('is-card-exiting');
             centerPanel.classList.add('is-card-entering');
