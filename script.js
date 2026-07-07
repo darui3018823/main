@@ -6,6 +6,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const centerPanelCards = Array.from(document.querySelectorAll('[data-panel-card]'));
     const lanyardPresence = document.querySelector('[data-lanyard-presence]');
     const lanyardAvatar = document.querySelector('[data-lanyard-avatar]');
+    const lanyardProfileIcon = document.querySelector('[data-lanyard-profile-icon]');
     const lanyardStatus = document.querySelector('[data-lanyard-status]');
     const lanyardName = document.querySelector('[data-lanyard-name]');
     const lanyardCustomStatus = document.querySelector('[data-lanyard-custom-status]');
@@ -13,13 +14,15 @@ window.addEventListener('DOMContentLoaded', () => {
     const lanyardRpc = document.querySelector('[data-lanyard-rpc]');
     const lanyardRpcText = document.querySelector('[data-lanyard-rpc-text]');
 
+    const DISCORD_DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/1.png';
+
     const getDiscordAvatarUrl = (user) => {
         if (!user?.id || !user?.avatar) {
-            return '/images/this-is-bot_icon.png';
+            return DISCORD_DEFAULT_AVATAR;
         }
 
         const extension = user.avatar.startsWith('a_') ? 'gif' : 'png';
-        return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${extension}?size=128`;
+        return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${extension}?size=256`;
     };
 
     const formatCustomStatus = (activity) => {
@@ -108,8 +111,12 @@ window.addEventListener('DOMContentLoaded', () => {
             const customStatus = activities.find((activity) => activity.type === 4);
             const rpcActivity = activities.find((activity) => activity.type !== 4 && activity.name !== 'Spotify');
 
+            const avatarUrl = getDiscordAvatarUrl(user);
             if (lanyardAvatar) {
-                lanyardAvatar.src = getDiscordAvatarUrl(user);
+                lanyardAvatar.src = avatarUrl;
+            }
+            if (lanyardProfileIcon) {
+                lanyardProfileIcon.src = avatarUrl;
             }
             if (lanyardName) {
                 lanyardName.textContent = user?.display_name || user?.global_name || user?.username || 'darui3018823';
