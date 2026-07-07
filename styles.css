@@ -80,7 +80,7 @@ body.is-menu-open {
 
 .liquid-glass.is-profile-card {
   padding-top: 1.5rem;
-  padding-bottom: 4.5rem;
+  padding-bottom: 3.5rem;
 }
 
 .profile-card {
@@ -328,6 +328,6 @@ body.is-menu-open .side-panel {
 @media (min-width: 768px) {
   .liquid-glass.is-profile-card {
     padding-top: 1.5rem;
-    padding-bottom: 6.5rem;
+    padding-bottom: 2.5rem;
   }
 }
