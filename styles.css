@@ -66,6 +66,10 @@ body.is-menu-open {
   z-index: 1;
 }
 
+.panel-card[hidden] {
+  display: none;
+}
+
 .home-card {
   text-align: center;
 }

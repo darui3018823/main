@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const menuBackdrop = document.getElementById('menuBackdrop');
     const centerPanel = document.getElementById('centerPanel');
-    const centerPanelContent = document.getElementById('centerPanelContent');
+    const centerPanelCards = Array.from(document.querySelectorAll('[data-panel-card]'));
 
     const setMenuOpen = (isOpen) => {
         document.body.classList.toggle('is-menu-open', isOpen);
@@ -27,51 +27,20 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const cards = [
-        `
-            <div class="home-card">
-                <h1 class="text-3xl md:text-5xl font-bold">Welcome to daruks.com</h1>
-                <p class="mt-4 text-base md:text-xl text-slate-300">Make now this page :)</p>
-            </div>
-        `,
-        `
-            <section class="profile-card" aria-label="Profile">
-                <h2 class="profile-title">Profile!</h2>
-                <div class="profile-layout">
-                    <div class="profile-left">
-                        <img class="profile-icon" src="/images/this-is-bot_icon.png" alt="">
-                        <div>
-                            <p class="profile-name">darui3018823</p>
-                            <p class="profile-intro">
-                                daruks.com を作っている人。Webページ、Bot、ちょっとしたツールを気分で作っています。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="profile-right">
-                        <ul class="profile-status-list">
-                            <li>
-                                <span>Playing!</span>
-                                <p>気になったゲームや作業BGMをここに出せる欄。</p>
-                            </li>
-                            <li>
-                                <span>Making!</span>
-                                <p>いま作っているページ、Bot、実験中の機能など。</p>
-                            </li>
-                            <li>
-                                <span>Notice!</span>
-                                <p>更新メモや一言掲示を置けるスペース。</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        `
-    ];
     let currentCardIndex = 0;
     let isCardAnimating = false;
 
+    const setActiveCard = (cardIndex) => {
+        centerPanelCards.forEach((card, index) => {
+            card.hidden = index !== cardIndex;
+        });
+        centerPanel?.classList.toggle('is-profile-card', centerPanelCards[cardIndex]?.dataset.panelCard === 'profile');
+    };
+
+    setActiveCard(currentCardIndex);
+
     const showNextCard = () => {
-        if (!centerPanel || !centerPanelContent || isCardAnimating || document.body.classList.contains('is-menu-open')) {
+        if (!centerPanel || centerPanelCards.length === 0 || isCardAnimating || document.body.classList.contains('is-menu-open')) {
             return;
         }
 
@@ -80,9 +49,8 @@ window.addEventListener('DOMContentLoaded', () => {
         centerPanel.classList.add('is-card-exiting');
 
         window.setTimeout(() => {
-            currentCardIndex = (currentCardIndex + 1) % cards.length;
-            centerPanelContent.innerHTML = cards[currentCardIndex];
-            centerPanel.classList.toggle('is-profile-card', currentCardIndex === 1);
+            currentCardIndex = (currentCardIndex + 1) % centerPanelCards.length;
+            setActiveCard(currentCardIndex);
 
             centerPanel.classList.remove('is-card-exiting');
             centerPanel.classList.add('is-card-entering');
