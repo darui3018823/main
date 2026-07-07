@@ -29,6 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let currentCardIndex = 0;
     let isCardAnimating = false;
+    let isCardLocked = false;
 
     const setActiveCard = (cardIndex) => {
         centerPanelCards.forEach((card, index) => {
@@ -40,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setActiveCard(currentCardIndex);
 
     const showNextCard = () => {
-        if (!centerPanel || centerPanelCards.length === 0 || isCardAnimating || document.body.classList.contains('is-menu-open')) {
+        if (!centerPanel || centerPanelCards.length === 0 || isCardAnimating || isCardLocked || document.body.classList.contains('is-menu-open')) {
             return;
         }
 
@@ -58,6 +59,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
         window.setTimeout(() => {
             centerPanel.classList.remove('is-card-entering');
+            isCardLocked = centerPanelCards[currentCardIndex]?.dataset.panelCard === 'profile';
+            centerPanel.classList.toggle('is-card-locked', isCardLocked);
+            if (isCardLocked) {
+                centerPanel.removeAttribute('role');
+                centerPanel.removeAttribute('tabindex');
+            }
             isCardAnimating = false;
         }, 1500);
     };

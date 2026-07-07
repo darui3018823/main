@@ -29,6 +29,10 @@ body.is-menu-open {
   outline-offset: 6px;
 }
 
+.liquid-glass.is-card-locked {
+  cursor: default;
+}
+
 .liquid-glass.is-card-exiting {
   animation: cardFadeOutDown 0.45s ease forwards;
 }
@@ -76,7 +80,7 @@ body.is-menu-open {
 
 .liquid-glass.is-profile-card {
   padding-top: 1.5rem;
-  padding-bottom: 3.5rem;
+  padding-bottom: 4.5rem;
 }
 
 .profile-card {
@@ -324,6 +328,6 @@ body.is-menu-open .side-panel {
 @media (min-width: 768px) {
   .liquid-glass.is-profile-card {
     padding-top: 1.5rem;
-    padding-bottom: 5.5rem;
+    padding-bottom: 6.5rem;
   }
 }
