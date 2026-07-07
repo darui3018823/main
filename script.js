@@ -217,4 +217,6 @@ window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', refreshRpcScroll);
 
     updateLanyardPresence();
+    // ステータス変更に追従できるよう定期的に再取得する
+    window.setInterval(updateLanyardPresence, 30000);
 });

@@ -167,6 +167,9 @@ body.is-menu-open {
   border-radius: 0.7rem;
   object-fit: cover;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  /* status dot の周囲を Discord 風に円形にくりぬく */
+  -webkit-mask: radial-gradient(circle at calc(100% - 0.31rem) calc(100% - 0.31rem), transparent 0.56rem, #000 calc(0.56rem + 0.5px));
+  mask: radial-gradient(circle at calc(100% - 0.31rem) calc(100% - 0.31rem), transparent 0.56rem, #000 calc(0.56rem + 0.5px));
 }
 
 .discord-status-dot {
@@ -175,7 +178,6 @@ body.is-menu-open {
   bottom: -0.1rem;
   width: 0.82rem;
   height: 0.82rem;
-  border: 2px solid rgba(20, 22, 28, 0.96);
   border-radius: 999px;
   background: #747f8d;
 }
@@ -255,19 +257,37 @@ body.is-menu-open {
 }
 
 .discord-rpc.is-scrolling .discord-rpc-text {
-  animation: discord-rpc-scroll 9s linear infinite alternate;
+  animation: discord-rpc-scroll 10s linear infinite;
 }
 
+/* 一方通行: 右端まで流れたらフェードアウトして先頭からフェードイン */
 @keyframes discord-rpc-scroll {
 
   0%,
   12% {
     transform: translateX(0);
+    opacity: 1;
   }
 
-  88%,
-  100% {
+  80%,
+  88% {
     transform: translateX(var(--rpc-scroll-distance, 0));
+    opacity: 1;
+  }
+
+  93% {
+    transform: translateX(var(--rpc-scroll-distance, 0));
+    opacity: 0;
+  }
+
+  93.01% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
