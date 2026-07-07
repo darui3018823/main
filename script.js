@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const lanyardCustomStatus = document.querySelector('[data-lanyard-custom-status]');
     const lanyardCustomEmoji = document.querySelector('[data-lanyard-custom-emoji]');
     const lanyardRpc = document.querySelector('[data-lanyard-rpc]');
+    const lanyardRpcText = document.querySelector('[data-lanyard-rpc-text]');
 
     const getDiscordAvatarUrl = (user) => {
         if (!user?.id || !user?.avatar) {
@@ -47,13 +48,34 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const formatRpc = (activity) => {
         if (!activity) {
-            return 'RPC: none';
+            return 'No activity';
         }
 
-        const summary = [activity.name, activity.details, activity.state]
+        return [activity.name, activity.details, activity.state]
             .filter(Boolean)
             .join(' - ');
-        return `RPC: ${summary}`;
+    };
+
+    const refreshRpcScroll = () => {
+        if (!lanyardRpc || !lanyardRpcText) {
+            return;
+        }
+
+        lanyardRpc.classList.remove('is-scrolling');
+        lanyardRpc.style.removeProperty('--rpc-scroll-distance');
+
+        const overflow = lanyardRpcText.scrollWidth - lanyardRpc.clientWidth;
+        if (overflow > 1) {
+            lanyardRpc.style.setProperty('--rpc-scroll-distance', `-${overflow}px`);
+            lanyardRpc.classList.add('is-scrolling');
+        }
+    };
+
+    const setRpcText = (text) => {
+        if (lanyardRpcText) {
+            lanyardRpcText.textContent = text;
+        }
+        window.requestAnimationFrame(refreshRpcScroll);
     };
 
     const setLanyardStatus = (status) => {
@@ -96,18 +118,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 lanyardCustomStatus.textContent = formatCustomStatus(customStatus);
             }
             setCustomEmoji(customStatus?.emoji);
-            if (lanyardRpc) {
-                lanyardRpc.textContent = formatRpc(rpcActivity);
-            }
+            setRpcText(formatRpc(rpcActivity));
 
             setLanyardStatus(status);
         } catch (error) {
             if (lanyardCustomStatus) {
                 lanyardCustomStatus.textContent = 'Discord status unavailable';
             }
-            if (lanyardRpc) {
-                lanyardRpc.textContent = 'RPC: unavailable';
-            }
+            setRpcText('Unavailable');
             setCustomEmoji(null);
             setLanyardStatus('offline');
             console.error(error);
@@ -146,6 +164,8 @@ window.addEventListener('DOMContentLoaded', () => {
             card.hidden = index !== cardIndex;
         });
         centerPanel?.classList.toggle('is-profile-card', centerPanelCards[cardIndex]?.dataset.panelCard === 'profile');
+        // 非表示中は幅が測れないため、カードが表示されたタイミングで測り直す
+        window.requestAnimationFrame(refreshRpcScroll);
     };
 
     setActiveCard(currentCardIndex);
@@ -186,6 +206,8 @@ window.addEventListener('DOMContentLoaded', () => {
             showNextCard();
         }
     });
+
+    window.addEventListener('resize', refreshRpcScroll);
 
     updateLanyardPresence();
 });
