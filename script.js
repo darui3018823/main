@@ -1,8 +1,118 @@
 window.addEventListener('DOMContentLoaded', () => {
+    const LANYARD_USER_ID = '973782871963762698';
     const hamburger = document.getElementById('hamburger');
     const menuBackdrop = document.getElementById('menuBackdrop');
     const centerPanel = document.getElementById('centerPanel');
     const centerPanelCards = Array.from(document.querySelectorAll('[data-panel-card]'));
+    const lanyardPresence = document.querySelector('[data-lanyard-presence]');
+    const lanyardAvatar = document.querySelector('[data-lanyard-avatar]');
+    const lanyardStatus = document.querySelector('[data-lanyard-status]');
+    const lanyardName = document.querySelector('[data-lanyard-name]');
+    const lanyardCustomStatus = document.querySelector('[data-lanyard-custom-status]');
+    const lanyardCustomEmoji = document.querySelector('[data-lanyard-custom-emoji]');
+    const lanyardRpc = document.querySelector('[data-lanyard-rpc]');
+
+    const getDiscordAvatarUrl = (user) => {
+        if (!user?.id || !user?.avatar) {
+            return '/images/this-is-bot_icon.png';
+        }
+
+        const extension = user.avatar.startsWith('a_') ? 'gif' : 'png';
+        return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${extension}?size=128`;
+    };
+
+    const formatCustomStatus = (activity) => {
+        if (!activity) {
+            return 'No custom status';
+        }
+
+        return activity.state || activity.name || 'Custom Status';
+    };
+
+    const setCustomEmoji = (emoji) => {
+        if (!lanyardCustomEmoji) {
+            return;
+        }
+
+        if (!emoji?.id) {
+            lanyardCustomEmoji.hidden = true;
+            lanyardCustomEmoji.removeAttribute('src');
+            return;
+        }
+
+        const extension = emoji.animated ? 'gif' : 'png';
+        lanyardCustomEmoji.src = `https://cdn.discordapp.com/emojis/${emoji.id}.${extension}?size=32`;
+        lanyardCustomEmoji.hidden = false;
+    };
+
+    const formatRpc = (activity) => {
+        if (!activity) {
+            return 'RPC: none';
+        }
+
+        const summary = [activity.name, activity.details, activity.state]
+            .filter(Boolean)
+            .join(' - ');
+        return `RPC: ${summary}`;
+    };
+
+    const setLanyardStatus = (status) => {
+        if (!lanyardStatus) {
+            return;
+        }
+
+        const normalizedStatus = ['online', 'idle', 'dnd', 'offline'].includes(status) ? status : 'offline';
+        lanyardStatus.className = `discord-status-dot is-${normalizedStatus}`;
+        lanyardStatus.setAttribute('aria-label', `Discord status: ${normalizedStatus}`);
+    };
+
+    const updateLanyardPresence = async () => {
+        if (!lanyardPresence) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`https://api.lanyard.rest/v1/users/${LANYARD_USER_ID}`);
+            if (!response.ok) {
+                throw new Error(`Lanyard request failed: ${response.status}`);
+            }
+
+            const payload = await response.json();
+            if (!payload.success || !payload.data) {
+                throw new Error('Lanyard response was not successful.');
+            }
+
+            const { discord_user: user, discord_status: status, activities = [] } = payload.data;
+            const customStatus = activities.find((activity) => activity.type === 4);
+            const rpcActivity = activities.find((activity) => activity.type !== 4 && activity.name !== 'Spotify');
+
+            if (lanyardAvatar) {
+                lanyardAvatar.src = getDiscordAvatarUrl(user);
+            }
+            if (lanyardName) {
+                lanyardName.textContent = user?.display_name || user?.global_name || user?.username || 'darui3018823';
+            }
+            if (lanyardCustomStatus) {
+                lanyardCustomStatus.textContent = formatCustomStatus(customStatus);
+            }
+            setCustomEmoji(customStatus?.emoji);
+            if (lanyardRpc) {
+                lanyardRpc.textContent = formatRpc(rpcActivity);
+            }
+
+            setLanyardStatus(status);
+        } catch (error) {
+            if (lanyardCustomStatus) {
+                lanyardCustomStatus.textContent = 'Discord status unavailable';
+            }
+            if (lanyardRpc) {
+                lanyardRpc.textContent = 'RPC: unavailable';
+            }
+            setCustomEmoji(null);
+            setLanyardStatus('offline');
+            console.error(error);
+        }
+    };
 
     const setMenuOpen = (isOpen) => {
         document.body.classList.toggle('is-menu-open', isOpen);
@@ -76,4 +186,6 @@ window.addEventListener('DOMContentLoaded', () => {
             showNextCard();
         }
     });
+
+    updateLanyardPresence();
 });
