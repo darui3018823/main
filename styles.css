@@ -20,7 +20,45 @@ body.is-menu-open {
   box-shadow:
     0 12px 40px -8px rgba(0, 0, 0, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  cursor: pointer;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.liquid-glass:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 6px;
+}
+
+.liquid-glass.is-card-exiting {
+  animation: cardFadeOutDown 0.45s ease forwards;
+}
+
+.liquid-glass.is-card-entering {
+  animation: cardFadeInUp 0.45s ease both;
+}
+
+@keyframes cardFadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+@keyframes cardFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 body.is-menu-open .liquid-glass {
