@@ -119,6 +119,13 @@ body.is-menu-open {
   color: rgba(255, 255, 255, 0.95);
 }
 
+.profile-role {
+  margin-top: 0.2rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: rgba(255, 190, 150, 0.9);
+}
+
 .profile-intro {
   margin-top: 0.55rem;
   font-size: 0.95rem;
