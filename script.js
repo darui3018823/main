@@ -347,5 +347,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     updateLanyardPresence();
     window.setInterval(updateLanyardPresence, 30000);
-    window.addEventListener('load', playWelcomeTypewriter, { once: true });
+    // DOMContentLoaded 時点で開始する。window.load を待つと、遅い外部画像 (Discord CDN など) が
+    // 完了するまで見出しが空のままになり、スマホ回線ではアニメーションが動かないように見えてしまう。
+    playWelcomeTypewriter();
 });
