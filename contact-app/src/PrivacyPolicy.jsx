@@ -132,54 +132,66 @@ export default function PrivacyPolicy({ onBack }) {
                     <PolicyChapter title="第5章 データの利用目的" id="pp-ch5">
                         <PolicyArticle title="第7条（利用目的）">
                             <p>収集したデータは、以下の目的のみに使用されます。</p>
-                            <div className="policy-info-list">
+                            <ol className="policy-info-list policy-numbered-list">
                                 {usagePurposes.map(([title, description]) => (
-                                    <div className="policy-info-item is-purpose" key={title}>
+                                    <li className="policy-info-item is-purpose" key={title}>
                                         <h4>{title}</h4>
                                         <p>{description}</p>
-                                    </div>
+                                    </li>
                                 ))}
-                            </div>
+                            </ol>
                             <div className="policy-negative">
                                 <h4>以下の利用は行いません</h4>
-                                <ul>
+                                <ol>
                                     {prohibitedUses.map((item) => <li key={item}>{item}</li>)}
-                                </ul>
+                                </ol>
                             </div>
                         </PolicyArticle>
                     </PolicyChapter>
 
                     <PolicyChapter title="第6章 第三者提供" id="pp-ch6">
                         <PolicyArticle title="第8条（第三者提供の有無）">
-                            <p>本サービスは、基本的にすべてのデータを第三者に提供することは一切ありません。</p>
-                            <p>ただし、以下の条件に該当する場合は、この限りではありません。</p>
                             <ol>
-                                <li>ユーザーが明示的に同意した場合</li>
-                                <li>法的要請（裁判所命令、警察からの正式な請求）があった場合</li>
-                                <li>サービス提供上の技術的要請が発生した場合（最小限の情報に限る）</li>
+                                <li>本サービスは、基本的にすべてのデータを第三者に提供することは一切ありません。</li>
+                                <li>
+                                    ただし、以下の条件に該当する場合は、この限りではありません。
+                                    <ol>
+                                        <li>ユーザーが明示的に同意した場合</li>
+                                        <li>法的要請（裁判所命令、警察からの正式な請求）があった場合</li>
+                                        <li>サービス提供上の技術的要請が発生した場合（最小限の情報に限る）</li>
+                                    </ol>
+                                </li>
                             </ol>
                         </PolicyArticle>
                     </PolicyChapter>
 
                     <PolicyChapter title="第7章 ユーザーの権利" id="pp-ch7">
                         <PolicyArticle title="第9条（データの開示請求）">
-                            <p>ユーザーは、自身に関するデータの開示を請求することができます。</p>
-                            <p>開示請求は、下記のお問い合わせ窓口までご連絡ください。</p>
+                            <ol>
+                                <li>ユーザーは、自身に関するデータの開示を請求することができます。</li>
+                                <li>開示請求は、下記のお問い合わせ窓口までご連絡ください。</li>
+                            </ol>
                         </PolicyArticle>
                         <PolicyArticle title="第10条（データ削除リクエスト）">
-                            <p>データの削除をご希望の場合は、お問い合わせ窓口までご連絡ください。</p>
-                            <p>ただし、対応中のお問い合わせに関するデータは、対応完了まで削除できない場合があります。</p>
+                            <ol>
+                                <li>データの削除をご希望の場合は、お問い合わせ窓口までご連絡ください。</li>
+                                <li>ただし、対応中のお問い合わせに関するデータは、対応完了まで削除できない場合があります。</li>
+                            </ol>
                         </PolicyArticle>
                     </PolicyChapter>
 
                     <PolicyChapter title="第8章 お問い合わせ" id="pp-ch8">
                         <PolicyArticle title="第11条（問い合わせ方法）">
-                            <p>本プライバシーポリシーに関するお問い合わせ、データの開示請求、削除依頼は以下の窓口までご連絡ください。</p>
-                            <div className="policy-info-item">
-                                <h4>Discord</h4>
-                                <p className="policy-mono">@darui3018823</p>
-                                <p>24時間受け付けていますが、返信には時間がかかる場合があります。</p>
-                            </div>
+                            <ol className="policy-info-list policy-numbered-list">
+                                <li className="policy-info-item">
+                                    <p>本プライバシーポリシーに関するお問い合わせ、データの開示請求、削除依頼は以下の窓口までご連絡ください。</p>
+                                </li>
+                                <li className="policy-info-item">
+                                    <h4>Discord</h4>
+                                    <p className="policy-mono">@darui3018823</p>
+                                    <p>24時間受け付けていますが、返信には時間がかかる場合があります。</p>
+                                </li>
+                            </ol>
                         </PolicyArticle>
                     </PolicyChapter>
 
