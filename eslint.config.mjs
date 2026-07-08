@@ -11,7 +11,7 @@ export default [
   js.configs.recommended,
   {
     // サイト共通のブラウザ用スクリプト
-    files: ['script.js', 'projects/**/*.js'],
+    files: ['*.js', 'projects/**/*.js'],
     languageOptions: {
       globals: { ...globals.browser },
     },
