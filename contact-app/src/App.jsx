@@ -84,7 +84,7 @@ function CategoryList({ onSelect, onPrivacyPolicy }) {
         <>
             <h1 id="contactTitle" className="contact-title">Contact!</h1>
             <p className="contact-lead">目的に合ったカテゴリを選ぶと、専用のお問い合わせフォームが開きます。</p>
-            <p className="contact-note">
+            <p className="contact-note contact-policy-note">
                 <a
                     href={PRIVACY_POLICY_PATH}
                     className="contact-note-link"
@@ -96,6 +96,11 @@ function CategoryList({ onSelect, onPrivacyPolicy }) {
                 >
                     プライバシーポリシー
                 </a>をご確認の上、お問い合わせください。
+            </p>
+            <p className="contact-note contact-mail-note">
+                お困りですか？
+                <a href="mailto:contact@daruks.com" className="contact-note-link">contact@daruks.com</a>
+                にメールすることでもお問い合わせいただけます。
             </p>
 
             <div className="contact-list">
