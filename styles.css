@@ -325,6 +325,17 @@ body.is-menu-open {
   color: rgba(241, 245, 249, 0.9);
 }
 
+.status-link {
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.status-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: rgba(255, 190, 150, 0.95);
+  text-decoration-color: rgba(255, 190, 150, 0.95);
+}
+
 .profile-links {
   display: flex;
   flex-wrap: wrap;
