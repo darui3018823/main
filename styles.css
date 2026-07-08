@@ -137,6 +137,7 @@ h1.typewriter-line {
 }
 
 .profile-card {
+  overflow: hidden;
   text-align: left;
 }
 
@@ -398,14 +399,36 @@ html.is-chromium .profile-role {
 }
 
 .profile-links {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.96rem;
   margin-top: 0.2rem;
 }
 
-.link-tile {
+.profile-links-viewport {
+  overflow: hidden;
+  width: min(100%, 25rem);
+}
+
+.profile-links-track {
+  display: flex;
+  width: 100%;
+  transform: translateX(0);
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profile-links-track.is-more-page {
+  transform: translateX(-100%);
+}
+
+.profile-links-page {
+  display: flex;
+  flex: 0 0 100%;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.96rem;
+  min-width: 0;
+}
+
+.link-tile,
+.profile-links-page-button {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -431,14 +454,44 @@ html.is-chromium .profile-role {
   transform: translateY(-50%);
 }
 
+.profile-links-separator {
+  width: 1px;
+  height: 1.32rem;
+  margin-left: -0.05rem;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.profile-links-page-button {
+  margin-left: -0.35rem;
+}
+
 .link-tile:hover,
-.link-tile:focus-visible {
+.link-tile:focus-visible,
+.profile-links-page-button:hover,
+.profile-links-page-button:focus-visible {
   color: rgba(255, 190, 150, 0.95);
 }
 
-.link-tile svg {
+.link-tile svg,
+.profile-links-page-button svg {
   width: 1.52rem;
   height: 1.52rem;
+}
+
+.profile-links-page-button svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: transform 0.2s ease;
+}
+
+.profile-links-page-button:hover svg,
+.profile-links-page-button:focus-visible svg {
+  transform: translateX(2px);
+}
+
+.profile-links-page-button.is-prev:hover svg,
+.profile-links-page-button.is-prev:focus-visible svg {
+  transform: translateX(-2px);
 }
 
 .link-tile-img {
@@ -684,11 +737,26 @@ body.is-menu-open .side-panel {
     height: 5.25rem;
   }
 
+  .profile-links-separator {
+    height: 1.2rem;
+    margin-left: 0;
+  }
+
+  .profile-links-page-button {
+    margin-left: -0.2rem;
+  }
+
 }
 
 @media (min-width: 768px) {
   .liquid-glass.is-profile-card {
     padding-top: 1.5rem;
     padding-bottom: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-links-track {
+    transition: none;
   }
 }

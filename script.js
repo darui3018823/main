@@ -5,6 +5,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const sidePanelContactLink = document.getElementById('sidePanelContactLink');
     const centerPanel = document.getElementById('centerPanel');
     const centerPanelCards = Array.from(document.querySelectorAll('[data-panel-card]'));
+    const profileLinksViewport = document.querySelector('.profile-links-viewport');
+    const profileLinksTrack = document.querySelector('[data-profile-links-track]');
+    const profileLinksPages = Array.from(document.querySelectorAll('[data-profile-links-page]'));
+    const profileLinksNextButton = document.querySelector('[data-profile-links-next]');
+    const profileLinksPrevButton = document.querySelector('[data-profile-links-prev]');
     const typewriterTargets = Array.from(document.querySelectorAll('[data-typewriter]'));
     const homeCardPrompt = document.querySelector('.home-card-prompt');
     const lanyardPresence = document.querySelector('[data-lanyard-presence]');
@@ -133,6 +138,31 @@ window.addEventListener('DOMContentLoaded', () => {
         window.requestAnimationFrame(refreshRpcScroll);
     };
 
+    const focusWithoutScroll = (element) => {
+        element?.focus({ preventScroll: true });
+    };
+
+    const setProfileLinksPage = (pageName) => {
+        if (!profileLinksTrack || profileLinksPages.length === 0) {
+            return;
+        }
+
+        if (profileLinksViewport) {
+            profileLinksViewport.scrollLeft = 0;
+        }
+
+        const isMorePage = pageName === 'more';
+        profileLinksTrack.classList.toggle('is-more-page', isMorePage);
+
+        profileLinksPages.forEach((page) => {
+            const isActive = page.dataset.profileLinksPage === pageName;
+            page.setAttribute('aria-hidden', String(!isActive));
+            page.inert = !isActive;
+        });
+
+        window.requestAnimationFrame(refreshRpcScroll);
+    };
+
     const setLanyardStatus = (status) => {
         if (!lanyardStatus) {
             return;
@@ -224,6 +254,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
+            if (profileLinksTrack?.classList.contains('is-more-page')) {
+                setProfileLinksPage('main');
+                focusWithoutScroll(profileLinksNextButton);
+                return;
+            }
             setMenuOpen(false);
         }
     });
@@ -237,6 +272,7 @@ window.addEventListener('DOMContentLoaded', () => {
             card.hidden = index !== cardIndex;
         });
         centerPanel?.classList.toggle('is-profile-card', centerPanelCards[cardIndex]?.dataset.panelCard === 'profile');
+        setProfileLinksPage('main');
         // 非表示中は幅が測れないため、カードが表示されたタイミングで測り直す
         window.requestAnimationFrame(refreshRpcScroll);
     };
@@ -278,6 +314,20 @@ window.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             showNextCard();
         }
+    });
+
+    profileLinksNextButton?.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setProfileLinksPage('more');
+        focusWithoutScroll(profileLinksPrevButton);
+    });
+
+    profileLinksPrevButton?.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setProfileLinksPage('main');
+        focusWithoutScroll(profileLinksNextButton);
     });
 
     document.querySelectorAll('.profile-links a[href="/contact/"]').forEach((profileContactLink) => {
