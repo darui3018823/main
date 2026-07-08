@@ -393,18 +393,40 @@ body.is-menu-open {
   transform-origin: right;
 }
 
+.side-panel a.is-contact-highlighted {
+  position: relative;
+}
+
+/* ::after の位置基準を a(グリッドアイテム)に移し、下線を全幅にする */
+.side-panel a.is-contact-highlighted .underline-animation {
+  position: static;
+}
+
 .side-panel a.is-contact-highlighted .underline-animation::after {
-  animation: sidebarContactUnderline 0.45s ease forwards;
-  transform-origin: left;
+  bottom: 0.5rem;
+  background: rgba(255, 190, 150, 0.95);
+  animation: sidebarContactUnderline 0.8s ease forwards;
 }
 
 @keyframes sidebarContactUnderline {
-  from {
+  0% {
     transform: scaleX(0);
+    transform-origin: left;
   }
 
-  to {
+  37.5% {
     transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  55% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
   }
 }
 
