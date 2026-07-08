@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const LANYARD_USER_ID = '973782871963762698';
     const hamburger = document.getElementById('hamburger');
     const menuBackdrop = document.getElementById('menuBackdrop');
+    const sidePanelContactLink = document.getElementById('sidePanelContactLink');
     const centerPanel = document.getElementById('centerPanel');
     const centerPanelCards = Array.from(document.querySelectorAll('[data-panel-card]'));
     const lanyardPresence = document.querySelector('[data-lanyard-presence]');
@@ -146,6 +147,20 @@ window.addEventListener('DOMContentLoaded', () => {
         if (hamburger) {
             hamburger.innerHTML = isOpen ? '&times;' : '&#9776;';
         }
+        if (!isOpen) {
+            sidePanelContactLink?.classList.remove('is-contact-highlighted');
+        }
+    };
+
+    const highlightSidePanelContact = () => {
+        if (!sidePanelContactLink) {
+            return;
+        }
+
+        sidePanelContactLink.classList.remove('is-contact-highlighted');
+        window.setTimeout(() => {
+            sidePanelContactLink.classList.add('is-contact-highlighted');
+        }, 180);
     };
 
     hamburger?.addEventListener('click', () => {
@@ -218,6 +233,10 @@ window.addEventListener('DOMContentLoaded', () => {
     // (event.preventDefault() でデフォルトの /contact/ への遷移を止められる)
     const profileContactLink = document.getElementById('profileContactLink');
     profileContactLink?.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setMenuOpen(true);
+        highlightSidePanelContact();
     });
 
     window.addEventListener('resize', refreshRpcScroll);

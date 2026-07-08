@@ -364,6 +364,50 @@ body.is-menu-open {
   border-radius: 0.3rem;
 }
 
+.underline-animation {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-animation::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #06b6d4;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.underline-animation:hover::after,
+.underline-animation.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.side-panel a:not(.is-contact-highlighted) .underline-animation:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.side-panel a.is-contact-highlighted .underline-animation::after {
+  animation: sidebarContactUnderline 0.45s ease forwards;
+  transform-origin: left;
+}
+
+@keyframes sidebarContactUnderline {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
 body.is-menu-open .liquid-glass {
   opacity: 0;
   pointer-events: none;
