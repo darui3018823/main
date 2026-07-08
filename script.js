@@ -14,7 +14,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const lanyardCustomEmoji = document.querySelector('[data-lanyard-custom-emoji]');
     const lanyardRpc = document.querySelector('[data-lanyard-rpc]');
     const lanyardRpcText = document.querySelector('[data-lanyard-rpc-text]');
-    const profileLinkStack = document.querySelector('[data-profile-link-stack]');
 
     const DISCORD_DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/1.png';
 
@@ -229,30 +228,6 @@ window.addEventListener('DOMContentLoaded', () => {
             showNextCard();
         }
     });
-
-    const buildProfileLinkVariants = () => {
-        if (!profileLinkStack || profileLinkStack.querySelector('.profile-link-row--button')) {
-            return;
-        }
-
-        const baseLinks = profileLinkStack.querySelector('.profile-link-row--flat .profile-links');
-        if (!baseLinks) {
-            return;
-        }
-
-        ['profile-link-row--button', 'profile-link-row--ghost'].forEach((modifierClass) => {
-            const row = document.createElement('div');
-            row.className = `profile-link-row ${modifierClass}`;
-
-            const links = baseLinks.cloneNode(true);
-            links.querySelectorAll('[id]').forEach((element) => element.removeAttribute('id'));
-
-            row.append(links);
-            profileLinkStack.append(row);
-        });
-    };
-
-    buildProfileLinkVariants();
 
     document.querySelectorAll('.profile-links a[href="/contact/"]').forEach((profileContactLink) => {
         profileContactLink.addEventListener('click', (event) => {
