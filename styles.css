@@ -332,6 +332,10 @@ html.is-chromium .profile-role {
   color: rgba(255, 190, 150, 0.95);
 }
 
+.profile-status-list .profile-links-heading {
+  margin-bottom: 0.55rem;
+}
+
 .profile-status-list p {
   font-size: 0.98rem;
   line-height: 1.65;
