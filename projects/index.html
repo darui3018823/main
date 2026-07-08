@@ -18,12 +18,12 @@
 
     <style>
         .projects-main {
-            width: min(920px, calc(100% - 2rem));
+            width: min(800px, calc(100% - 2rem));
             min-height: 100vh;
             margin: 0 auto;
-            padding: 5rem 0 4rem;
+            padding: 6rem 0 4rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .projects-panel {
@@ -32,11 +32,8 @@
             cursor: default;
         }
 
-        .projects-panel-header {
-            margin-bottom: 0.45rem;
-        }
-
         .projects-title {
+            margin-bottom: 1.5rem;
             font-size: 1.45rem;
             line-height: 1.2;
             font-weight: 700;
@@ -45,28 +42,30 @@
 
         .project-list {
             display: grid;
+            gap: 1.15rem;
         }
 
         .project-row {
             display: grid;
-            grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
-            gap: clamp(1rem, 2.6vw, 1.45rem);
-            align-items: center;
-            padding: 1.1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+            grid-template-columns: 3.4rem minmax(0, 1fr);
+            gap: 1rem;
+            padding-bottom: 1.15rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         .project-row:last-child {
+            padding-bottom: 0;
             border-bottom: 0;
-            padding-bottom: 0.2rem;
         }
 
         .project-media {
-            position: relative;
-            aspect-ratio: 16 / 10;
+            width: 3.4rem;
+            height: 3.4rem;
+            display: grid;
+            place-items: center;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 1rem;
+            border-radius: 0.85rem;
             background: rgba(255, 255, 255, 0.055);
         }
 
@@ -77,13 +76,24 @@
         }
 
         .project-media.is-logo {
-            display: grid;
-            place-items: center;
-            padding: 1rem;
+            padding: 0.4rem;
         }
 
         .project-media.is-logo img {
             object-fit: contain;
+        }
+
+        .project-media svg {
+            width: 1.7rem;
+            height: 1.7rem;
+            color: rgba(241, 245, 249, 0.92);
+        }
+
+        .project-subtitle {
+            margin-top: 0.35rem;
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .project-body {
@@ -92,86 +102,59 @@
 
         .project-topline {
             display: flex;
-            align-items: center;
+            align-items: baseline;
             justify-content: space-between;
             gap: 1rem;
         }
 
         .project-name {
-            font-size: clamp(1.18rem, 2vw, 1.55rem);
-            font-weight: 800;
-            line-height: 1.15;
+            font-size: 1.02rem;
+            font-weight: 700;
+            line-height: 1.3;
             color: rgba(255, 255, 255, 0.96);
         }
 
         .project-link {
             flex: 0 0 auto;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 2.1rem;
-            padding: 0 0.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.24);
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.07);
-            color: rgba(255, 255, 255, 0.92);
-            font-size: 0.78rem;
-            font-weight: 700;
-            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: rgba(241, 245, 249, 0.75);
+            transition: color 0.2s ease, text-decoration-color 0.2s ease;
         }
 
         .project-link:hover,
         .project-link:focus-visible {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.14);
-            border-color: rgba(255, 255, 255, 0.44);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            color: rgba(255, 190, 150, 0.95);
+            text-decoration-color: rgba(255, 190, 150, 0.95);
         }
 
         .project-catch {
-            margin-top: 0.55rem;
-            font-size: 0.86rem;
+            margin-top: 0.15rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            color: rgba(255, 190, 150, 0.92);
+            color: rgba(255, 190, 150, 0.95);
         }
 
         .project-description {
-            margin-top: 0.45rem;
-            max-width: 42rem;
+            margin-top: 0.35rem;
             font-size: 0.94rem;
             line-height: 1.65;
-            color: rgba(226, 232, 240, 0.86);
+            color: rgba(241, 245, 249, 0.9);
         }
 
         @media (max-width: 760px) {
             .projects-main {
-                width: min(100% - 1rem, 920px);
+                width: min(100% - 1rem, 800px);
                 padding-top: 4.75rem;
-                align-items: start;
-            }
-
-            .project-row {
-                grid-template-columns: 1fr;
-                gap: 0.95rem;
-            }
-
-            .project-media {
-                aspect-ratio: 16 / 9;
-                border-radius: 0.9rem;
-            }
-
-            .project-topline {
-                align-items: start;
             }
         }
 
         @media (max-width: 360px) {
-            .project-topline {
-                display: grid;
-                gap: 0.75rem;
-            }
-
-            .project-link {
-                width: fit-content;
+            .project-row {
+                grid-template-columns: 1fr;
+                gap: 0.65rem;
             }
         }
     </style>
@@ -195,14 +178,14 @@
 
     <main class="projects-main">
         <section class="liquid-glass projects-panel" aria-labelledby="projectsTitle">
-            <header class="projects-panel-header">
-                <h1 id="projectsTitle" class="projects-title">Projects!</h1>
-            </header>
+            <h1 id="projectsTitle" class="projects-title">Projects!</h1>
 
             <div class="project-list">
                 <article class="project-row">
                     <div class="project-media">
-                        <img src="https://cdn.daruks.com/public/images/tabdock/tabdock_img2.jpg" alt="Tabdock screenshot">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
                     </div>
                     <div class="project-body">
                         <div class="project-topline">
@@ -214,13 +197,15 @@
                     </div>
                 </article>
 
+                <h2 class="project-subtitle">Services</h2>
+
                 <article class="project-row">
                     <div class="project-media is-logo">
-                        <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_logo.png" alt="Ahoshinet Groups logo">
+                        <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_icon.png" alt="Ahoshinet Groups icon">
                     </div>
                     <div class="project-body">
                         <div class="project-topline">
-                            <h2 class="project-name">Ahoshinet Groups</h2>
+                            <h3 class="project-name">Ahoshinet Groups</h3>
                             <a class="project-link" href="https://corp.daruks.com/" target="_blank" rel="noopener noreferrer">Website</a>
                         </div>
                         <p class="project-catch">Connecting the Future, Ahoshinet Groups.</p>
@@ -234,7 +219,7 @@
                     </div>
                     <div class="project-body">
                         <div class="project-topline">
-                            <h2 class="project-name">This is bot Web Services</h2>
+                            <h3 class="project-name">This is bot Web Services</h3>
                             <a class="project-link" href="https://bot.daruks.com/" target="_blank" rel="noopener noreferrer">Website</a>
                         </div>
                         <p class="project-catch">もっと身近に些細な便利を。</p>
