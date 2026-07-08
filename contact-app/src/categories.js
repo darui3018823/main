@@ -46,9 +46,3 @@ export const CATEGORIES = [
         direct: { url: 'https://corp.daruks.com/', label: 'グループサイトへ ↗' },
     },
 ];
-
-// 統合前の旧カテゴリキーを新カテゴリへ引き継ぐ
-export const LEGACY_KEYS = {
-    otherbot: 'thisbot',
-    sitefunc: 'siteissue',
-};

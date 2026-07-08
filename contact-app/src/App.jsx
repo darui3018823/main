@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
-import { CATEGORIES, LEGACY_KEYS } from './categories.js';
+import { CATEGORIES } from './categories.js';
 import ContactForm from './ContactForm.jsx';
 import { CategoryIcon } from './icons.jsx';
 
-const resolveKey = (raw) => {
-    const key = LEGACY_KEYS[raw] || raw;
-    return CATEGORIES.some((category) => category.key === key) ? key : null;
-};
+const resolveKey = (raw) => (CATEGORIES.some((category) => category.key === raw) ? raw : null);
 
 const readKeyFromUrl = () => resolveKey(new URLSearchParams(window.location.search).get('c'));
 
