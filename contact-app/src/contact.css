@@ -280,10 +280,236 @@ select.contact-input option {
     color: rgba(203, 213, 225, 0.7);
 }
 
+/* ---- プライバシーポリシー ---- */
+
+.policy-main {
+    width: min(960px, calc(100% - 2rem));
+}
+
+.policy-panel {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.policy-header {
+    display: grid;
+    gap: 0.45rem;
+    padding-bottom: 0.25rem;
+    text-align: center;
+}
+
+.policy-title {
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    line-height: 1.2;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.policy-subtitle {
+    font-size: 0.98rem;
+    color: rgba(203, 213, 225, 0.82);
+}
+
+.policy-updated {
+    font-size: 0.82rem;
+    color: rgba(203, 213, 225, 0.66);
+}
+
+.policy-important {
+    padding: 1.15rem;
+    border: 1px solid rgba(255, 190, 150, 0.34);
+    border-radius: 0.85rem;
+    background: rgba(255, 190, 150, 0.09);
+}
+
+.policy-important h2 {
+    margin-bottom: 0.45rem;
+    font-size: 1rem;
+    font-weight: 750;
+    color: rgba(255, 205, 170, 0.96);
+}
+
+.policy-important p,
+.policy-article p,
+.policy-article li {
+    font-size: 0.92rem;
+    line-height: 1.78;
+    color: rgba(226, 232, 240, 0.88);
+}
+
+.policy-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.policy-chapter {
+    display: grid;
+    gap: 1rem;
+}
+
+.policy-chapter-header {
+    padding: 0.75rem 1rem;
+    border-left: 4px solid rgba(145, 226, 255, 0.9);
+    border-radius: 0.85rem;
+    background: rgba(145, 226, 255, 0.08);
+}
+
+.policy-chapter-header h2 {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    font-weight: 750;
+    color: rgba(145, 226, 255, 0.94);
+}
+
+.policy-article {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.policy-article h3 {
+    font-size: 1rem;
+    line-height: 1.35;
+    font-weight: 750;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.policy-article h4 {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    font-weight: 700;
+    color: rgba(241, 245, 249, 0.9);
+}
+
+.policy-article a {
+    color: rgba(145, 226, 255, 0.94);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.policy-article ol,
+.policy-article ul {
+    display: grid;
+    gap: 0.45rem;
+    padding-left: 1.25rem;
+}
+
+.policy-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.policy-data-table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.policy-data-table th,
+.policy-data-table td {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    text-align: left;
+    vertical-align: top;
+}
+
+.policy-data-table th {
+    color: rgba(203, 213, 225, 0.86);
+    background: rgba(255, 255, 255, 0.075);
+}
+
+.policy-data-table td {
+    color: rgba(226, 232, 240, 0.88);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.policy-data-table td:first-child {
+    width: 12rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.policy-small {
+    font-size: 0.8rem;
+    color: rgba(203, 213, 225, 0.72);
+}
+
+.policy-info-list {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.policy-info-item {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.85rem;
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.policy-info-item h4 {
+    color: rgba(145, 226, 255, 0.94);
+}
+
+.policy-info-item.is-purpose h4 {
+    color: rgba(134, 239, 172, 0.92);
+}
+
+.policy-negative {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.85rem;
+    border: 1px solid rgba(252, 165, 165, 0.28);
+    border-radius: 0.85rem;
+    background: rgba(127, 29, 29, 0.16);
+}
+
+.policy-negative h4 {
+    color: rgba(252, 165, 165, 0.95);
+}
+
+.policy-mono {
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.policy-end {
+    text-align: center;
+    color: rgba(203, 213, 225, 0.72);
+}
+
+.policy-changelog-item {
+    padding: 0.25rem 0 0.25rem 1rem;
+    border-left: 2px solid rgba(145, 226, 255, 0.6);
+}
+
+.policy-changelog-item p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(145, 226, 255, 0.94);
+}
+
+.policy-changelog-item span {
+    font-size: 0.9rem;
+    color: rgba(226, 232, 240, 0.88);
+}
+
 @media (max-width: 760px) {
     .contact-main {
         width: min(100% - 1rem, 800px);
         padding-top: 4.75rem;
+    }
+
+    .policy-main {
+        width: min(100% - 1rem, 960px);
+    }
+
+    .policy-panel {
+        gap: 1.15rem;
     }
 }
 

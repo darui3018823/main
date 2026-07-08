@@ -1,8 +1,30 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const configDir = dirname(fileURLToPath(import.meta.url));
+
+const copyContactEntryToNestedRoutes = () => ({
+    name: 'copy-contact-entry-to-nested-routes',
+    closeBundle() {
+        const outDir = resolve(configDir, '../contact');
+        const entry = resolve(outDir, 'index.html');
+        const privacyPolicyDir = resolve(outDir, 'privacy-policy');
+        const privacyPolicyHtml = readFileSync(entry, 'utf8')
+            .replace('<title>Contact | daruks.com</title>', '<title>Privacy Policy | daruks.com</title>')
+            .replace('content="Contact - daruks Home Page"', 'content="Privacy Policy - daruks.com"')
+            .replace('content="Contact page of daruks Home Page"', 'content="daruks.com お問い合わせフォームにおけるプライバシーポリシー"')
+            .replace('content="https://daruks.com/contact"', 'content="https://daruks.com/contact/privacy-policy/"');
+
+        mkdirSync(privacyPolicyDir, { recursive: true });
+        writeFileSync(resolve(privacyPolicyDir, 'index.html'), privacyPolicyHtml);
+    },
+});
 
 export default defineConfig({
-    plugins: [react()],
+    plugins: [react(), copyContactEntryToNestedRoutes()],
     // 本番は https://daruks.com/contact/ 配下で配信される
     base: '/contact/',
     build: {
