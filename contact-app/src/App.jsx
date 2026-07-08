@@ -74,7 +74,7 @@ function CategoryList({ onSelect }) {
                         <div className="contact-body">
                             <div className="contact-topline">
                                 <h2 className="contact-name">{category.listTitle}</h2>
-                                <span className="contact-open">選択 ↗</span>
+                                <span className="contact-open">選択 {category.direct ? '↗' : '→'}</span>
                             </div>
                             <p className="contact-description">{category.listDescription}</p>
                         </div>
@@ -105,7 +105,6 @@ function CategoryDetail({ category, onBack }) {
             {category.direct
                 ? (
                     <div className="contact-direct">
-                        <p className="contact-description">お問い合わせはグループのサイトで直接受け付けています。</p>
                         <a className="contact-submit contact-direct-link" href={category.direct.url} target="_blank" rel="noopener noreferrer">
                             {category.direct.label}
                         </a>
