@@ -74,7 +74,7 @@ function CategoryList({ onSelect }) {
                         <div className="contact-body">
                             <div className="contact-topline">
                                 <h2 className="contact-name">{category.listTitle}</h2>
-                                <span className="contact-open">選択 {category.direct ? '↗' : '→'}</span>
+                                <span className="contact-open">選択 →</span>
                             </div>
                             <p className="contact-description">{category.listDescription}</p>
                         </div>

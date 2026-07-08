@@ -43,7 +43,7 @@ export const CATEGORIES = [
         listDescription: 'グループのサイトで受け付けています。',
         formTitle: 'Ahoshinet Groupsに関するお問い合わせ',
         formDescription: 'お問い合わせはグループのサイトで直接受け付けています。',
-        direct: { url: 'https://corp.daruks.com/', label: 'グループサイトへ →' },
+        direct: { url: 'https://corp.daruks.com/', label: 'グループサイトへ ↗' },
     },
 ];
 
