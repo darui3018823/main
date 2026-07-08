@@ -455,6 +455,7 @@ html.is-chromium .profile-role {
 }
 
 .profile-links-separator {
+  align-self: center;
   width: 1px;
   height: 1.32rem;
   margin-left: -0.05rem;
