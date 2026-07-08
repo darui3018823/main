@@ -393,6 +393,10 @@ select.contact-input option {
     color: rgba(226, 232, 240, 0.96);
 }
 
+.policy-article > :not(h3) {
+    margin-left: clamp(0.9rem, 2vw, 1.25rem);
+}
+
 .policy-article a {
     color: rgba(248, 250, 252, 0.96);
     text-decoration: underline;
