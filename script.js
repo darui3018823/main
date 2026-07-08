@@ -229,8 +229,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Links! の Contact タイル。挙動を変えたい場合はここに処理を追加する
-    // (event.preventDefault() でデフォルトの /contact/ への遷移を止められる)
     const profileContactLink = document.getElementById('profileContactLink');
     profileContactLink?.addEventListener('click', (event) => {
         event.preventDefault();
@@ -242,6 +240,5 @@ window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', refreshRpcScroll);
 
     updateLanyardPresence();
-    // ステータス変更に追従できるよう定期的に再取得する
     window.setInterval(updateLanyardPresence, 30000);
 });
