@@ -92,6 +92,11 @@ body.is-menu-open {
   min-height: 1.2em;
 }
 
+/* 見出しはブロックのまま保ち、プロンプトが同じ行に並ばないようにする */
+h1.typewriter-line {
+  display: block;
+}
+
 .typewriter-line.is-typing::after {
   content: '';
   display: inline-block;

@@ -44,6 +44,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         for (const [index, { target, text }] of typewriterItems.entries()) {
             if (index === 1) {
+                // 見出しを打ち終えてから、改行して次の行へ移る間を置く
+                await sleep(420);
                 homeCardPrompt?.classList.remove('is-typewriter-waiting');
             }
 
