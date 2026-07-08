@@ -14,8 +14,8 @@ const copyContactEntryToNestedRoutes = () => ({
         const privacyPolicyDir = resolve(outDir, 'privacy-policy');
         const privacyPolicyHtml = readFileSync(entry, 'utf8')
             .replace('<title>Contact | daruks.com</title>', '<title>Privacy Policy | daruks.com</title>')
-            .replace('content="Contact - daruks Home Page"', 'content="Privacy Policy - daruks.com"')
-            .replace('content="Contact page of daruks Home Page"', 'content="daruks.com お問い合わせフォームにおけるプライバシーポリシー"')
+            .replace('content="Contact - daruks.com"', 'content="Privacy Policy - daruks.com"')
+            .replace('content="Contact page of daruks.com"', 'content="daruks.com お問い合わせフォームにおけるプライバシーポリシー"')
             .replace('content="https://daruks.com/contact"', 'content="https://daruks.com/contact/privacy-policy/"');
 
         mkdirSync(privacyPolicyDir, { recursive: true });

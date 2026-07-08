@@ -30,7 +30,7 @@ export const CATEGORIES = [
     {
         key: 'personal',
         icon: 'user',
-        listTitle: '個人へのお問い合せ',
+        listTitle: '個人へのお問い合わせ',
         listDescription: '権利関係や個人的なご質問など。',
         formTitle: 'darui3018823個人へのお問い合わせ',
         formDescription: '個人的なご質問やご連絡はこちらからお願いします。',
@@ -39,7 +39,7 @@ export const CATEGORIES = [
     {
         key: 'ahoshinet',
         icon: 'ahoshinet',
-        listTitle: 'Ahoshinet Groupsについてのお問い合せ',
+        listTitle: 'Ahoshinet Groupsについてのお問い合わせ',
         listDescription: 'グループのサイトで受け付けています。',
         formTitle: 'Ahoshinet Groupsに関するお問い合わせ',
         formDescription: 'お問い合わせはグループのサイトで直接受け付けています。',

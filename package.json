@@ -2,7 +2,7 @@
   "name": "main",
   "version": "1.0.0",
   "packageManager": "pnpm@11.7.0",
-  "description": "このページはだるかすのただの[ホームページ](https://daruks.com/)です<br>\r 多分知識がなさ過ぎてろくなもの作れませんゆるしてくださいなんでもしｍ",
+  "description": "daruks.com の個人ホームページです。",
   "main": "script.js",
   "directories": {
     "doc": "docs"
@@ -21,7 +21,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/darui3018823/main/issues"
   },
