@@ -15,35 +15,3 @@
 | Go local static server | Local development server |
 | pnpm workspace | Dependency and workspace management |
 | GitHub Pages | Static hosting from committed files |
-
-## Project Structure Diagram
-
-```mermaid
-flowchart TD
-    source["Source files"]
-    home["index.html\nscript.js\nstyles.css"]
-    projects["projects/\nprojects page"]
-    contactSource["contact-app/\nVite + React source"]
-    tailwind["input.css + Tailwind CSS\npnpm css build"]
-    contactBuild["pnpm contact:build"]
-    cssOutput["dist/output.css\ncommitted CSS output"]
-    contactOutput["contact/\ncommitted SPA output"]
-    pages["GitHub Pages\nserves repository files"]
-    devServer["main.go\nlocal static server"]
-
-    source --> home
-    source --> projects
-    source --> contactSource
-    source --> tailwind
-
-    tailwind --> cssOutput
-    contactSource --> contactBuild --> contactOutput
-
-    home --> pages
-    projects --> pages
-    cssOutput --> pages
-    contactOutput --> pages
-
-    devServer -. local preview .-> home
-    devServer -. shared assets .-> contactSource
-```
