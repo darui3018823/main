@@ -58,6 +58,23 @@
             border-bottom: 0;
         }
 
+        /* Services内の行の仕切り線は他より一回り短く */
+        .project-row.is-grouped {
+            position: relative;
+            border-bottom: 0;
+        }
+
+        .project-row.is-grouped::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
         .project-media {
             width: 3.4rem;
             height: 3.4rem;
@@ -199,7 +216,7 @@
 
                 <h2 class="project-subtitle">Services</h2>
 
-                <article class="project-row">
+                <article class="project-row is-grouped">
                     <div class="project-media is-logo">
                         <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_icon.png" alt="Ahoshinet Groups icon">
                     </div>
