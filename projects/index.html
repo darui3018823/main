@@ -46,6 +46,8 @@
         }
 
         .project-row {
+            position: relative;
+            cursor: pointer;
             display: grid;
             grid-template-columns: 3.4rem minmax(0, 1fr);
             gap: 1rem;
@@ -60,7 +62,6 @@
 
         /* Services内の行の仕切り線は他より一回り短く */
         .project-row.is-grouped {
-            position: relative;
             border-bottom: 0;
         }
 
@@ -140,7 +141,9 @@
         }
 
         .project-link:hover,
-        .project-link:focus-visible {
+        .project-link:focus-visible,
+        .project-row:hover .project-link,
+        .project-row:focus-within .project-link {
             text-decoration: underline;
             text-underline-offset: 3px;
             color: rgba(255, 190, 150, 0.95);
@@ -284,6 +287,19 @@
     </main>
 
     <script src="/script.js"></script>
+    <script>
+        // 行のどこをクリックしてもリンク先へ（テキスト選択中は推移しない）
+        document.querySelectorAll('.project-row').forEach((row) => {
+            const link = row.querySelector('.project-link');
+            if (!link) return;
+            row.addEventListener('click', (event) => {
+                if (event.target.closest('a')) return;
+                const selection = window.getSelection();
+                if (selection && selection.toString() !== '') return;
+                link.click();
+            });
+        });
+    </script>
 </body>
 
 </html>
