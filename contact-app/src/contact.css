@@ -1,0 +1,620 @@
+.contact-main {
+    box-sizing: border-box;
+    width: min(800px, calc(100% - 2rem));
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 6rem 0 4rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-panel {
+    width: 100%;
+    padding: clamp(1.35rem, 3vw, 2rem);
+    overflow: hidden;
+    cursor: default;
+}
+
+.contact-panel-content {
+    --contact-exit-x: -1rem;
+    --contact-enter-x: 1.25rem;
+    will-change: opacity, transform;
+}
+
+.contact-panel-content.is-back {
+    --contact-exit-x: 1rem;
+    --contact-enter-x: -1.25rem;
+}
+
+.contact-panel-content.is-exiting {
+    pointer-events: none;
+    animation: contactContentExit 180ms ease-in forwards;
+}
+
+.contact-panel-content.is-entering {
+    animation: contactContentEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes contactContentExit {
+    to {
+        opacity: 0;
+        transform: translateX(var(--contact-exit-x));
+    }
+}
+
+@keyframes contactContentEnter {
+    from {
+        opacity: 0;
+        transform: translateX(var(--contact-enter-x));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.contact-title {
+    margin-bottom: 0.75rem;
+    font-size: 1.45rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.contact-lead {
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: rgba(241, 245, 249, 0.9);
+}
+
+.contact-note {
+    margin-top: 0.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: rgba(203, 213, 225, 0.8);
+}
+
+.contact-policy-note {
+    margin-bottom: 0.25rem;
+}
+
+.contact-mail-note {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.contact-note-link {
+    color: rgba(255, 190, 150, 0.95);
+    text-decoration-color: rgba(255, 190, 150, 0.95);
+}
+
+.contact-note-link:hover,
+.contact-note-link:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: rgba(255, 190, 150, 0.95);
+    text-decoration-color: rgba(255, 190, 150, 0.95);
+}
+
+.contact-list {
+    display: grid;
+    gap: 1.15rem;
+}
+
+.contact-row {
+    display: grid;
+    grid-template-columns: 3.4rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-bottom: 1.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.contact-row:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.contact-media {
+    width: 3.4rem;
+    height: 3.4rem;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.contact-media svg {
+    width: 1.7rem;
+    height: 1.7rem;
+    color: rgba(241, 245, 249, 0.92);
+}
+
+.contact-media.is-logo {
+    padding: 0.4rem;
+}
+
+.contact-media.is-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contact-body {
+    min-width: 0;
+}
+
+.contact-topline {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.contact-name {
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: rgba(255, 190, 150, 0.95);
+}
+
+.contact-open {
+    flex: 0 0 auto;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(241, 245, 249, 0.75);
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.contact-row:hover .contact-open,
+.contact-row:focus-visible .contact-open {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: rgba(255, 190, 150, 0.95);
+    text-decoration-color: rgba(255, 190, 150, 0.95);
+}
+
+.contact-description {
+    margin-top: 0.25rem;
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: rgba(241, 245, 249, 0.9);
+}
+
+/* ---- カテゴリ詳細 (フォーム) ---- */
+
+.contact-back {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(241, 245, 249, 0.75);
+    transition: color 0.2s ease;
+}
+
+.contact-back:hover,
+.contact-back:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: rgba(255, 190, 150, 0.95);
+}
+
+.contact-detail-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    font-weight: 700;
+    color: rgba(255, 190, 150, 0.95);
+}
+
+.contact-form {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contact-field {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.contact-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(241, 245, 249, 0.85);
+}
+
+.contact-hint {
+    font-size: 0.78rem;
+    color: rgba(203, 213, 225, 0.75);
+}
+
+.contact-input {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.94rem;
+    color: rgba(241, 245, 249, 0.95);
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.85rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.contact-input::placeholder {
+    color: rgba(148, 163, 184, 0.75);
+}
+
+.contact-input:focus {
+    outline: none;
+    border-color: rgba(255, 190, 150, 0.6);
+    background: rgba(255, 255, 255, 0.085);
+}
+
+textarea.contact-input {
+    resize: none;
+}
+
+select.contact-input {
+    color-scheme: dark;
+}
+
+select.contact-input option {
+    background: #151922;
+    color: #f1f5f9;
+}
+
+.contact-submit {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(241, 245, 249, 0.92);
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-submit:hover:not(:disabled),
+.contact-submit:focus-visible {
+    color: rgba(255, 190, 150, 0.95);
+    background: rgba(255, 190, 150, 0.12);
+    border-color: rgba(255, 190, 150, 0.45);
+}
+
+.contact-submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.contact-error {
+    font-size: 0.88rem;
+    color: rgba(252, 165, 165, 0.95);
+}
+
+.contact-result {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.contact-result-title {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: rgba(255, 190, 150, 0.95);
+}
+
+.contact-direct {
+    display: grid;
+    justify-items: start;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contact-direct-link {
+    display: inline-block;
+    padding-inline: 1.5rem;
+}
+
+.contact-footnote {
+    margin-top: 1.75rem;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: rgba(203, 213, 225, 0.7);
+}
+
+/* ---- プライバシーポリシー ---- */
+
+.policy-main {
+    width: min(1024px, calc(100% - 2rem));
+}
+
+.policy-panel {
+    display: grid;
+    gap: 1.75rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.policy-header {
+    display: grid;
+    gap: 0.35rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+    text-align: left;
+}
+
+.policy-title {
+    font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+    line-height: 1.2;
+    font-weight: 750;
+    color: rgba(255, 255, 255, 0.98);
+}
+
+.policy-subtitle {
+    font-size: 0.88rem;
+    color: rgba(226, 232, 240, 0.78);
+}
+
+.policy-updated {
+    font-size: 0.82rem;
+    color: rgba(226, 232, 240, 0.62);
+}
+
+.policy-important {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.policy-important h2 {
+    font-size: 1.02rem;
+    line-height: 1.45;
+    font-weight: 750;
+    color: rgba(226, 232, 240, 0.96);
+}
+
+.policy-important p,
+.policy-article p,
+.policy-article li {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: rgba(248, 250, 252, 0.94);
+}
+
+.policy-content {
+    display: grid;
+    gap: 2.2rem;
+}
+
+.policy-chapter {
+    display: grid;
+    gap: 1.35rem;
+}
+
+.policy-chapter-header {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.policy-chapter-header h2 {
+    font-size: clamp(1.3rem, 2vw, 1.55rem);
+    line-height: 1.35;
+    font-weight: 750;
+    color: rgba(255, 255, 255, 0.98);
+}
+
+.policy-article {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.policy-article h3 {
+    font-size: 1rem;
+    line-height: 1.35;
+    font-weight: 750;
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.policy-article h4 {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    font-weight: 700;
+    color: rgba(226, 232, 240, 0.96);
+}
+
+.policy-article > :not(h3) {
+    margin-left: clamp(0.9rem, 2vw, 1.25rem);
+}
+
+.policy-article a {
+    color: rgba(248, 250, 252, 0.96);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.policy-article ol,
+.policy-article ul {
+    display: grid;
+    gap: 0.45rem;
+    padding-left: 1.25rem;
+    list-style-position: outside;
+}
+
+.policy-article ol {
+    list-style-type: decimal;
+}
+
+.policy-article ul {
+    list-style-type: disc;
+}
+
+.policy-article li::marker {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.policy-article li {
+    padding-left: 0.2rem;
+}
+
+.policy-article li > ol,
+.policy-article li > ul {
+    margin-top: 0.35rem;
+}
+
+.policy-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.policy-data-table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.policy-data-table th,
+.policy-data-table td {
+    padding: 0.65rem 0.75rem;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    text-align: left;
+    vertical-align: top;
+}
+
+.policy-data-table th {
+    color: rgba(226, 232, 240, 0.86);
+    background: transparent;
+}
+
+.policy-data-table td {
+    color: rgba(248, 250, 252, 0.92);
+    background: transparent;
+}
+
+.policy-data-table td:first-child {
+    width: 12rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.policy-small {
+    font-size: 0.8rem;
+    color: rgba(226, 232, 240, 0.72);
+}
+
+.policy-info-list {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.policy-numbered-list .policy-info-item {
+    display: list-item;
+}
+
+.policy-info-item {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.policy-info-item h4 {
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.policy-info-item.is-purpose h4 {
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.policy-negative {
+    display: grid;
+    gap: 0.45rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.policy-negative h4 {
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.policy-mono {
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.policy-end {
+    text-align: center;
+    color: rgba(226, 232, 240, 0.72);
+}
+
+.policy-changelog-item {
+    padding: 0;
+    border-left: 0;
+}
+
+.policy-changelog-item p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.policy-changelog-item span {
+    font-size: 0.9rem;
+    color: rgba(248, 250, 252, 0.92);
+}
+
+.policy-panel .contact-back {
+    margin-bottom: 0;
+    color: rgba(226, 232, 240, 0.7);
+}
+
+.policy-panel .contact-back:hover,
+.policy-panel .contact-back:focus-visible {
+    color: rgba(255, 255, 255, 0.96);
+}
+
+@media (max-width: 760px) {
+    .contact-main {
+        width: min(100% - 1rem, 800px);
+        padding-top: 4.75rem;
+    }
+
+    .policy-main {
+        width: min(100% - 1rem, 960px);
+    }
+
+    .policy-panel {
+        gap: 1.15rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .contact-row {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-panel-content.is-exiting,
+    .contact-panel-content.is-entering {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}

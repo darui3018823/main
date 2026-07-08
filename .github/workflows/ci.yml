@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Run ESLint
+        run: pnpm lint
+
+  css:
+    name: Tailwind CSS build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build Tailwind CSS
+        run: pnpm css build
+      - name: Verify dist/output.css is up to date
+        run: |
+          if [ -n "$(git status --porcelain -- dist/output.css)" ]; then
+            git --no-pager diff --stat -- dist/output.css
+            echo "::error::dist/output.css is stale. Run 'pnpm css build' and commit the result."
+            exit 1
+          fi
+
+  contact:
+    name: Contact app build (Vite)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build contact app
+        run: pnpm contact:build
+      - name: Verify contact/ build output is up to date
+        run: |
+          if [ -n "$(git status --porcelain -- contact/)" ]; then
+            git status --short -- contact/
+            echo "::error::contact/ is stale or was edited by hand. Edit contact-app/ sources, run 'pnpm contact:build', and commit the result."
+            exit 1
+          fi

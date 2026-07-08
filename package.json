@@ -1,12 +1,17 @@
 {
   "name": "main",
   "version": "1.0.0",
-  "description": "このページはだるかすのただの[ホームページ](https://daruks.com/)です<br>\r 多分知識がなさ過ぎてろくなもの作れませんゆるしてくださいなんでもしｍ",
+  "packageManager": "pnpm@11.7.0",
+  "description": "daruks.com の個人ホームページです。",
   "main": "script.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
+    "css": "node scripts/css.mjs",
+    "contact:dev": "pnpm --filter contact-app dev",
+    "contact:build": "pnpm --filter contact-app build",
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "init-config": "tailwindcss init"
   },
@@ -16,13 +21,18 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/darui3018823/main/issues"
   },
   "homepage": "https://github.com/darui3018823/main#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.3.1",
+    "eslint": "^10.6.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
     "tailwindcss": "^4.1.18"
   }
 }
