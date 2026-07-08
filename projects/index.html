@@ -2,17 +2,14 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | daruks.com</title>
 
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href="/styles.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- meta data-->
     <meta property="og:site_name" content="daruks.com">
     <meta property="og:title" content="Projects - daruks Home Page">
     <meta property="og:description" content="My Projects and Services">
@@ -20,263 +17,235 @@
     <meta property="og:type" content="website">
 
     <style>
-        body {
-            font-family: 'Lato', sans-serif;
+        .projects-main {
+            width: min(920px, calc(100% - 2rem));
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 5rem 0 4rem;
+            display: flex;
+            align-items: center;
         }
 
-        /* Z字レイアウト用 */
-        .project-item {
+        .projects-panel {
+            width: 100%;
+            padding: clamp(1.35rem, 3vw, 2rem);
+            cursor: default;
+        }
+
+        .projects-panel-header {
+            margin-bottom: 0.45rem;
+        }
+
+        .projects-title {
+            font-size: 1.45rem;
+            line-height: 1.2;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .project-list {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+        }
+
+        .project-row {
+            display: grid;
+            grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+            gap: clamp(1rem, 2.6vw, 1.45rem);
             align-items: center;
-            margin-bottom: 6rem;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
         }
 
-        /* 通常：テキスト左、ビジュアル右 */
-        .project-item .project-content {
-            grid-column: 1;
+        .project-row:last-child {
+            border-bottom: 0;
+            padding-bottom: 0.2rem;
         }
 
-        .project-item .project-visual {
-            grid-column: 2;
-        }
-
-        /* 逆順：ビジュアル左、テキスト右 */
-        .project-item.reverse .project-content {
-            grid-column: 2;
-        }
-
-        .project-item.reverse .project-visual {
-            grid-column: 1;
-        }
-
-        .project-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-visual {
-            aspect-ratio: 20/9;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(139, 92, 246, 0.1));
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            overflow: hidden;
-        }
-
-        .project-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* 1:1 アイコン表示用 */
-        .project-visual.icon-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border: none;
-        }
-
-        .project-visual.icon-visual img {
-            width: auto;
-            height: calc(100% - 20px);
-            object-fit: contain;
-            padding: 10px 0;
-            box-sizing: border-box;
-            aspect-ratio: 1 / 1;
-            border-radius: 0.75rem;
-        }
-
-        /* ロゴ表示用（左右余白） */
-        .project-visual.logo-visual {
-            background: transparent;
-            border: none;
-        }
-
-        .project-visual.logo-visual img {
-            width: auto;
-            height: 100%;
-            object-fit: contain;
-            padding: 0 5px;
-            box-sizing: border-box;
-            border-radius: 0.75rem;
-        }
-
-        /* 画像表示用（背景・ボーダーなし） */
-        .project-visual.image-visual {
-            background: transparent;
-            border: none;
-        }
-
-        .project-visual.image-visual img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 0.75rem;
-        }
-
-        .underline-animation {
+        .project-media {
             position: relative;
-            display: inline-block;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.055);
         }
 
-        .underline-animation::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
+        .project-media img {
             width: 100%;
-            height: 2px;
-            background: #06b6d4;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .underline-animation:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .project-media.is-logo {
+            display: grid;
+            place-items: center;
+            padding: 1rem;
         }
 
-        @media (max-width: 768px) {
-            .project-item {
+        .project-media.is-logo img {
+            object-fit: contain;
+        }
+
+        .project-body {
+            min-width: 0;
+        }
+
+        .project-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .project-name {
+            font-size: clamp(1.18rem, 2vw, 1.55rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: rgba(255, 255, 255, 0.96);
+        }
+
+        .project-link {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.1rem;
+            padding: 0 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 0.78rem;
+            font-weight: 700;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .project-link:hover,
+        .project-link:focus-visible {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.44);
+        }
+
+        .project-catch {
+            margin-top: 0.55rem;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: rgba(255, 190, 150, 0.92);
+        }
+
+        .project-description {
+            margin-top: 0.45rem;
+            max-width: 42rem;
+            font-size: 0.94rem;
+            line-height: 1.65;
+            color: rgba(226, 232, 240, 0.86);
+        }
+
+        @media (max-width: 760px) {
+            .projects-main {
+                width: min(100% - 1rem, 920px);
+                padding-top: 4.75rem;
+                align-items: start;
+            }
+
+            .project-row {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin-bottom: 3rem;
+                gap: 0.95rem;
             }
 
-            /* grid-column: 2 が暗黙的な2列目を作るのを防ぐ */
-            .project-item .project-content,
-            .project-item .project-visual,
-            .project-item.reverse .project-content,
-            .project-item.reverse .project-visual {
-                grid-column: 1;
+            .project-media {
+                aspect-ratio: 16 / 9;
+                border-radius: 0.9rem;
             }
 
-            /* reverse時もコンテンツ→ビジュアルの順に */
-            .project-item.reverse .project-content {
-                order: 1;
+            .project-topline {
+                align-items: start;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .project-topline {
+                display: grid;
+                gap: 0.75rem;
             }
 
-            .project-item.reverse .project-visual {
-                order: 2;
-            }
-
-            .project-visual {
-                aspect-ratio: 16/9;
-                min-height: unset;
+            .project-link {
+                width: fit-content;
             }
         }
     </style>
 </head>
 
-<body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen">
-    <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
-            <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
-            <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
-                <a href="/projects/" class="hover:text-cyan-300 transition">Projects</a>
-                <a href="/links/" class="hover:text-cyan-300 transition">Links</a>
-                <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
-            </nav>
-        </div>
-    </header>
+<body class="text-white min-h-screen">
+    <button id="hamburger" class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="sidePanel" aria-expanded="false">&#9776;</button>
+    <div id="menuBackdrop" class="menu-backdrop" aria-hidden="true"></div>
+    <aside id="sidePanel" class="side-panel flex flex-col min-h-[300px]" aria-label="Site menu">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/projects/">Projects</a>
+            <a href="/links/">Links</a>
+            <a href="/contact/">Contact</a>
+        </nav>
 
-    <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
-        <div
-            class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
-            <h2 class="text-lg font-semibold mb-4">メニュー</h2>
-            <ul class="space-y-3">
-                <li><a href="/projects/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Projects</a></li>
-                <li><a href="/links/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Links</a></li>
-                <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
-            </ul>
-            <div class="mt-4 text-right">
-                <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
+        <footer class="mt-auto text-center py-6 text-xs text-slate-400">
+            &copy; 2024 - 2026 darui3018823 - All rights reserved.
+        </footer>
+    </aside>
+
+    <main class="projects-main">
+        <section class="liquid-glass projects-panel" aria-labelledby="projectsTitle">
+            <header class="projects-panel-header">
+                <h1 id="projectsTitle" class="projects-title">Projects!</h1>
+            </header>
+
+            <div class="project-list">
+                <article class="project-row">
+                    <div class="project-media">
+                        <img src="https://cdn.daruks.com/public/images/tabdock/tabdock_img2.jpg" alt="Tabdock screenshot">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <h2 class="project-name">Tabdock</h2>
+                            <a class="project-link" href="https://github.com/darui3018823/tabdock/" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        </div>
+                        <p class="project-catch">Put your spare tablets to good use.</p>
+                        <p class="project-description">使い道のないタブレットを AOD として最後まで有効活用するためのプロジェクトです。</p>
+                    </div>
+                </article>
+
+                <article class="project-row">
+                    <div class="project-media is-logo">
+                        <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_logo.png" alt="Ahoshinet Groups logo">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <h2 class="project-name">Ahoshinet Groups</h2>
+                            <a class="project-link" href="https://corp.daruks.com/" target="_blank" rel="noopener noreferrer">Website</a>
+                        </div>
+                        <p class="project-catch">Connecting the Future, Ahoshinet Groups.</p>
+                        <p class="project-description">次世代インターネットサービスと統合クラウドサービスを扱うプロジェクトです。</p>
+                    </div>
+                </article>
+
+                <article class="project-row">
+                    <div class="project-media is-logo">
+                        <img src="https://cdn.daruks.com/profile/icon/thisisbot_icon.png" alt="This is bot icon">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-topline">
+                            <h2 class="project-name">This is bot Web Services</h2>
+                            <a class="project-link" href="https://bot.daruks.com/" target="_blank" rel="noopener noreferrer">Website</a>
+                        </div>
+                        <p class="project-catch">もっと身近に些細な便利を。</p>
+                        <p class="project-description">This is bot を主体として成る、シンプルで実用的なウェブサービスのプラットフォームです。</p>
+                    </div>
+                </article>
             </div>
-        </div>
-    </div>
-
-    <main class="pt-28 md:pt-40 px-4 md:px-6 lg:px-8 max-w-screen-2xl mx-auto">
-        <section class="text-center mb-12 md:mb-20">
-            <h1 class="text-4xl md:text-5xl font-bold mb-8">Projects</h1>
-            <p class="text-slate-300 text-lg">各プロジェクトの詳細情報と、利用可能なリンクです。</p>
         </section>
-
-        <!-- Tabdock -->
-        <div class="project-item" data-aos="fade-up">
-            <div class="project-content">
-                <h2 class="text-2xl md:text-3xl font-bold text-cyan-300 mb-4">Tabdock</h2>
-                <p class="text-slate-350 mb-1"><span class="underline-animation">Put your spare tablets to good use.</span></p>
-                <p class="text-slate-300 mb-1">不要なタブレットを有効活用するためのプロジェクト。</p>
-                <p class="text-slate-300 mb-4">使い道のないタブレットをAODとして最後まで有効活用できます。</p>
-                <div class="flex gap-4">
-                    <a href="https://github.com/darui3018823/tabdock/" target="_blank" 
-                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
-                        GitHub Repository
-                    </a>
-                </div>
-            </div>
-            <div class="project-visual image-visual">
-                <img src="https://cdn.daruks.com/public/images/tabdock/tabdock_img2.jpg" alt="Tabdock Screenshot">
-            </div>
-        </div>
-
-        <!-- Ahoshinet Groups -->
-        <div class="project-item reverse" data-aos="fade-up">
-            <div class="project-visual logo-visual">
-                <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_logo.png" alt="Ahoshinet logo">
-            </div>
-            <div class="project-content">
-                <h2 class="text-2xl md:text-3xl font-bold text-cyan-300 mb-4">Ahoshinet Groups</h2>
-                <p class="text-slate-350 mb-1"><span class="underline-animation">Connecting the Future, Ahoshinet Groups.</span></p>
-                <p class="text-slate-300 mb-1">革新的なテクノロジーで、次世代のインフラを。</p>
-                <p class="text-slate-300 mb-4">革新的な次世代インターネットサービスと安全・強固な統合クラウドサービスでお客様のビジネスや生活を支えます。</p>
-                <div class="flex gap-4">
-                    <a href="https://corp.daruks.com/" target="_blank" 
-                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
-                        Open Website
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- This is bot Web Services -->
-        <div class="project-item" data-aos="fade-up">
-            <div class="project-content">
-                <h2 class="text-2xl md:text-3xl font-bold text-cyan-300 mb-4">This is bot Web Services</h2>
-                <p class="text-slate-350 mb-1"><span class="underline-animation">もっと身近に些細な便利を。</span></p>
-                <p class="text-slate-300 mb-1">This is botを主体として成るウェブサービスのプラットフォームです。</p>
-                <p class="text-slate-300 mb-4">シンプルで実用的な機能を提供しています。ぜひご利用ください。</p>
-                <div class="flex gap-4">
-                    <a href="https://bot.daruks.com/" target="_blank" 
-                        class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded transition">
-                        Open Website
-                    </a>
-                </div>
-            </div>
-            <div class="project-visual icon-visual">
-                <img src="https://cdn.daruks.com/profile/icon/thisisbot_icon.png" alt="This is bot icon">
-            </div>
-        </div>
-
     </main>
 
-    <footer class="text-center py-6 text-xs text-slate-500 mt-20">
-        &copy; 2024 - 2026 darui3018823 — All rights reserved.
-    </footer>
-    <script>AOS.init();</script>
-    <script src="/links/script.js"></script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
