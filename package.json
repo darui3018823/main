@@ -9,6 +9,8 @@
   },
   "scripts": {
     "css": "node scripts/css.mjs",
+    "contact:dev": "pnpm --filter contact-app dev",
+    "contact:build": "pnpm --filter contact-app build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "init-config": "tailwindcss init"
   },

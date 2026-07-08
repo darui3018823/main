@@ -1,2 +1,6 @@
+packages:
+  - contact-app
+
 allowBuilds:
   '@parcel/watcher': true
+  esbuild: true
