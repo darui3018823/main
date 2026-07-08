@@ -87,6 +87,22 @@ body.is-menu-open {
   text-align: center;
 }
 
+.typewriter-line {
+  display: inline-block;
+  min-height: 1.2em;
+}
+
+.typewriter-line.is-typing::after {
+  content: '';
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.12em;
+  vertical-align: -0.08em;
+  background: currentColor;
+  animation: typewriterCaret 0.72s steps(1) infinite;
+}
+
 .home-card-prompt {
   display: inline-flex;
   align-items: center;
@@ -94,6 +110,20 @@ body.is-menu-open {
   gap: 2rem;
   max-width: 100%;
   flex-wrap: wrap;
+}
+
+.home-card-prompt.is-typewriter-waiting {
+  display: none;
+}
+
+.home-card-prompt-part {
+  min-width: max-content;
+}
+
+@keyframes typewriterCaret {
+  50% {
+    opacity: 0;
+  }
 }
 
 .liquid-glass.is-profile-card {

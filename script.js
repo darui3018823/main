@@ -5,6 +5,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const sidePanelContactLink = document.getElementById('sidePanelContactLink');
     const centerPanel = document.getElementById('centerPanel');
     const centerPanelCards = Array.from(document.querySelectorAll('[data-panel-card]'));
+    const typewriterTargets = Array.from(document.querySelectorAll('[data-typewriter]'));
+    const homeCardPrompt = document.querySelector('.home-card-prompt');
     const lanyardPresence = document.querySelector('[data-lanyard-presence]');
     const lanyardAvatar = document.querySelector('[data-lanyard-avatar]');
     const lanyardProfileIcon = document.querySelector('[data-lanyard-profile-icon]');
@@ -16,6 +18,53 @@ window.addEventListener('DOMContentLoaded', () => {
     const lanyardRpcText = document.querySelector('[data-lanyard-rpc-text]');
 
     const DISCORD_DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/1.png';
+    const typewriterItems = typewriterTargets.map((target) => ({
+        target,
+        text: target.textContent.trim(),
+    }));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const sleep = (ms) => new Promise((resolve) => {
+        window.setTimeout(resolve, ms);
+    });
+
+    const playWelcomeTypewriter = async () => {
+        if (typewriterItems.length === 0) {
+            return;
+        }
+
+        if (prefersReducedMotion) {
+            typewriterItems.forEach(({ target, text }) => {
+                target.textContent = text;
+            });
+            return;
+        }
+
+        await sleep(260);
+
+        for (const [index, { target, text }] of typewriterItems.entries()) {
+            if (index === 1) {
+                homeCardPrompt?.classList.remove('is-typewriter-waiting');
+            }
+
+            target.classList.add('is-typing');
+
+            for (const character of text) {
+                target.textContent += character;
+                await sleep(character === ' ' ? 24 : 42);
+            }
+
+            await sleep(180);
+            target.classList.remove('is-typing');
+        }
+    };
+
+    if (!prefersReducedMotion) {
+        typewriterItems.forEach(({ target }) => {
+            target.textContent = '';
+        });
+        homeCardPrompt?.classList.add('is-typewriter-waiting');
+    }
 
     const getDiscordAvatarUrl = (user) => {
         if (!user?.id || !user?.avatar) {
@@ -242,4 +291,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
     updateLanyardPresence();
     window.setInterval(updateLanyardPresence, 30000);
+    window.addEventListener('load', playWelcomeTypewriter, { once: true });
 });
