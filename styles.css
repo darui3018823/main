@@ -333,6 +333,7 @@ body.is-menu-open {
 }
 
 .link-tile {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -343,6 +344,13 @@ body.is-menu-open {
   background: rgba(255, 255, 255, 0.06);
   color: rgba(241, 245, 249, 0.92);
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* hoverで浮いた分(-2px)下端の当たり判定が消えて震えるのを防ぐ */
+.link-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 -4px;
 }
 
 .link-tile:hover,
