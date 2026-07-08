@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { CATEGORIES } from './categories.js';
 import ContactForm from './ContactForm.jsx';
 import { CategoryIcon } from './icons.jsx';
@@ -6,6 +6,8 @@ import PrivacyPolicy from './PrivacyPolicy.jsx';
 
 const CONTACT_PATH = '/contact/';
 const PRIVACY_POLICY_PATH = '/contact/privacy-policy/';
+const CONTACT_EXIT_MS = 180;
+const CONTACT_ENTER_MS = 220;
 
 const resolveKey = (raw) => (CATEGORIES.some((category) => category.key === raw) ? raw : null);
 
@@ -24,9 +26,60 @@ const readRouteFromUrl = () => ({
 });
 
 const isPlainClick = (event) => !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0;
+const isSameRoute = (a, b) => a.page === b.page && a.activeKey === b.activeKey;
+const getContactMotionDirection = (currentRoute, nextRoute) => (
+    currentRoute.activeKey && !nextRoute.activeKey ? 'back' : 'forward'
+);
 
 export default function App() {
     const [route, setRoute] = useState(readRouteFromUrl);
+    const [renderedRoute, setRenderedRoute] = useState(route);
+    const [contentMotion, setContentMotion] = useState('idle');
+    const [contentDirection, setContentDirection] = useState('forward');
+    const renderedRouteRef = useRef(renderedRoute);
+    const transitionTimersRef = useRef([]);
+
+    useEffect(() => {
+        renderedRouteRef.current = renderedRoute;
+    }, [renderedRoute]);
+
+    const clearTransitionTimers = useCallback(() => {
+        transitionTimersRef.current.forEach((timer) => window.clearTimeout(timer));
+        transitionTimersRef.current = [];
+    }, []);
+
+    const setRouteWithContactMotion = useCallback((nextRoute, preferredDirection) => {
+        clearTransitionTimers();
+        setRoute(nextRoute);
+
+        const currentRoute = renderedRouteRef.current;
+        const direction = preferredDirection || getContactMotionDirection(currentRoute, nextRoute);
+        const shouldAnimate = currentRoute.page === 'contact'
+            && nextRoute.page === 'contact'
+            && !isSameRoute(currentRoute, nextRoute)
+            && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!shouldAnimate) {
+            setRenderedRoute(nextRoute);
+            setContentMotion('idle');
+            window.scrollTo({ top: 0 });
+            return;
+        }
+
+        setContentDirection(direction);
+        setContentMotion('exiting');
+        const exitTimer = window.setTimeout(() => {
+            setRenderedRoute(nextRoute);
+            setContentMotion('entering');
+            window.scrollTo({ top: 0 });
+
+            const enterTimer = window.setTimeout(() => {
+                setContentMotion('idle');
+            }, CONTACT_ENTER_MS);
+            transitionTimersRef.current = [enterTimer];
+        }, CONTACT_EXIT_MS);
+        transitionTimersRef.current = [exitTimer];
+    }, [clearTransitionTimers]);
 
     useEffect(() => {
         // 旧カテゴリキーや不正なキーで開かれた場合は URL を正規化しておく
@@ -37,10 +90,12 @@ export default function App() {
             window.history.replaceState(null, '', url);
         }
 
-        const onPopState = () => setRoute(readRouteFromUrl());
+        const onPopState = () => setRouteWithContactMotion(readRouteFromUrl());
         window.addEventListener('popstate', onPopState);
         return () => window.removeEventListener('popstate', onPopState);
-    }, [route.page]);
+    }, [route.activeKey, route.page, setRouteWithContactMotion]);
+
+    useEffect(() => clearTransitionTimers, [clearTransitionTimers]);
 
     useEffect(() => {
         document.title = route.page === 'privacy-policy'
@@ -51,29 +106,30 @@ export default function App() {
     const navigateContact = (key) => {
         const url = key ? `${CONTACT_PATH}?c=${key}` : CONTACT_PATH;
         window.history.pushState(null, '', url);
-        setRoute({ page: 'contact', activeKey: key });
-        window.scrollTo({ top: 0 });
+        setRouteWithContactMotion({ page: 'contact', activeKey: key }, key ? 'forward' : 'back');
     };
 
     const navigatePrivacyPolicy = () => {
         window.history.pushState(null, '', PRIVACY_POLICY_PATH);
-        setRoute({ page: 'privacy-policy', activeKey: null });
-        window.scrollTo({ top: 0 });
+        setRouteWithContactMotion({ page: 'privacy-policy', activeKey: null });
     };
 
-    if (route.page === 'privacy-policy') {
+    if (renderedRoute.page === 'privacy-policy') {
         return <PrivacyPolicy onBack={() => navigateContact(null)} />;
     }
 
-    const activeKey = route.activeKey;
+    const activeKey = renderedRoute.activeKey;
     const active = CATEGORIES.find((category) => category.key === activeKey) || null;
+    const motionClass = contentMotion === 'idle' ? '' : ` is-${contentDirection} is-${contentMotion}`;
 
     return (
         <main className="contact-main">
             <section className="liquid-glass contact-panel" aria-labelledby="contactTitle">
-                {active
-                    ? <CategoryDetail category={active} onBack={() => navigateContact(null)} />
-                    : <CategoryList onSelect={navigateContact} onPrivacyPolicy={navigatePrivacyPolicy} />}
+                <div className={`contact-panel-content${motionClass}`}>
+                    {active
+                        ? <CategoryDetail category={active} onBack={() => navigateContact(null)} />
+                        : <CategoryList onSelect={navigateContact} onPrivacyPolicy={navigatePrivacyPolicy} />}
+                </div>
             </section>
         </main>
     );

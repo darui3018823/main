@@ -11,7 +11,40 @@
 .contact-panel {
     width: 100%;
     padding: clamp(1.35rem, 3vw, 2rem);
+    overflow: hidden;
     cursor: default;
+}
+
+.contact-panel-content {
+    will-change: opacity, transform;
+}
+
+.contact-panel-content.is-exiting {
+    pointer-events: none;
+    animation: contactContentExit 180ms ease-in forwards;
+}
+
+.contact-panel-content.is-entering {
+    animation: contactContentEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes contactContentExit {
+    to {
+        opacity: 0;
+        transform: translateX(-1rem);
+    }
+}
+
+@keyframes contactContentEnter {
+    from {
+        opacity: 0;
+        transform: translateX(1.25rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .contact-title {
@@ -567,5 +600,14 @@ select.contact-input option {
     .contact-row {
         grid-template-columns: 1fr;
         gap: 0.65rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-panel-content.is-exiting,
+    .contact-panel-content.is-entering {
+        animation: none;
+        opacity: 1;
+        transform: none;
     }
 }
