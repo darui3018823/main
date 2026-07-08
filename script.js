@@ -87,7 +87,10 @@ window.addEventListener('DOMContentLoaded', () => {
             return 'No custom status';
         }
 
-        return activity.state || activity.name || 'Custom Status';
+        // Unicode 絵文字は emoji.id を持たず画像化できないため、テキスト側に含める
+        const emojiPrefix = activity.emoji && !activity.emoji.id ? `${activity.emoji.name} ` : '';
+        const text = activity.state || (emojiPrefix ? '' : activity.name || 'Custom Status');
+        return `${emojiPrefix}${text}`.trim() || 'Custom Status';
     };
 
     const setCustomEmoji = (emoji) => {
@@ -332,6 +335,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.profile-links a[href="/contact/"]').forEach((profileContactLink) => {
         profileContactLink.addEventListener('click', (event) => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
             event.preventDefault();
             event.stopPropagation();
             setMenuOpen(true);

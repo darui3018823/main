@@ -68,7 +68,7 @@ export default function ContactForm({ category }) {
                 <span className="contact-label">詳細カテゴリ</span>
                 <select className="contact-input" name="subcategory" defaultValue="">
                     <option value="">選択してください</option>
-                    {category.subcategories.map((subcategory) => (
+                    {category.subcategories?.map((subcategory) => (
                         <option key={subcategory} value={subcategory}>{subcategory}</option>
                     ))}
                 </select>

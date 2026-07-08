@@ -5,6 +5,10 @@ document.querySelectorAll('.project-row').forEach((row) => {
         if (event.target.closest('a')) return;
         const selection = window.getSelection();
         if (selection && selection.toString() !== '') return;
+        if (event.metaKey || event.ctrlKey) {
+            window.open(link.href, '_blank', 'noopener,noreferrer');
+            return;
+        }
         link.click();
     });
 });
