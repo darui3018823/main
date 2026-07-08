@@ -87,6 +87,15 @@ body.is-menu-open {
   text-align: center;
 }
 
+.home-card-prompt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
 .liquid-glass.is-profile-card {
   padding-top: 1.5rem;
   padding-bottom: 3.5rem;
