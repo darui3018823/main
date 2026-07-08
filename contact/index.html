@@ -2,208 +2,123 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | daruks.com</title>
 
     <link rel="stylesheet" href="/dist/output.css">
     <link rel="stylesheet" href="/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <!-- AOS: Animate On Scroll -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="contact_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- meta data-->
     <meta property="og:site_name" content="daruks.com">
     <meta property="og:title" content="Contact - daruks Home Page">
     <meta property="og:description" content="Contact page of daruks Home Page">
     <meta property="og:url" content="https://daruks.com/contact">
     <meta property="og:type" content="website">
 
-    <style>
-        body {
-            font-family: 'Lato', sans-serif;
-        }
-
-        .category-btn {
-            background: linear-gradient(150deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.92) 100%);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            box-shadow: 0 25px 60px rgba(2, 6, 23, 0.75);
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-
-        .category-btn::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 15% 20%, var(--accent-start, rgba(56, 189, 248, 0.3)), transparent 55%);
-            opacity: 0.45;
-            filter: blur(18px);
-            z-index: 0;
-        }
-
-        .category-btn:hover {
-            transform: translateY(-6px);
-            border-color: var(--accent-start, rgba(56, 189, 248, 0.45));
-            box-shadow: 0 35px 70px rgba(2, 6, 23, 0.85), 0 0 35px var(--accent-start, rgba(56, 189, 248, 0.35));
-        }
-
-        .category-btn .accent-ring {
-            width: 3.25rem;
-            height: 3.25rem;
-            border-radius: 1rem;
-            background: linear-gradient(135deg, var(--accent-start, #38bdf8), var(--accent-end, #8b5cf6));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        .category-btn .accent-chip {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.15rem 0.6rem;
-            border-radius: 9999px;
-            background-color: rgba(226, 232, 240, 0.08);
-            font-size: 0.7rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: rgba(241, 245, 249, 0.7);
-        }
-    </style>
 </head>
 
+<body class="text-white min-h-screen">
+    <button id="hamburger" class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="sidePanel" aria-expanded="false">&#9776;</button>
+    <div id="menuBackdrop" class="menu-backdrop" aria-hidden="true"></div>
+    <aside id="sidePanel" class="side-panel flex flex-col min-h-[300px]" aria-label="Site menu">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/projects/">Projects</a>
+            <a href="/contact/">Contact</a>
+        </nav>
 
-<body class="bg-gradient-to-b from-gray-900 via-slate-800 to-gray-900 text-white min-h-screen">
-    <header class="fixed top-0 w-full bg-gray-950/70 backdrop-blur shadow z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-semibold tracking-wide">daruks.com</a>
-            <button id="hamburger" class="md:hidden text-2xl">&#9776;</button>
-            <nav id="navMenu" class="hidden md:flex space-x-6 text-sm">
-                <a href="/projects/" class="hover:text-cyan-300 transition">Projects</a>
-                <a href="/contact/" class="hover:text-cyan-300 transition">Contact</a>
-            </nav>
-        </div>
-    </header>
+        <footer class="mt-auto text-center py-6 text-xs text-slate-400">
+            &copy; 2024 - 2026 darui3018823 - All rights reserved.
+        </footer>
+    </aside>
 
-    <div id="menuModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
-        <div
-            class="bg-white/30 text-white backdrop-blur-md rounded-lg p-6 w-full max-w-md shadow-lg border border-white/20">
-            <h2 class="text-lg font-semibold mb-4">メニュー</h2>
-            <ul class="space-y-3">
-                <li><a href="/projects/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Projects</a></li>
-                <li><a href="/contact/" class="block bg-white/20 text-white p-2 rounded hover:bg-white/30">Contact</a></li>
-            </ul>
-            <div class="mt-4 text-right">
-                <button id="closeMenuModal" class="px-4 py-2 text-sm bg-gray-500 hover:bg-gray-400 rounded">閉じる</button>
-            </div>
-        </div>
-    </div>
-
-    <main class="pt-40 px-4 max-w-6xl mx-auto pb-20">
-        <!-- Categories Section -->
-        <section id="categoriesSection" class="text-center mb-16">
-            <h1 class="text-5xl font-bold mb-4" data-aos="fade-up">Contact Us</h1>
-            <p class="text-slate-300 text-lg mb-12" data-aos="fade-up" data-aos-delay="100">
-                目的別カテゴリから選択
-            </p>
-            <p class="text-slate-400 text-sm" data-aos="fade-up" data-aos-delay="150">
-                カテゴリを選ぶと、担当領域ごとの専用ページに移動します。
-            </p>
-            <p class="text-slate-400 text-sm mb-16" data-aos="fade-up" data-aos-delay="200">
-                <a href="/legal/privacy-policy/" class="text-cyan-400 hover:text-cyan-300 hover:underline">プライバシーポリシー</a>をご確認の上、お問い合わせください。
+    <main class="contact-main">
+        <section class="liquid-glass contact-panel" aria-labelledby="contactTitle">
+            <h1 id="contactTitle" class="contact-title">Contact!</h1>
+            <p class="contact-lead">目的に合ったカテゴリを選ぶと、担当領域ごとの専用ページに移動します。</p>
+            <p class="contact-note">
+                <a href="/legal/privacy-policy/" class="contact-note-link">プライバシーポリシー</a>をご確認の上、お問い合わせください。
             </p>
 
-            <!-- 3x2 Category Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Category 1 -->
-                <a href="/contact/category/thisbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#38bdf8; --accent-end:#8b5cf6;" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-start gap-4 relative z-10">
-                        <div class="accent-ring shrink-0">🤖</div>
-                        <div>
-                            <span class="accent-chip">This is bot</span>
-                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">機能・使用方法</h3>
-                            <p class="text-sm text-slate-300">不具合報告・ご相談</p>
+            <div class="contact-list">
+                <a class="contact-row" href="/contact/category/thisbot/">
+                    <div class="contact-media" aria-hidden="true">🤖</div>
+                    <div class="contact-body">
+                        <div class="contact-topline">
+                            <h2 class="contact-name">機能・使用方法</h2>
+                            <span class="contact-open">選択 ↗</span>
                         </div>
+                        <p class="contact-catch">This is bot</p>
+                        <p class="contact-description">不具合報告・ご相談はこちらから。</p>
                     </div>
                 </a>
 
-                <!-- Category 2 -->
-                <a href="/contact/category/siteissue/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#34d399; --accent-end:#22d3ee;" data-aos="fade-up" data-aos-delay="150">
-                    <div class="flex items-start gap-4 relative z-10">
-                        <div class="accent-ring shrink-0">🐛</div>
-                        <div>
-                            <span class="accent-chip">Site issue</span>
-                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">サイトの問題</h3>
-                            <p class="text-sm text-slate-300">表示崩れ・リンク切れ等</p>
+                <a class="contact-row" href="/contact/category/siteissue/">
+                    <div class="contact-media" aria-hidden="true">🐛</div>
+                    <div class="contact-body">
+                        <div class="contact-topline">
+                            <h2 class="contact-name">サイトの問題</h2>
+                            <span class="contact-open">選択 ↗</span>
                         </div>
+                        <p class="contact-catch">Site issue</p>
+                        <p class="contact-description">表示崩れ・リンク切れ等のご報告。</p>
                     </div>
                 </a>
 
-                <!-- Category 3 -->
-                <a href="/contact/category/sitefunc/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fbbf24; --accent-end:#f472b6;" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-start gap-4 relative z-10">
-                        <div class="accent-ring shrink-0">✨</div>
-                        <div>
-                            <span class="accent-chip">Feature idea</span>
-                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">サイト機能提案</h3>
-                            <p class="text-sm text-slate-300">改善アイデアやご要望</p>
+                <a class="contact-row" href="/contact/category/sitefunc/">
+                    <div class="contact-media" aria-hidden="true">✨</div>
+                    <div class="contact-body">
+                        <div class="contact-topline">
+                            <h2 class="contact-name">サイト機能提案</h2>
+                            <span class="contact-open">選択 ↗</span>
                         </div>
+                        <p class="contact-catch">Feature idea</p>
+                        <p class="contact-description">改善アイデアやご要望をお寄せください。</p>
                     </div>
                 </a>
 
-                <!-- Category 4 -->
-                <a href="/contact/category/otherbot/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#fb7185; --accent-end:#f97316;" data-aos="fade-up" data-aos-delay="250">
-                    <div class="flex items-start gap-4 relative z-10">
-                        <div class="accent-ring shrink-0">🤖</div>
-                        <div>
-                            <span class="accent-chip">Other bots</span>
-                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">その他Bot関連</h3>
-                            <p class="text-sm text-slate-300">This is bot以外の相談</p>
+                <a class="contact-row" href="/contact/category/otherbot/">
+                    <div class="contact-media" aria-hidden="true">⚙️</div>
+                    <div class="contact-body">
+                        <div class="contact-topline">
+                            <h2 class="contact-name">その他Bot関連</h2>
+                            <span class="contact-open">選択 ↗</span>
                         </div>
+                        <p class="contact-catch">Other bots</p>
+                        <p class="contact-description">This is bot以外のBotに関するご相談。</p>
                     </div>
                 </a>
 
-                <!-- Category 5 -->
-                <a href="/contact/category/personal/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#60a5fa; --accent-end:#a5b4fc;" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-start gap-4 relative z-10">
-                        <div class="accent-ring shrink-0">👤</div>
-                        <div>
-                            <span class="accent-chip">Personal</span>
-                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">個人へのお問い合わせ</h3>
-                            <p class="text-sm text-slate-300">権利関係や個人的なご質問</p>
+                <a class="contact-row" href="/contact/category/personal/">
+                    <div class="contact-media" aria-hidden="true">👤</div>
+                    <div class="contact-body">
+                        <div class="contact-topline">
+                            <h2 class="contact-name">個人へのお問い合わせ</h2>
+                            <span class="contact-open">選択 ↗</span>
                         </div>
+                        <p class="contact-catch">Personal</p>
+                        <p class="contact-description">権利関係や個人的なご質問など。</p>
                     </div>
                 </a>
 
-                <!-- Category 6 -->
-                <a href="/contact/category/ahoshinet/" class="category-btn group relative overflow-hidden rounded-2xl p-6 text-left block" style="--accent-start:#c084fc; --accent-end:#f472b6;" data-aos="fade-up" data-aos-delay="350">
-                    <div class="flex items-start gap-4 relative z-10">
-                        <div class="accent-ring shrink-0">🏢</div>
-                        <div>
-                            <span class="accent-chip">Ahoshinet</span>
-                            <h3 class="text-xl font-semibold text-white mt-3 mb-1">Ahoshinet Groups</h3>
-                            <p class="text-sm text-slate-300">グループのサイトで受付</p>
+                <a class="contact-row" href="/contact/category/ahoshinet/">
+                    <div class="contact-media" aria-hidden="true">🏢</div>
+                    <div class="contact-body">
+                        <div class="contact-topline">
+                            <h2 class="contact-name">Ahoshinet Groups</h2>
+                            <span class="contact-open">選択 ↗</span>
                         </div>
+                        <p class="contact-catch">Ahoshinet</p>
+                        <p class="contact-description">グループのサイトで受け付けています。</p>
                     </div>
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="text-center py-6 text-xs text-slate-500 mt-20">
-        &copy; 2024 - 2026 darui3018823 — All rights reserved.
-    </footer>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 0,
-            once: true,
-            duration: 800
-        });
-    </script>
-    <script src="./script.js"></script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
