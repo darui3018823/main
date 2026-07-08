@@ -16,7 +16,14 @@
 }
 
 .contact-panel-content {
+    --contact-exit-x: -1rem;
+    --contact-enter-x: 1.25rem;
     will-change: opacity, transform;
+}
+
+.contact-panel-content.is-back {
+    --contact-exit-x: 1rem;
+    --contact-enter-x: -1.25rem;
 }
 
 .contact-panel-content.is-exiting {
@@ -31,14 +38,14 @@
 @keyframes contactContentExit {
     to {
         opacity: 0;
-        transform: translateX(-1rem);
+        transform: translateX(var(--contact-exit-x));
     }
 }
 
 @keyframes contactContentEnter {
     from {
         opacity: 0;
-        transform: translateX(1.25rem);
+        transform: translateX(var(--contact-enter-x));
     }
 
     to {
