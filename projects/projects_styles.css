@@ -1,4 +1,5 @@
 .projects-main {
+    box-sizing: border-box;
     width: min(800px, calc(100% - 2rem));
     min-height: 100vh;
     margin: 0 auto;
