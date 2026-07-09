@@ -12,7 +12,11 @@ const copyContactEntryToNestedRoutes = () => ({
         const outDir = resolve(configDir, '../contact');
         const entry = resolve(outDir, 'index.html');
         const privacyPolicyDir = resolve(outDir, 'privacy-policy');
-        const privacyPolicyHtml = readFileSync(entry, 'utf8')
+        const entryHtml = readFileSync(entry, 'utf8')
+            .replace('<script type="module" crossorigin src=', '<script data-cfasync="false" type="module" crossorigin src=');
+        writeFileSync(entry, entryHtml);
+
+        const privacyPolicyHtml = entryHtml
             .replace('<title>Contact | daruks.com</title>', '<title>Privacy Policy | daruks.com</title>')
             .replace('content="Contact - daruks.com"', 'content="Privacy Policy - daruks.com"')
             .replace('content="Contact page of daruks.com"', 'content="daruks.com お問い合わせフォームにおけるプライバシーポリシー"')
