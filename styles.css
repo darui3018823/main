@@ -689,6 +689,7 @@ body.is-menu-open .side-panel {
 
 .side-panel footer {
   font-size: clamp(0.67rem, 2.6vw, 0.75rem);
+  padding: 0;
   text-align: left;
   white-space: nowrap;
 }
@@ -709,9 +710,9 @@ body.is-menu-open .side-panel {
 
 .footer-credit {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.42rem;
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.4rem;
   color: rgba(226, 232, 240, 0.72);
 }
 
