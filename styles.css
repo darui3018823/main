@@ -759,10 +759,6 @@ body.is-menu-open .side-panel {
   --footer-logo-mask: url("/images/pnpm.svg");
 }
 
-.footer-credit-logo-link-github:hover {
-  --footer-logo-color: #181717;
-}
-
 .footer-credit-logo-link-vite:hover {
   --footer-logo-color: #9135FF;
 }
