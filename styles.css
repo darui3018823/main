@@ -730,6 +730,7 @@ body.is-menu-open .side-panel {
 
 .footer-credit-logo {
   display: block;
+  filter: grayscale(1);
   width: auto;
   height: 1.5em;
 }
