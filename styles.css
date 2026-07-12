@@ -689,7 +689,6 @@ body.is-menu-open .side-panel {
 
 .side-panel footer {
   font-size: clamp(0.67rem, 2.6vw, 0.75rem);
-  padding: 0;
   text-align: left;
   white-space: nowrap;
 }
@@ -732,7 +731,7 @@ body.is-menu-open .side-panel {
 .footer-credit-logo {
   display: block;
   width: auto;
-  height: 2em;
+  height: 1.5em;
 }
 
 .footer-copyright {
