@@ -731,8 +731,8 @@ body.is-menu-open .side-panel {
 
 .footer-credit-logo {
   display: block;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.3em;
+  height: 1.3em;
   background-color: var(--footer-logo-color);
   mask: var(--footer-logo-mask) center / contain no-repeat;
   -webkit-mask: var(--footer-logo-mask) center / contain no-repeat;
@@ -757,8 +757,6 @@ body.is-menu-open .side-panel {
 
 .footer-credit-logo-pnpm {
   --footer-logo-mask: url("/images/pnpm.svg");
-  width: 1.3em;
-  height: 1.3em;
 }
 
 .footer-credit-logo-link-github:hover {
