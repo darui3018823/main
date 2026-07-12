@@ -716,6 +716,7 @@ body.is-menu-open .side-panel {
 }
 
 .side-panel .footer-credit-logo-link {
+  --footer-logo-color: rgba(248, 250, 252, 0.88);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -730,9 +731,54 @@ body.is-menu-open .side-panel {
 
 .footer-credit-logo {
   display: block;
-  filter: grayscale(1);
-  width: auto;
+  width: 1.5em;
   height: 1.5em;
+  background-color: var(--footer-logo-color);
+  mask: var(--footer-logo-mask) center / contain no-repeat;
+  -webkit-mask: var(--footer-logo-mask) center / contain no-repeat;
+  transition: background-color 0.2s ease;
+}
+
+.footer-credit-logo-github-pages {
+  --footer-logo-mask: url("/images/github-pages.svg");
+}
+
+.footer-credit-logo-vite {
+  --footer-logo-mask: url("/images/vite.svg");
+}
+
+.footer-credit-logo-tailwind {
+  --footer-logo-mask: url("/images/tailwindcss.svg");
+}
+
+.footer-credit-logo-react {
+  --footer-logo-mask: url("/images/react.svg");
+}
+
+.footer-credit-logo-pnpm {
+  --footer-logo-mask: url("/images/pnpm.svg");
+  width: 1.3em;
+  height: 1.3em;
+}
+
+.footer-credit-logo-link-github:hover {
+  --footer-logo-color: #181717;
+}
+
+.footer-credit-logo-link-vite:hover {
+  --footer-logo-color: #9135FF;
+}
+
+.footer-credit-logo-link-tailwind:hover {
+  --footer-logo-color: #06B6D4;
+}
+
+.footer-credit-logo-link-react:hover {
+  --footer-logo-color: #61DAFB;
+}
+
+.footer-credit-logo-link-pnpm:hover {
+  --footer-logo-color: #F69220;
 }
 
 .footer-copyright {
