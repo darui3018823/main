@@ -706,6 +706,28 @@ body.is-menu-open .side-panel {
   transform: translateX(4px);
 }
 
+.footer-credit {
+  margin: 0.4rem 0 0;
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.side-panel .footer-credit a {
+  display: inline;
+  padding: 0;
+  font-size: inherit;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.86);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.side-panel .footer-credit a:hover {
+  color: rgba(255, 255, 255, 0.95);
+  opacity: 1;
+  transform: none;
+}
+
 @media (max-width: 640px) {
   .menu-toggle {
     top: 1rem;
