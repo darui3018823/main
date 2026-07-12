@@ -689,6 +689,7 @@ body.is-menu-open .side-panel {
 
 .side-panel footer {
   font-size: clamp(0.67rem, 2.6vw, 0.75rem);
+  text-align: left;
   white-space: nowrap;
 }
 
@@ -707,25 +708,42 @@ body.is-menu-open .side-panel {
 }
 
 .footer-credit {
-  margin: 0.4rem 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin: 0.45rem 0 0;
   color: rgba(226, 232, 240, 0.72);
 }
 
-.side-panel .footer-credit a {
-  display: inline;
+.side-panel .footer-credit-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
-  font-size: inherit;
-  font-weight: 600;
-  color: rgba(226, 232, 240, 0.86);
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
-.side-panel .footer-credit a:hover {
-  color: rgba(255, 255, 255, 0.95);
+.side-panel .footer-credit-logo-link:hover {
   opacity: 1;
   transform: none;
+}
+
+.footer-credit-logo {
+  display: block;
+  width: auto;
+  height: 1.05rem;
+}
+
+.footer-credit-logo-github-pages {
+  height: 1.15rem;
+}
+
+.footer-credit-logo-tailwind {
+  height: 0.88rem;
+}
+
+.footer-credit-separator {
+  color: rgba(226, 232, 240, 0.44);
 }
 
 @media (max-width: 640px) {
