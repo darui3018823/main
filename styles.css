@@ -711,7 +711,7 @@ body.is-menu-open .side-panel {
   display: flex;
   align-items: center;
   gap: 0.42rem;
-  margin: 0.45rem 0 0;
+  margin: 0 0 0.55rem;
   color: rgba(226, 232, 240, 0.72);
 }
 
@@ -731,15 +731,11 @@ body.is-menu-open .side-panel {
 .footer-credit-logo {
   display: block;
   width: auto;
-  height: 1.05rem;
+  height: 2em;
 }
 
-.footer-credit-logo-github-pages {
-  height: 1.15rem;
-}
-
-.footer-credit-logo-tailwind {
-  height: 0.88rem;
+.footer-copyright {
+  margin: 0;
 }
 
 .footer-credit-separator {
