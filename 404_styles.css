@@ -1,0 +1,107 @@
+.not-found-main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 5.5rem 1rem 2rem;
+}
+
+.not-found-panel {
+  width: min(100%, 46rem);
+  padding: clamp(2.5rem, 8vw, 5rem) clamp(1.5rem, 7vw, 4.5rem);
+  cursor: default;
+  text-align: center;
+}
+
+.not-found-code {
+  margin: 0;
+  font-size: clamp(4.5rem, 16vw, 8.5rem);
+  font-weight: 300;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.22);
+}
+
+.not-found-title {
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.not-found-message {
+  margin: 1.25rem auto 0;
+  max-width: 33rem;
+  font-size: clamp(0.9rem, 2.8vw, 1rem);
+  line-height: 1.9;
+  color: rgba(226, 232, 240, 0.84);
+}
+
+.not-found-actions {
+  margin-top: 2.25rem;
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+}
+
+.not-found-home {
+  min-width: 11.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.8rem 1rem 0.8rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.not-found-home:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.not-found-home:focus-visible,
+.not-found-secondary-links a:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 4px;
+}
+
+.not-found-secondary-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: rgba(226, 232, 240, 0.42);
+}
+
+.not-found-secondary-links a {
+  padding: 0.25rem;
+  color: rgba(226, 232, 240, 0.78);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.not-found-secondary-links a:hover {
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .not-found-main {
+    padding-top: 4.75rem;
+  }
+
+  .not-found-panel {
+    border-radius: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found-home {
+    transition: none;
+  }
+}
