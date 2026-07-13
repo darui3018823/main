@@ -44,50 +44,22 @@
 }
 
 .not-found-home {
-  min-width: 11.5rem;
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 0.8rem 1rem 0.8rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  gap: 0.45rem;
+  padding: 0.25rem;
   color: rgba(255, 255, 255, 0.96);
   font-weight: 600;
-  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-.not-found-home:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.16);
+.not-found-home:hover .not-found-home-label {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
-.not-found-home:focus-visible,
-.not-found-secondary-links a:focus-visible {
+.not-found-home:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.8);
   outline-offset: 4px;
-}
-
-.not-found-secondary-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  color: rgba(226, 232, 240, 0.42);
-}
-
-.not-found-secondary-links a {
-  padding: 0.25rem;
-  color: rgba(226, 232, 240, 0.78);
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.not-found-secondary-links a:hover {
-  color: white;
 }
 
 @media (max-width: 640px) {
@@ -97,11 +69,5 @@
 
   .not-found-panel {
     border-radius: 1.5rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .not-found-home {
-    transition: none;
   }
 }
