@@ -20,7 +20,13 @@
 </head>
 
 <body class="text-white min-h-screen">
-    <button id="hamburger" class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="sidePanel" aria-expanded="false">&#9776;</button>
+    <button id="hamburger" class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="sidePanel" aria-expanded="false">
+        <span class="menu-icon" data-menu-icon aria-hidden="true">
+            <span class="menu-icon-line is-top"></span>
+            <span class="menu-icon-line is-middle"></span>
+            <span class="menu-icon-line is-bottom"></span>
+        </span>
+    </button>
     <div id="menuBackdrop" class="menu-backdrop" aria-hidden="true"></div>
     <aside id="sidePanel" class="side-panel flex flex-col min-h-[300px]" aria-label="Site menu">
         <nav>

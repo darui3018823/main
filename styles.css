@@ -634,11 +634,6 @@ body.is-menu-open .liquid-glass {
 }
 
 .menu-toggle:hover {
-  opacity: 0.82;
-  transform: translateY(-2px);
-}
-
-.home-page .menu-toggle:hover {
   opacity: 1;
   transform: none;
 }
@@ -683,34 +678,34 @@ body.is-menu-open .liquid-glass {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .home-page .menu-toggle:hover:not([aria-expanded="true"]) .menu-icon-line {
+  .menu-toggle:hover:not([aria-expanded="true"]) .menu-icon-line {
     width: 0.3rem;
   }
 
 }
 
-.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-top,
-.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-bottom {
+.menu-toggle[aria-expanded="true"] .menu-icon-line.is-top,
+.menu-toggle[aria-expanded="true"] .menu-icon-line.is-bottom {
   top: 50%;
   width: 100%;
   transition-delay: 0s;
 }
 
-.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-top {
+.menu-toggle[aria-expanded="true"] .menu-icon-line.is-top {
   transform: translateY(-50%) rotate(45deg);
 }
 
-.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-middle {
+.menu-toggle[aria-expanded="true"] .menu-icon-line.is-middle {
   width: 0;
   opacity: 0;
   transition-delay: 0s;
 }
 
-.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-bottom {
+.menu-toggle[aria-expanded="true"] .menu-icon-line.is-bottom {
   transform: translateY(-50%) rotate(-45deg);
 }
 
-.home-page .menu-toggle[aria-expanded="true"]:hover .menu-icon {
+.menu-toggle[aria-expanded="true"]:hover .menu-icon {
   opacity: 0.78;
 }
 
