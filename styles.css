@@ -638,6 +638,82 @@ body.is-menu-open .liquid-glass {
   transform: translateY(-2px);
 }
 
+.home-page .menu-toggle:hover {
+  opacity: 1;
+  transform: none;
+}
+
+.menu-icon {
+  position: relative;
+  display: block;
+  width: 1.65rem;
+  height: 1.55rem;
+  transition: opacity 0.2s ease;
+}
+
+.menu-icon-line {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 0.14rem;
+  border-radius: 999px;
+  background: currentColor;
+  transform: translateY(-50%);
+  transform-origin: center;
+  transition:
+    top 0.24s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.16s ease,
+    transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-icon-line.is-top {
+  top: 0.32rem;
+  transition-delay: 0.16s;
+}
+
+.menu-icon-line.is-middle {
+  top: 50%;
+  transition-delay: 0.08s;
+}
+
+.menu-icon-line.is-bottom {
+  top: calc(100% - 0.32rem);
+  transition-delay: 0s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-page .menu-toggle:hover:not([aria-expanded="true"]) .menu-icon-line {
+    width: 0.3rem;
+  }
+
+}
+
+.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-top,
+.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-bottom {
+  top: 50%;
+  width: 100%;
+  transition-delay: 0s;
+}
+
+.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-top {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-middle {
+  width: 0;
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.home-page .menu-toggle[aria-expanded="true"] .menu-icon-line.is-bottom {
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.home-page .menu-toggle[aria-expanded="true"]:hover .menu-icon {
+  opacity: 0.78;
+}
+
 .menu-toggle:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.75);
   outline-offset: 4px;
@@ -833,6 +909,11 @@ body.is-menu-open .side-panel {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .menu-icon,
+  .menu-icon-line {
+    transition: none;
+  }
+
   .profile-links-track {
     transition: none;
   }

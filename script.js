@@ -228,7 +228,7 @@ window.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('is-menu-open', isOpen);
         hamburger?.setAttribute('aria-expanded', String(isOpen));
         hamburger?.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
-        if (hamburger) {
+        if (hamburger && !hamburger.querySelector('[data-menu-icon]')) {
             hamburger.innerHTML = isOpen ? '&times;' : '&#9776;';
         }
         if (!isOpen) {
