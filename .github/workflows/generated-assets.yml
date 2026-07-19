@@ -1,0 +1,278 @@
+name: Generated assets assistant
+
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  notify:
+    name: Offer generated asset commit
+    if: >-
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Create or update the PR prompt
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const marker = '<!-- generated-assets-assistant -->';
+            const run = context.payload.workflow_run;
+            const pullRequest = run.pull_requests?.[0];
+
+            if (!pullRequest) {
+              core.info('The workflow run is not associated with a pull request.');
+              return;
+            }
+
+            const { data: pullRequestDetails } = await github.rest.pulls.get({
+              ...context.repo,
+              pull_number: pullRequest.number,
+            });
+            if (pullRequestDetails.user.login !== 'dependabot[bot]') {
+              core.info('The pull request was not opened by Dependabot.');
+              return;
+            }
+
+            const artifacts = await github.paginate(
+              github.rest.actions.listWorkflowRunArtifacts,
+              {
+                ...context.repo,
+                run_id: run.id,
+                per_page: 100,
+              },
+            );
+            const staleArtifacts = artifacts.filter((artifact) =>
+              artifact.name.startsWith('generated-assets-'),
+            );
+
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              ...context.repo,
+              issue_number: pullRequest.number,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) =>
+              comment.user?.login === 'github-actions[bot]' &&
+              comment.body?.includes(marker),
+            );
+
+            let body;
+            if (staleArtifacts.length > 0) {
+              const paths = [];
+              if (staleArtifacts.some((artifact) => artifact.name === 'generated-assets-css')) {
+                paths.push('- `dist/output.css`');
+              }
+              if (staleArtifacts.some((artifact) => artifact.name === 'generated-assets-contact')) {
+                paths.push('- `contact/**`');
+              }
+
+              body = `${marker}\n` +
+                `生成物に差分があります。\n\n${paths.join('\n')}\n\n` +
+                '生成してこのPRへコミットする場合は、書き込み権限を持つメンテナーが ' +
+                '`/commit-generated` とコメントしてください。';
+            } else {
+              const jobs = await github.paginate(
+                github.rest.actions.listJobsForWorkflowRun,
+                {
+                  ...context.repo,
+                  run_id: run.id,
+                  per_page: 100,
+                },
+              );
+              const generatedJobs = jobs.filter((job) =>
+                ['Tailwind CSS build', 'Contact app build (Vite)'].includes(job.name),
+              );
+              const outputsAreCurrent =
+                generatedJobs.length === 2 &&
+                generatedJobs.every((job) => job.conclusion === 'success');
+
+              if (!existing || !outputsAreCurrent) {
+                core.info('No stale generated asset marker was produced.');
+                return;
+              }
+
+              body = `${marker}\n✅ 生成物は最新です。`;
+            }
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                ...context.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: pullRequest.number,
+                body,
+              });
+            }
+
+  commit:
+    name: Commit generated assets
+    if: >-
+      github.event_name == 'issue_comment' &&
+      github.event.issue.pull_request &&
+      github.event.comment.body == '/commit-generated'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Authorize the request
+        id: authorize
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issueNumber = context.issue.number;
+            const username = context.actor;
+
+            const permissionResponse = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner,
+              repo,
+              username,
+            });
+            const permission = permissionResponse.data.permission;
+            if (!['admin', 'maintain', 'write'].includes(permission)) {
+              core.setFailed(`@${username} does not have write permission (${permission}).`);
+              return;
+            }
+
+            const { data: pullRequest } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: issueNumber,
+            });
+            if (pullRequest.state !== 'open') {
+              core.setFailed('The pull request is not open.');
+              return;
+            }
+            if (pullRequest.user.login !== 'dependabot[bot]') {
+              core.setFailed('Only Dependabot pull requests can use this command.');
+              return;
+            }
+            if (pullRequest.head.repo?.full_name !== `${owner}/${repo}`) {
+              core.setFailed('The pull request branch must belong to this repository.');
+              return;
+            }
+
+            core.setOutput('head_ref', pullRequest.head.ref);
+            core.setOutput('head_sha', pullRequest.head.sha);
+      - name: Acknowledge the command
+        uses: actions/github-script@v8
+        with:
+          script: |
+            await github.rest.reactions.createForIssueComment({
+              ...context.repo,
+              comment_id: context.payload.comment.id,
+              content: 'eyes',
+            });
+      - name: Check out the approved PR revision
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.authorize.outputs.head_sha }}
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build generated assets
+        run: |
+          pnpm css build
+          pnpm contact:build
+      - name: Validate changed paths
+        id: changes
+        shell: bash
+        run: |
+          mapfile -t changed < <(
+            { git diff --name-only; git ls-files --others --exclude-standard; } |
+              sort -u
+          )
+
+          if [ "${#changed[@]}" -eq 0 ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          unexpected=()
+          for path in "${changed[@]}"; do
+            case "$path" in
+              dist/output.css|contact/*) ;;
+              *) unexpected+=("$path") ;;
+            esac
+          done
+
+          if [ "${#unexpected[@]}" -gt 0 ]; then
+            printf 'Unexpected generated change: %s\n' "${unexpected[@]}" >&2
+            exit 1
+          fi
+
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+      - name: Commit and push generated assets
+        id: commit
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          HEAD_REF: ${{ steps.authorize.outputs.head_ref }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- dist/output.css contact/
+          git commit -m "chore: update generated assets"
+          git push origin "HEAD:${HEAD_REF}"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Report the result
+        uses: actions/github-script@v8
+        env:
+          HAS_CHANGES: ${{ steps.changes.outputs.has_changes }}
+          COMMIT_SHA: ${{ steps.commit.outputs.sha }}
+        with:
+          script: |
+            const marker = '<!-- generated-assets-assistant -->';
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              ...context.repo,
+              issue_number: context.issue.number,
+              per_page: 100,
+            });
+            const existing = comments.find((comment) =>
+              comment.user?.login === 'github-actions[bot]' &&
+              comment.body?.includes(marker),
+            );
+            const body = process.env.HAS_CHANGES === 'true'
+              ? `${marker}\n✅ 生成物をコミットしました: \`${process.env.COMMIT_SHA.slice(0, 7)}\`。CIを再実行します。`
+              : `${marker}\n✅ 生成物はすでに最新でした。`;
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                ...context.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+      - name: Re-run CI for the updated PR branch
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_REF: ${{ steps.authorize.outputs.head_ref }}
+        run: gh workflow run ci.yml --ref "$HEAD_REF"

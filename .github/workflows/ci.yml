@@ -5,6 +5,7 @@ on:
     branches:
       - main
   pull_request:
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -36,13 +37,28 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build Tailwind CSS
         run: pnpm css build
-      - name: Verify dist/output.css is up to date
+      - name: Detect stale Tailwind CSS output
+        id: generated
         run: |
           if [ -n "$(git status --porcelain -- dist/output.css)" ]; then
             git --no-pager diff --stat -- dist/output.css
-            echo "::error::dist/output.css is stale. Run 'pnpm css build' and commit the result."
-            exit 1
+            printf 'dist/output.css\n' > generated-files.txt
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Save stale output marker
+        if: steps.generated.outputs.stale == 'true'
+        uses: actions/upload-artifact@v6
+        with:
+          name: generated-assets-css
+          path: generated-files.txt
+          retention-days: 1
+      - name: Verify dist/output.css is up to date
+        if: steps.generated.outputs.stale == 'true'
+        run: |
+          echo "::error::dist/output.css is stale. Run 'pnpm css build' and commit the result."
+          exit 1
 
   contact:
     name: Contact app build (Vite)
@@ -58,10 +74,25 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build contact app
         run: pnpm contact:build
-      - name: Verify contact/ build output is up to date
+      - name: Detect stale contact app output
+        id: generated
         run: |
           if [ -n "$(git status --porcelain -- contact/)" ]; then
             git status --short -- contact/
-            echo "::error::contact/ is stale or was edited by hand. Edit contact-app/ sources, run 'pnpm contact:build', and commit the result."
-            exit 1
+            printf 'contact/\n' > generated-files.txt
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Save stale output marker
+        if: steps.generated.outputs.stale == 'true'
+        uses: actions/upload-artifact@v6
+        with:
+          name: generated-assets-contact
+          path: generated-files.txt
+          retention-days: 1
+      - name: Verify contact/ build output is up to date
+        if: steps.generated.outputs.stale == 'true'
+        run: |
+          echo "::error::contact/ is stale or was edited by hand. Edit contact-app/ sources, run 'pnpm contact:build', and commit the result."
+          exit 1
