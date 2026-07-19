@@ -26,8 +26,9 @@ jobs:
         uses: actions/github-script@v8
         with:
           script: |
-            const marker = '<!-- generated-assets-assistant -->';
             const run = context.payload.workflow_run;
+            const promptMarker = `<!-- generated-assets-assistant:prompt:${run.head_sha} -->`;
+            const resultMarker = `<!-- generated-assets-assistant:result:${run.head_sha} -->`;
             const pullRequest = run.pull_requests?.[0];
 
             if (!pullRequest) {
@@ -61,9 +62,9 @@ jobs:
               issue_number: pullRequest.number,
               per_page: 100,
             });
-            const existing = comments.find((comment) =>
+            const assistantComments = comments.filter((comment) =>
               comment.user?.login === 'github-actions[bot]' &&
-              comment.body?.includes(marker),
+              comment.body?.includes('<!-- generated-assets-assistant'),
             );
 
             let body;
@@ -76,7 +77,7 @@ jobs:
                 paths.push('- `contact/**`');
               }
 
-              body = `${marker}\n` +
+              body = `${promptMarker}\n` +
                 `生成物に差分があります。\n\n${paths.join('\n')}\n\n` +
                 '生成してこのPRへコミットする場合は、書き込み権限を持つメンテナーが ' +
                 '`/commit-generated` とコメントしてください。';
@@ -96,27 +97,24 @@ jobs:
                 generatedJobs.length === 2 &&
                 generatedJobs.every((job) => job.conclusion === 'success');
 
-              if (!existing || !outputsAreCurrent) {
+              if (assistantComments.length === 0 || !outputsAreCurrent) {
                 core.info('No stale generated asset marker was produced.');
                 return;
               }
 
-              body = `${marker}\n✅ 生成物は最新です。`;
+              body = `${resultMarker}\n✅ 生成物は最新です。`;
             }
 
-            if (existing) {
-              await github.rest.issues.updateComment({
-                ...context.repo,
-                comment_id: existing.id,
-                body,
-              });
-            } else {
-              await github.rest.issues.createComment({
-                ...context.repo,
-                issue_number: pullRequest.number,
-                body,
-              });
+            if (assistantComments.some((comment) => comment.body === body)) {
+              core.info('An identical comment already exists for this revision.');
+              return;
             }
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: pullRequest.number,
+              body,
+            });
 
   commit:
     name: Commit generated assets
@@ -243,33 +241,17 @@ jobs:
           COMMIT_SHA: ${{ steps.commit.outputs.sha }}
         with:
           script: |
-            const marker = '<!-- generated-assets-assistant -->';
-            const comments = await github.paginate(github.rest.issues.listComments, {
-              ...context.repo,
-              issue_number: context.issue.number,
-              per_page: 100,
-            });
-            const existing = comments.find((comment) =>
-              comment.user?.login === 'github-actions[bot]' &&
-              comment.body?.includes(marker),
-            );
+            const resultId = process.env.COMMIT_SHA || context.payload.comment.id;
+            const marker = `<!-- generated-assets-assistant:result:${resultId} -->`;
             const body = process.env.HAS_CHANGES === 'true'
               ? `${marker}\n✅ 生成物をコミットしました: \`${process.env.COMMIT_SHA.slice(0, 7)}\`。CIを再実行します。`
               : `${marker}\n✅ 生成物はすでに最新でした。`;
 
-            if (existing) {
-              await github.rest.issues.updateComment({
-                ...context.repo,
-                comment_id: existing.id,
-                body,
-              });
-            } else {
-              await github.rest.issues.createComment({
-                ...context.repo,
-                issue_number: context.issue.number,
-                body,
-              });
-            }
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              body,
+            });
       - name: Re-run CI for the updated PR branch
         if: steps.changes.outputs.has_changes == 'true'
         env:
