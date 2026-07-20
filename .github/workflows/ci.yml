@@ -49,7 +49,7 @@ jobs:
           fi
       - name: Save stale output marker
         if: steps.generated.outputs.stale == 'true'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: generated-assets-css
           path: generated-files.txt
@@ -86,7 +86,7 @@ jobs:
           fi
       - name: Save stale output marker
         if: steps.generated.outputs.stale == 'true'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: generated-assets-contact
           path: generated-files.txt
