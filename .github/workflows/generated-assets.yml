@@ -23,7 +23,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Create or update the PR prompt
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const run = context.payload.workflow_run;
@@ -131,7 +131,7 @@ jobs:
     steps:
       - name: Authorize the request
         id: authorize
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const { owner, repo } = context.repo;
@@ -170,7 +170,7 @@ jobs:
             core.setOutput('head_ref', pullRequest.head.ref);
             core.setOutput('head_sha', pullRequest.head.sha);
       - name: Acknowledge the command
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.reactions.createForIssueComment({
@@ -235,7 +235,7 @@ jobs:
           git push origin "HEAD:${HEAD_REF}"
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Report the result
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           HAS_CHANGES: ${{ steps.changes.outputs.has_changes }}
           COMMIT_SHA: ${{ steps.commit.outputs.sha }}
