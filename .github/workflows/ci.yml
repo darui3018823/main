@@ -79,6 +79,7 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain -- contact/)" ]; then
             git status --short -- contact/
+            git --no-pager diff --no-ext-diff -- contact/
             printf 'contact/\n' > generated-files.txt
             echo "stale=true" >> "$GITHUB_OUTPUT"
           else
