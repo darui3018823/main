@@ -20,8 +20,14 @@ window.addEventListener('DOMContentLoaded', () => {
     const lanyardCustomEmoji = document.querySelector('[data-lanyard-custom-emoji]');
     const lanyardRpc = document.querySelector('[data-lanyard-rpc]');
     const lanyardRpcText = document.querySelector('[data-lanyard-rpc-text]');
+    const buildStatus = document.querySelector('[data-build-status]');
+    const buildStatusIndicator = document.querySelector('[data-build-status-indicator]');
+    const buildStatusLabel = document.querySelector('[data-build-status-label]');
+    const buildStatusCommit = document.querySelector('[data-build-status-commit]');
 
     const DISCORD_DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/1.png';
+    const GITHUB_REPOSITORY = 'darui3018823/main';
+    const GITHUB_API_HEADERS = { Accept: 'application/vnd.github+json' };
     const typewriterItems = typewriterTargets.map((target) => ({
         target,
         text: target.textContent.trim(),
@@ -142,6 +148,68 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const focusWithoutScroll = (element) => {
         element?.focus({ preventScroll: true });
+    };
+
+    const setBuildStatus = (state, label) => {
+        if (buildStatusIndicator) {
+            buildStatusIndicator.className = `build-status-indicator is-${state}`;
+        }
+        if (buildStatusLabel) {
+            buildStatusLabel.textContent = label;
+        }
+    };
+
+    const updateBuildStatus = async () => {
+        if (!buildStatus || !buildStatusCommit) {
+            return;
+        }
+
+        try {
+            const [commitResponse, workflowResponse] = await Promise.all([
+                fetch(`https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/main`, {
+                    headers: GITHUB_API_HEADERS,
+                    cache: 'no-store',
+                }),
+                fetch(`https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/ci.yml/runs?branch=main&per_page=1`, {
+                    headers: GITHUB_API_HEADERS,
+                    cache: 'no-store',
+                }),
+            ]);
+
+            if (!commitResponse.ok) {
+                throw new Error(`GitHub commit request failed: ${commitResponse.status}`);
+            }
+
+            const commit = await commitResponse.json();
+            const shortSha = commit.sha.slice(0, 7);
+            buildStatusCommit.textContent = shortSha;
+            buildStatusCommit.href = commit.html_url;
+            buildStatusCommit.title = commit.commit.message.split('\n', 1)[0];
+            buildStatusCommit.setAttribute('aria-label', `Commit ${commit.sha}`);
+
+            if (!workflowResponse.ok) {
+                setBuildStatus('unknown', 'Build status unavailable');
+                return;
+            }
+
+            const workflowData = await workflowResponse.json();
+            const latestRun = workflowData.workflow_runs?.[0];
+            if (!latestRun) {
+                setBuildStatus('unknown', 'Build status unavailable');
+                return;
+            }
+
+            if (latestRun.status !== 'completed') {
+                setBuildStatus('pending', 'Build in progress');
+            } else if (latestRun.conclusion === 'success') {
+                setBuildStatus('success', 'Build passing');
+            } else {
+                setBuildStatus('failure', 'Build failing');
+            }
+        } catch (error) {
+            setBuildStatus('unknown', 'Build status unavailable');
+            console.error(error);
+        }
     };
 
     const setProfileLinksPage = (pageName) => {
@@ -338,6 +406,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', refreshRpcScroll);
 
+    updateBuildStatus();
+    window.setInterval(updateBuildStatus, 300000);
     updateLanyardPresence();
     window.setInterval(updateLanyardPresence, 30000);
     // DOMContentLoaded 時点で開始する。window.load を待つと、遅い外部画像 (Discord CDN など) が
