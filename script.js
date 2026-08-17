@@ -20,10 +20,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const lanyardCustomEmoji = document.querySelector('[data-lanyard-custom-emoji]');
     const lanyardRpc = document.querySelector('[data-lanyard-rpc]');
     const lanyardRpcText = document.querySelector('[data-lanyard-rpc-text]');
-    const buildStatus = document.querySelector('[data-build-status]');
-    const buildStatusIndicator = document.querySelector('[data-build-status-indicator]');
-    const buildStatusLabel = document.querySelector('[data-build-status-label]');
-    const buildStatusCommit = document.querySelector('[data-build-status-commit]');
+    const pageStatus = document.querySelector('[data-page-status]');
+    const pageStatusLink = document.querySelector('[data-page-status-link]');
+    const pageStatusLabel = document.querySelector('[data-page-status-label]');
+    const pageStatusSymbol = document.querySelector('[data-page-status-symbol]');
+    const pageStatusCommit = document.querySelector('[data-page-status-commit]');
 
     const DISCORD_DEFAULT_AVATAR = 'https://cdn.discordapp.com/embed/avatars/1.png';
     const GITHUB_REPOSITORY = 'darui3018823/main';
@@ -150,17 +151,22 @@ window.addEventListener('DOMContentLoaded', () => {
         element?.focus({ preventScroll: true });
     };
 
-    const setBuildStatus = (state, label) => {
-        if (buildStatusIndicator) {
-            buildStatusIndicator.className = `build-status-indicator is-${state}`;
+    const setPageStatus = (state, description, symbol) => {
+        if (pageStatusLink) {
+            pageStatusLink.title = `Page Status: ${description}`;
+            pageStatusLink.setAttribute('aria-label', `Page Status: ${description}. Open GitHub Actions CI workflow`);
         }
-        if (buildStatusLabel) {
-            buildStatusLabel.textContent = label;
+        if (pageStatusLabel) {
+            pageStatusLabel.textContent = 'Page Status:';
+        }
+        if (pageStatusSymbol) {
+            pageStatusSymbol.className = 'page-status-symbol';
+            pageStatusSymbol.textContent = symbol;
         }
     };
 
-    const updateBuildStatus = async () => {
-        if (!buildStatus || !buildStatusCommit) {
+    const updatePageStatus = async () => {
+        if (!pageStatus || !pageStatusCommit) {
             return;
         }
 
@@ -182,32 +188,32 @@ window.addEventListener('DOMContentLoaded', () => {
 
             const commit = await commitResponse.json();
             const shortSha = commit.sha.slice(0, 7);
-            buildStatusCommit.textContent = shortSha;
-            buildStatusCommit.href = commit.html_url;
-            buildStatusCommit.title = commit.commit.message.split('\n', 1)[0];
-            buildStatusCommit.setAttribute('aria-label', `Commit ${commit.sha}`);
+            pageStatusCommit.textContent = shortSha;
+            pageStatusCommit.href = commit.html_url;
+            pageStatusCommit.title = commit.commit.message.split('\n', 1)[0];
+            pageStatusCommit.setAttribute('aria-label', `Commit ${commit.sha}`);
 
             if (!workflowResponse.ok) {
-                setBuildStatus('unknown', 'Build status unavailable');
+                setPageStatus('unknown', 'unavailable', '?');
                 return;
             }
 
             const workflowData = await workflowResponse.json();
             const latestRun = workflowData.workflow_runs?.[0];
             if (!latestRun) {
-                setBuildStatus('unknown', 'Build status unavailable');
+                setPageStatus('unknown', 'unavailable', '?');
                 return;
             }
 
             if (latestRun.status !== 'completed') {
-                setBuildStatus('pending', 'Build in progress');
+                setPageStatus('pending', 'updating', '?');
             } else if (latestRun.conclusion === 'success') {
-                setBuildStatus('success', 'Build passing');
+                setPageStatus('success', 'online', '✓');
             } else {
-                setBuildStatus('failure', 'Build failing');
+                setPageStatus('failure', 'issue', '×');
             }
         } catch (error) {
-            setBuildStatus('unknown', 'Build status unavailable');
+            setPageStatus('unknown', 'unavailable', '?');
             console.error(error);
         }
     };
@@ -406,8 +412,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', refreshRpcScroll);
 
-    updateBuildStatus();
-    window.setInterval(updateBuildStatus, 300000);
+    updatePageStatus();
+    window.setInterval(updatePageStatus, 300000);
     updateLanyardPresence();
     window.setInterval(updateLanyardPresence, 30000);
     // DOMContentLoaded 時点で開始する。window.load を待つと、遅い外部画像 (Discord CDN など) が

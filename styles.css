@@ -778,77 +778,62 @@ body.is-menu-open .side-panel {
   transform: translateX(4px);
 }
 
-.build-status {
-  margin: 0 0 1.2rem;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.06);
+.page-status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.42rem;
+  margin: 0 0 0.4rem;
+  color: rgba(190, 199, 213, 0.78);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-align: left;
 }
 
-.side-panel a.build-status-heading,
-.side-panel a.build-status-commit-link {
+.side-panel a.page-status-link,
+.side-panel a.page-status-commit-link {
   padding: 0;
   font-size: inherit;
   font-weight: inherit;
 }
 
-.side-panel a.build-status-heading {
-  display: flex;
+.side-panel a.page-status-link {
+  display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.78rem;
-  font-weight: 700;
+  gap: 0.35rem;
+  color: inherit;
+  font-weight: 400;
   text-decoration: none;
 }
 
-.side-panel a.build-status-heading:hover {
+.side-panel a.page-status-link:hover {
   opacity: 1;
-  transform: translateX(2px);
+  transform: none;
 }
 
-.build-status-indicator {
-  width: 0.48rem;
-  height: 0.48rem;
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.9);
-  box-shadow: 0 0 8px rgba(148, 163, 184, 0.45);
+.page-status-symbol {
+  font-weight: 400;
+  color: inherit;
 }
 
-.build-status-indicator.is-success {
-  background: #86efac;
-  box-shadow: 0 0 8px rgba(134, 239, 172, 0.7);
+.page-status-commit-separator {
+  color: rgba(226, 232, 240, 0.42);
 }
 
-.build-status-indicator.is-pending {
-  background: #fde68a;
-  box-shadow: 0 0 8px rgba(253, 230, 138, 0.65);
+.page-status-commit {
+  white-space: nowrap;
 }
 
-.build-status-indicator.is-failure {
-  background: #fca5a5;
-  box-shadow: 0 0 8px rgba(252, 165, 165, 0.65);
-}
-
-.build-status-commit {
-  margin: 0.35rem 0 0;
-  color: rgba(226, 232, 240, 0.62);
-  font-size: 0.68rem;
-  line-height: 1.35;
-}
-
-.side-panel a.build-status-commit-link {
+.side-panel a.page-status-commit-link {
   display: inline;
   margin-left: 0.25rem;
   color: rgba(191, 219, 254, 0.9);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+  font-weight: 400;
 }
 
-.side-panel a.build-status-commit-link:hover {
+.side-panel a.page-status-commit-link:hover {
   opacity: 1;
   transform: none;
   color: rgba(219, 234, 254, 1);
