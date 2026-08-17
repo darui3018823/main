@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const sidePanelContactLink = document.getElementById('sidePanelContactLink');
     const centerPanel = document.getElementById('centerPanel');
     const centerPanelCards = Array.from(document.querySelectorAll('[data-panel-card]'));
-    const profileLinksViewport = document.querySelector('.profile-links-viewport');
     const profileLinksTrack = document.querySelector('[data-profile-links-track]');
     const profileLinksPages = Array.from(document.querySelectorAll('[data-profile-links-page]'));
     const profileLinksNextButton = document.querySelector('[data-profile-links-next]');
@@ -150,10 +149,6 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (profileLinksViewport) {
-            profileLinksViewport.scrollLeft = 0;
-        }
-
         const isMorePage = pageName === 'more';
         profileLinksTrack.classList.toggle('is-more-page', isMorePage);
 
@@ -162,8 +157,6 @@ window.addEventListener('DOMContentLoaded', () => {
             page.setAttribute('aria-hidden', String(!isActive));
             page.inert = !isActive;
         });
-
-        window.requestAnimationFrame(refreshRpcScroll);
     };
 
     const setLanyardStatus = (status) => {
