@@ -182,16 +182,19 @@ window.addEventListener('DOMContentLoaded', () => {
                 }),
             ]);
 
-            if (!commitResponse.ok) {
-                throw new Error(`GitHub commit request failed: ${commitResponse.status}`);
+            if (commitResponse.ok) {
+                const commit = await commitResponse.json();
+                const shortSha = commit.sha.slice(0, 7);
+                pageStatusCommit.textContent = shortSha;
+                pageStatusCommit.href = commit.html_url;
+                pageStatusCommit.title = commit.commit.message.split('\n', 1)[0];
+                pageStatusCommit.setAttribute('aria-label', `Commit ${commit.sha}`);
+            } else {
+                pageStatusCommit.textContent = '?';
+                pageStatusCommit.href = `https://github.com/${GITHUB_REPOSITORY}/commits/main`;
+                pageStatusCommit.title = 'Commit information unavailable';
+                pageStatusCommit.setAttribute('aria-label', 'Commit information unavailable');
             }
-
-            const commit = await commitResponse.json();
-            const shortSha = commit.sha.slice(0, 7);
-            pageStatusCommit.textContent = shortSha;
-            pageStatusCommit.href = commit.html_url;
-            pageStatusCommit.title = commit.commit.message.split('\n', 1)[0];
-            pageStatusCommit.setAttribute('aria-label', `Commit ${commit.sha}`);
 
             if (!workflowResponse.ok) {
                 setPageStatus('unknown', 'unavailable', '?');
@@ -212,9 +215,12 @@ window.addEventListener('DOMContentLoaded', () => {
             } else {
                 setPageStatus('failure', 'issue', '×');
             }
-        } catch (error) {
+        } catch {
             setPageStatus('unknown', 'unavailable', '?');
-            console.error(error);
+            pageStatusCommit.textContent = '?';
+            pageStatusCommit.href = `https://github.com/${GITHUB_REPOSITORY}/commits/main`;
+            pageStatusCommit.title = 'Commit information unavailable';
+            pageStatusCommit.setAttribute('aria-label', 'Commit information unavailable');
         }
     };
 
