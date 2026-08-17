@@ -2,7 +2,7 @@
 このページはだるかすのただの[ホームページ](https://daruks.com/)です<br>
 多分知識がなさ過ぎてろくなもの作れませんゆるしてくださいなんでもしｍ<br>
 開発コマンドや構成の詳細は [CLAUDE.md](./CLAUDE.md) を見てください。<br>
-This project was assisted by Claude Fable 5 / ChatGPT-5.5 !
+This project was assisted by Claude Fable 5 / ChatGPT-5.6 Family !
 
 # Build Stacks!
 
