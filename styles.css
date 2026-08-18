@@ -7,9 +7,17 @@ body {
   font-family: var(--site-font-family);
 }
 
+html {
+  background: #0f1219;
+  overscroll-behavior-y: none;
+}
+
 body {
   background: linear-gradient(rgba(8, 14, 20, 0.55), rgba(8, 14, 20, 0.7)), url('/images/bg-beach.jpg') center / cover no-repeat fixed;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 body.is-menu-open {
@@ -619,7 +627,7 @@ body.is-menu-open .liquid-glass {
 
 .menu-toggle {
   position: fixed;
-  top: 1.25rem;
+  top: calc(1.25rem + env(safe-area-inset-top));
   right: 1.25rem;
   z-index: 70;
   width: 2.75rem;
@@ -732,7 +740,8 @@ body.is-menu-open .liquid-glass {
   z-index: 60;
   width: min(22rem, calc(100vw - 2rem));
   height: 100vh;
-  padding: 5rem 2rem 2rem;
+  height: 100dvh;
+  padding: calc(5rem + env(safe-area-inset-top)) 2rem calc(2rem + env(safe-area-inset-bottom));
   background: rgba(15, 18, 25, 0.25);
   backdrop-filter: blur(14px) saturate(115%);
   -webkit-backdrop-filter: blur(14px) saturate(115%);
@@ -917,7 +926,7 @@ body.is-menu-open .side-panel {
 
 @media (max-width: 640px) {
   .menu-toggle {
-    top: 1rem;
+    top: calc(1rem + env(safe-area-inset-top));
     right: 1rem;
   }
 
