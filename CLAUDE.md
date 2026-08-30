@@ -19,6 +19,15 @@ go run main.go          # local static file server at http://localhost:8080
 
 There are no tests (`pnpm test` is a stub).
 
+## Commit messages
+
+- Use English unless the user explicitly requests another language.
+- Follow the Conventional Commits format: `<type>(<optional scope>): <description>`.
+- Use a concise, imperative, lowercase description without a trailing period.
+- Use the type that best describes the change: `feat`, `fix`, `refactor`, `style`, `docs`, `test`, `chore`, `build`, `ci`, `perf`, or `revert`.
+- Keep each commit focused on one logical change and commit frequently.
+- Before committing, inspect the working tree and do not include unrelated user changes.
+
 ## Build outputs are committed — keep them fresh
 
 GitHub Pages serves the repo as-is, so build artifacts are checked in. CI (`.github/workflows/ci.yml`) fails the PR if either is stale:
