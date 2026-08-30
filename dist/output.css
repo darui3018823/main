@@ -306,6 +306,9 @@
   .h-20 {
     height: calc(var(--spacing) * 20);
   }
+  .min-h-75 {
+    min-height: calc(var(--spacing) * 75);
+  }
   .min-h-\[300px\] {
     min-height: 300px;
   }
@@ -482,6 +485,9 @@
   }
   .text-white {
     color: var(--color-white);
+  }
+  .lowercase {
+    text-transform: lowercase;
   }
   .antialiased {
     -webkit-font-smoothing: antialiased;
