@@ -1,199 +1,217 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | daruks.com</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Projects | daruks.com</title>
 
-    <link rel="stylesheet" href="/dist/output.css">
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="projects_styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/dist/output.css">
+        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="projects_styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <meta property="og:site_name" content="daruks.com">
-    <meta property="og:title" content="Projects - daruks.com">
-    <meta property="og:description" content="My Projects and Services">
-    <meta property="og:url" content="https://daruks.com/projects">
-    <meta property="og:type" content="website">
-    
-</head>
+        <meta property="og:site_name" content="daruks.com">
+        <meta property="og:title" content="Projects - daruks.com">
+        <meta property="og:description" content="My Projects and Services">
+        <meta property="og:url" content="https://daruks.com/projects">
+        <meta property="og:type" content="website">
 
-<body class="text-white min-h-screen">
-    <button id="hamburger" class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="sidePanel" aria-expanded="false">
-        <span class="menu-icon" data-menu-icon aria-hidden="true">
-            <span class="menu-icon-line is-top"></span>
-            <span class="menu-icon-line is-middle"></span>
-            <span class="menu-icon-line is-bottom"></span>
-        </span>
-    </button>
-    <div id="menuBackdrop" class="menu-backdrop" aria-hidden="true"></div>
-    <aside id="sidePanel" class="side-panel flex flex-col min-h-75" aria-label="Site menu">
-        <nav>
-            <a href="/">Home</a>
-            <a href="/projects/">Projects</a>
-            <a href="/contact/">Contact</a>
-        </nav>
+    </head>
 
-        <footer class="mt-auto text-center py-6 text-xs text-slate-400">
-            <p class="footer-credit" aria-label="Powered by GitHub Pages, Vite, Tailwind CSS, React, and pnpm">
-                <span>Powered by</span>
-                <a class="footer-credit-logo-link footer-credit-logo-link-github" href="https://pages.github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub Pages">
-                    <span class="footer-credit-logo footer-credit-logo-github-pages" aria-hidden="true"></span>
-                </a>
-                <span class="footer-credit-separator" aria-hidden="true">/</span>
-                <a class="footer-credit-logo-link footer-credit-logo-link-vite" href="https://vite.dev/" target="_blank" rel="noopener noreferrer" aria-label="Vite">
-                    <span class="footer-credit-logo footer-credit-logo-vite" aria-hidden="true"></span>
-                </a>
-                <span class="footer-credit-separator" aria-hidden="true">/</span>
-                <a class="footer-credit-logo-link footer-credit-logo-link-tailwind" href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" aria-label="Tailwind CSS">
-                    <span class="footer-credit-logo footer-credit-logo-tailwind" aria-hidden="true"></span>
-                </a>
-                <span class="footer-credit-separator" aria-hidden="true">/</span>
-                <a class="footer-credit-logo-link footer-credit-logo-link-react" href="https://react.dev/" target="_blank" rel="noopener noreferrer" aria-label="React">
-                    <span class="footer-credit-logo footer-credit-logo-react" aria-hidden="true"></span>
-                </a>
-                <span class="footer-credit-separator" aria-hidden="true">/</span>
-                <a class="footer-credit-logo-link footer-credit-logo-link-pnpm" href="https://pnpm.io/" target="_blank" rel="noopener noreferrer" aria-label="pnpm">
-                    <span class="footer-credit-logo footer-credit-logo-pnpm" aria-hidden="true"></span>
-                </a>
-            </p>
-            <p class="page-status" data-page-status>
-                <a class="page-status-link" data-page-status-link href="https://github.com/darui3018823/main/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer" aria-label="Page Status. Open GitHub Actions CI workflow">
-                    <span data-page-status-label>Page Status:</span>
-                    <span class="page-status-symbol is-unknown" data-page-status-symbol aria-hidden="true">?</span>
-                </a>
-                <span class="page-status-commit-separator" aria-hidden="true">/</span>
-                <span class="page-status-commit">Commit<a class="page-status-commit-link" data-page-status-commit href="https://github.com/darui3018823/main/commits/main" target="_blank" rel="noopener noreferrer">Loading...</a></span>
-            </p>
-            <p class="footer-copyright">&copy; 2024 - 2026 darui3018823 - All rights reserved.</p>
-        </footer>
-    </aside>
+    <body class="text-white min-h-screen">
+        <button id="hamburger" class="menu-toggle" type="button" aria-label="メニューを開く" aria-controls="sidePanel" aria-expanded="false">
+            <span class="menu-icon" data-menu-icon aria-hidden="true">
+                <span class="menu-icon-line is-top"></span>
+                <span class="menu-icon-line is-middle"></span>
+                <span class="menu-icon-line is-bottom"></span>
+            </span>
+        </button>
+        <div id="menuBackdrop" class="menu-backdrop" aria-hidden="true"></div>
+        <aside id="sidePanel" class="side-panel flex flex-col min-h-75" aria-label="Site menu">
+            <nav>
+                <a href="/">Home</a>
+                <a href="/projects/">Projects</a>
+                <a href="/contact/">Contact</a>
+            </nav>
 
-    <main class="projects-main">
-        <section class="liquid-glass projects-panel" aria-labelledby="projectsTitle">
-            <h1 id="projectsTitle" class="projects-title">Projects!</h1>
+            <footer class="mt-auto text-center py-6 text-xs text-slate-400">
+                <p class="footer-credit" aria-label="Powered by GitHub Pages, Vite, Tailwind CSS, React, and pnpm">
+                    <span>Powered by</span>
+                    <a class="footer-credit-logo-link footer-credit-logo-link-github" href="https://pages.github.com/"
+                       target="_blank" rel="noopener noreferrer" aria-label="GitHub Pages">
+                        <span class="footer-credit-logo footer-credit-logo-github-pages" aria-hidden="true"></span>
+                    </a>
+                    <span class="footer-credit-separator" aria-hidden="true">/</span>
+                    <a class="footer-credit-logo-link footer-credit-logo-link-vite" href="https://vite.dev/"
+                       target="_blank" rel="noopener noreferrer" aria-label="Vite">
+                        <span class="footer-credit-logo footer-credit-logo-vite" aria-hidden="true"></span>
+                    </a>
+                    <span class="footer-credit-separator" aria-hidden="true">/</span>
+                    <a class="footer-credit-logo-link footer-credit-logo-link-tailwind" href="https://tailwindcss.com/"
+                       target="_blank" rel="noopener noreferrer" aria-label="Tailwind CSS">
+                        <span class="footer-credit-logo footer-credit-logo-tailwind" aria-hidden="true"></span>
+                    </a>
+                    <span class="footer-credit-separator" aria-hidden="true">/</span>
+                    <a class="footer-credit-logo-link footer-credit-logo-link-react" href="https://react.dev/"
+                       target="_blank" rel="noopener noreferrer" aria-label="React">
+                        <span class="footer-credit-logo footer-credit-logo-react" aria-hidden="true"></span>
+                    </a>
+                    <span class="footer-credit-separator" aria-hidden="true">/</span>
+                    <a class="footer-credit-logo-link footer-credit-logo-link-pnpm" href="https://pnpm.io/"
+                       target="_blank" rel="noopener noreferrer" aria-label="pnpm">
+                        <span class="footer-credit-logo footer-credit-logo-pnpm" aria-hidden="true"></span>
+                    </a>
+                </p>
+                <p class="page-status" data-page-status>
+                    <a class="page-status-link" data-page-status-link target="_blank"
+                       href="https://github.com/darui3018823/main/actions/workflows/ci.yml" rel="noopener noreferrer"
+                       aria-label="Page Status. Open GitHub Actions CI workflow">
+                        <span data-page-status-label>Page Status:</span>
+                        <span class="page-status-symbol is-unknown" data-page-status-symbol aria-hidden="true">?</span>
+                    </a>
+                    <span class="page-status-commit-separator" aria-hidden="true">/</span>
+                    <span class="page-status-commit">Commit
+                        <a class="page-status-commit-link" data-page-status-commit
+                           href="https://github.com/darui3018823/main/commits/main"
+                           target="_blank" rel="noopener noreferrer">Loading...</a>
+                    </span>
+                </p>
+                <p class="footer-copyright">&copy; 2024 - 2026 darui3018823 - All rights reserved.</p>
+            </footer>
+        </aside>
 
-            <div class="project-list">
-                <article class="project-row">
-                    <div class="project-media">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/images/project-icons.svg#icon-github"></use>
-                        </svg>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-topline">
-                            <h2 class="project-name">Tabdock</h2>
-                            <a class="project-link" href="https://github.com/darui3018823/tabdock/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <main class="projects-main">
+            <section class="liquid-glass projects-panel" aria-labelledby="projectsTitle">
+                <h1 id="projectsTitle" class="projects-title">Projects!</h1>
+
+                <div class="project-list">
+                    <article class="project-row">
+                        <div class="project-media">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="/images/project-icons.svg#icon-github"></use>
+                            </svg>
                         </div>
-                        <p class="project-catch">Put your spare tablets to good use.</p>
-                        <p class="project-description">Repurpose unused tablets into Always-On Displays (AOD).</p>
-                    </div>
-                </article>
-
-                <article class="project-row">
-                    <div class="project-media">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/images/project-icons.svg#icon-github"></use>
-                        </svg>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-topline">
-                            <h2 class="project-name">Subscription Manager</h2>
-                            <a class="project-link" href="https://github.com/Ahoshinet/subscription-app/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                        <div class="project-body">
+                            <div class="project-topline">
+                                <h2 class="project-name">Tabdock</h2>
+                                <a class="project-link" href="https://github.com/darui3018823/tabdock/"
+                                   target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                            </div>
+                            <p class="project-catch">Put your spare tablets to good use.</p>
+                            <p class="project-description">Repurpose unused tablets into Always-On Displays (AOD).</p>
                         </div>
-                        <p class="project-catch">Track all your subscriptions at a glance. No more surprise charges.</p>
-                        <p class="project-description">A mobile/web application to manage all your subscription services in one place.</p>
-                    </div>
-                </article>
+                    </article>
 
-                <article class="project-row">
-                    <div class="project-media">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/images/project-icons.svg#icon-github"></use>
-                        </svg>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-topline">
-                            <h2 class="project-name">Pure Golang Opus Library</h2>
-                            <a class="project-link" href="https://github.com/darui3018823/opus/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <article class="project-row">
+                        <div class="project-media">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="/images/project-icons.svg#icon-github"></use>
+                            </svg>
                         </div>
-                        <p class="project-catch">✨👍😎👍Pure-Go Opus audio codec✨👍😎👍</p>
-                        <p class="project-description">Zero runtime CGO dependency (RFC 6716 / 8251).</p>
-                    </div>
-                </article>
-
-                <article class="project-row">
-                    <div class="project-media">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/images/project-icons.svg#icon-github"></use>
-                        </svg>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-topline">
-                            <h2 class="project-name">dgo (Discord Bot Library)</h2>
-                            <a class="project-link" href="https://github.com/darui3018823/dgo/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                        <div class="project-body">
+                            <div class="project-topline">
+                                <h2 class="project-name">Subscription Manager</h2>
+                                <a class="project-link" href="https://github.com/Ahoshinet/subscription-app/"
+                                   target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                            </div>
+                            <p class="project-catch">Track all your subscriptions at a glance. No more surprise charges.</p>
+                            <p class="project-description">A mobile/web application to manage all your subscription services in one place.</p>
                         </div>
-                        <p class="project-catch">Go bindings for the Discord API.</p>
-                        <p class="project-description">Hard-forked from bwmarrin/discordgo.</p>
-                    </div>
-                </article>
+                    </article>
 
-
-                <!-- Services! -->
-                <h2 class="project-subtitle">Services!</h2>
-
-                <article class="project-row is-grouped">
-                    <div class="project-media is-logo">
-                        <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_icon.png" alt="Ahoshinet Groups icon">
-                    </div>
-                    <div class="project-body">
-                        <div class="project-topline">
-                            <h3 class="project-name">Ahoshinet Groups</h3>
-                            <a class="project-link" href="https://corp.daruks.com/" target="_blank" rel="noopener noreferrer">Website ↗</a>
+                    <article class="project-row">
+                        <div class="project-media">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="/images/project-icons.svg#icon-github"></use>
+                            </svg>
                         </div>
-                        <p class="project-catch">Connecting the Future, Ahoshinet Groups.</p>
-                        <p class="project-description">Providing next-generation internet and integrated cloud solutions.</p>
-                    </div>
-                </article>
-
-                <article class="project-row">
-                    <div class="project-media">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/images/project-icons.svg#icon-globe"></use>
-                        </svg>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-topline">
-                            <h3 class="project-name">Ahoshinet Labs</h3>
-                            <a class="project-link" href="https://labs.daruks.com/" target="_blank" rel="noopener noreferrer">Website ↗</a>
+                        <div class="project-body">
+                            <div class="project-topline">
+                                <h2 class="project-name">Pure Golang Opus Library</h2>
+                                <a class="project-link" href="https://github.com/darui3018823/opus/"
+                                   target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                            </div>
+                            <p class="project-catch">✨👍😎👍Pure-Go Opus audio codec✨👍😎👍</p>
+                            <p class="project-description">Zero runtime CGO dependency (RFC 6716 / 8251).</p>
                         </div>
-                        <p class="project-catch">Ideas into form.Technology into experience.</p>
-                        <p class="project-description">Research beyond the current map.</p>
-                    </div>
-                </article>
+                    </article>
 
-                <article class="project-row">
-                    <div class="project-media">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <use href="/images/project-icons.svg#icon-globe"></use>
-                        </svg>
-                    </div>
-                    <div class="project-body">
-                        <div class="project-topline">
-                            <h3 class="project-name">This is bot Web Services</h3>
-                            <a class="project-link" href="https://bot.daruks.com/" target="_blank" rel="noopener noreferrer">Website ↗</a>
+                    <article class="project-row">
+                        <div class="project-media">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="/images/project-icons.svg#icon-github"></use>
+                            </svg>
                         </div>
-                        <p class="project-catch">Simple conveniences for everyday life.</p>
-                        <p class="project-description">A practical web service platform powered by This is bot.</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
+                        <div class="project-body">
+                            <div class="project-topline">
+                                <h2 class="project-name">dgo (Discord Bot Library)</h2>
+                                <a class="project-link" href="https://github.com/darui3018823/dgo/"
+                                   target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                            </div>
+                            <p class="project-catch">Go bindings for the Discord API.</p>
+                            <p class="project-description">Hard-forked from bwmarrin/discordgo.</p>
+                        </div>
+                    </article>
 
-    <script data-cfasync="false" src="/script.js"></script>
-    <script data-cfasync="false" src="projects_script.js"></script>
-</body>
 
+                    <!-- Services! -->
+                    <h2 class="project-subtitle">Services!</h2>
+
+                    <article class="project-row is-grouped">
+                        <div class="project-media is-logo">
+                            <img src="https://cdn.daruks.com/public/images/Ahoshinet/ahoshinet_icon.png"
+                                 alt="Ahoshinet Groups icon">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-topline">
+                                <h3 class="project-name">Ahoshinet Groups</h3>
+                                <a class="project-link" href="https://corp.daruks.com/" target="_blank"
+                                   rel="noopener noreferrer">Website ↗</a>
+                            </div>
+                            <p class="project-catch">Connecting the Future, Ahoshinet Groups.</p>
+                            <p class="project-description">Providing next-generation internet and integrated cloud solutions.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-media">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="/images/project-icons.svg#icon-globe"></use>
+                            </svg>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-topline">
+                                <h3 class="project-name">Ahoshinet Labs</h3>
+                                <a class="project-link" href="https://labs.daruks.com/"
+                                   target="_blank" rel="noopener noreferrer">Website ↗</a>
+                            </div>
+                            <p class="project-catch">Ideas into form.Technology into experience.</p>
+                            <p class="project-description">Research beyond the current map.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-row">
+                        <div class="project-media">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <use href="/images/project-icons.svg#icon-globe"></use>
+                            </svg>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-topline">
+                                <h3 class="project-name">This is bot Web Services</h3>
+                                <a class="project-link" href="https://bot.daruks.com/" target="_blank" rel="noopener noreferrer">Website ↗</a>
+                            </div>
+                            <p class="project-catch">Simple conveniences for everyday life.</p>
+                            <p class="project-description">A practical web service platform powered by This is bot.</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- Load Script (defer so a slow network never blocks HTML parsing / interactivity) -->
+        <script data-cfasync="false" src="/script.js"></script>
+        <script data-cfasync="false" src="projects_script.js"></script>
+    </body>
 </html>
