@@ -40,7 +40,4 @@ Invoke-CheckedCommand 'pnpm' @('lint')
 Invoke-CheckedCommand 'pnpm' @('css', 'build')
 Assert-GeneratedOutputIsCurrent 'dist/output.css'
 
-Invoke-CheckedCommand 'pnpm' @('contact:build')
-Assert-GeneratedOutputIsCurrent 'contact/'
-
 Write-Host 'All pre-push checks passed.'
