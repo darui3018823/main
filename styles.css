@@ -82,7 +82,7 @@ body.is-menu-open {
   }
 }
 
-.center-panel-content {
+.liquid-glass > .panel-card {
   position: relative;
   z-index: 1;
 }
@@ -207,6 +207,7 @@ html.is-chromium .profile-role {
   width: min(100%, 17rem);
   height: 1px;
   margin: 1.25rem auto 0;
+  border: 0;
   background: rgba(255, 255, 255, 0.18);
 }
 
