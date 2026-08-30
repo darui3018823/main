@@ -9,9 +9,9 @@
   },
   "scripts": {
     "css": "node scripts/css.mjs",
-    "check": "node scripts/check.mjs",
-    "hooks:install": "node scripts/install-git-hooks.mjs",
-    "prepare": "node scripts/install-git-hooks.mjs",
+    "check": "pwsh -NoProfile -File scripts/check.ps1",
+    "hooks:install": "pwsh -NoProfile -File scripts/install-git-hooks.ps1",
+    "prepare": "pwsh -NoProfile -File scripts/install-git-hooks.ps1",
     "contact:dev": "pnpm --filter contact-app dev",
     "contact:build": "pnpm --filter contact-app build",
     "lint": "eslint .",
