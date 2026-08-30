@@ -471,6 +471,10 @@ html.is-chromium .profile-role {
   background: rgba(255, 255, 255, 0.28);
 }
 
+.profile-links-page[data-profile-links-page='more'] .profile-links-separator {
+  margin-right: -0.48rem;
+}
+
 .profile-links-page-button {
   margin-left: -0.35rem;
 }
