@@ -9,7 +9,6 @@ body {
 
 html {
   background: #0f1219;
-  overscroll-behavior-y: none;
 }
 
 body {
@@ -17,7 +16,6 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
-  overscroll-behavior-y: none;
 }
 
 body.is-menu-open {
