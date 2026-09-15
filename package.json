@@ -16,7 +16,10 @@
     "contact:build": "pnpm --filter contact-app build",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "init-config": "tailwindcss init"
+    "init-config": "tailwindcss init",
+    "worker:dev": "wrangler dev --persist-to ../.daruks-com-wrangler-state",
+    "worker:types": "wrangler types",
+    "deploy": "wrangler deploy"
   },
   "repository": {
     "type": "git",
@@ -30,12 +33,15 @@
   },
   "homepage": "https://github.com/darui3018823/main#readme",
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260911.1",
     "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.3.3",
     "eslint": "^10.6.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
     "globals": "^17.12.0",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.131.2"
   }
 }

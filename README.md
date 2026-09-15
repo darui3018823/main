@@ -16,4 +16,4 @@ This project was assisted by Claude Fable 5 / ChatGPT-5.6 Family !
 | Vite + React | Contact page SPA source in `contact-app/` |
 | Go local static server | Local development server |
 | pnpm workspace | Dependency and workspace management |
-| GitHub Pages | Static hosting from committed files |
+| Cloudflare Workers (Static Assets) | Static hosting from committed files, with an edge Worker for the curl fastfetch banner |

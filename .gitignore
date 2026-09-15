@@ -135,3 +135,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 main.exe
+
+# Wrangler
+.wrangler/
+.dev.vars

@@ -6,7 +6,7 @@ import globals from 'globals';
 export default [
   {
     // ビルド成果物・退避ファイルは対象外
-    ignores: ['contact/**', 'dist/**', '_remove/**', '**/node_modules/**'],
+    ignores: ['contact/**', 'dist/**', '_remove/**', '**/node_modules/**', '.wrangler/**'],
   },
   js.configs.recommended,
   {
