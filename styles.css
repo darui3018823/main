@@ -883,8 +883,8 @@ body.is-menu-open .side-panel {
   transition: background-color 0.2s ease;
 }
 
-.footer-credit-logo-github-pages {
-  --footer-logo-mask: url("/images/github-pages.svg");
+.footer-credit-logo-cloudflare {
+  --footer-logo-mask: url("/images/cloudflare.svg");
 }
 
 .footer-credit-logo-vite {
@@ -903,6 +903,12 @@ body.is-menu-open .side-panel {
   --footer-logo-mask: url("/images/pnpm.svg");
 }
 
+.footer-credit-logo-vite,
+.footer-credit-logo-pnpm {
+  width: 1.1em;
+  height: 1.1em;
+}
+
 .footer-credit-logo-link-vite:hover {
   --footer-logo-color: #9135FF;
 }
@@ -913,6 +919,10 @@ body.is-menu-open .side-panel {
 
 .footer-credit-logo-link-react:hover {
   --footer-logo-color: #61DAFB;
+}
+
+.footer-credit-logo-link-cloudflare:hover {
+  --footer-logo-color: #F38020;
 }
 
 .footer-credit-logo-link-pnpm:hover {
