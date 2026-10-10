@@ -32,7 +32,7 @@ export default defineConfig({
     // 本番は https://daruks.com/contact/ 配下で配信される
     base: '/contact/',
     build: {
-        // ビルド成果物をリポジトリの contact/ に出力し、そのまま GitHub Pages で配信する
+        // ビルド成果物をリポジトリの contact/ に出力し、そのまま Cloudflare Workers で配信する
         outDir: '../contact',
         emptyOutDir: true,
     },
