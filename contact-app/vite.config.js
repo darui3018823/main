@@ -12,7 +12,9 @@ const copyContactEntryToNestedRoutes = () => ({
         const outDir = resolve(configDir, '../contact');
         const entry = resolve(outDir, 'index.html');
         const privacyPolicyDir = resolve(outDir, 'privacy-policy');
+        // Windows の CRLF チェックアウトでビルドしても CI (LF) と同じ出力になるよう改行を LF に揃える
         const entryHtml = readFileSync(entry, 'utf8')
+            .replace(/\r\n?/g, '\n')
             .replace('<script type="module" crossorigin src=', '<script data-cfasync="false" type="module" crossorigin src=');
         writeFileSync(entry, entryHtml);
 
