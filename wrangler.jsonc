@@ -15,5 +15,6 @@
   "routes": [
     { "pattern": "daruks.com/*", "zone_name": "daruks.com" },
     { "pattern": "www.daruks.com/*", "zone_name": "daruks.com" }
-  ]
+  ],
+  "previews": {}
 }
