@@ -33,15 +33,15 @@
   },
   "homepage": "https://github.com/darui3018823/main#readme",
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20261112.1",
+    "@cloudflare/workers-types": "^5.20261119.1",
     "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.3.5",
     "eslint": "^10.6.0",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.7",
+    "eslint-plugin-react-refresh": "^0.5.8",
     "globals": "^17.14.0",
     "tailwindcss": "^4.3.5",
     "typescript": "^7.0.2",
-    "wrangler": "^4.161.0"
+    "wrangler": "^4.165.0"
   }
 }
